@@ -1,0 +1,10 @@
+{
+  "images": {
+    "about": "/images/about/about.jpg",
+    "slideImages": [
+      "/images/slideImages/images.jpg",
+      "/images/slideImages/blue_house.jpg",
+      "/images/slideImages/door-image.jpg"
+    ]
+  }
+}

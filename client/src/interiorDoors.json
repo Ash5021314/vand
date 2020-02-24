@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Входная дверь Бастион",
+    "price": "7900",
+    "frontImage": "/images/product/back/door.jpg",
+    "backImage": "/images/product/front/door.jpg",
+    "description": "Цвет внешней стороны двери медный антик, цвет внутренней стороны возможен в нескольких цветах - итальянский орех, венге, белый венге. Дверной блок в двух размерах: 850х2050; 980х2050",
+    "category": "interior"
+  },
+  {
+    "title": "Входная дверь Цитадель 3М",
+    "price": "21700",
+    "frontImage": "/images/product/back/door1.jpg",
+    "backImage": "images/product/front/door1.jpg",
+    "description": "С утеплителем из пенополистирола высокой плотности! Внутренняя панель для двери Бастион цвета медный антик.",
+    "category": "interior"
+  },
+  {
+    "title": "Входная дверь Соломон Гранд",
+    "price": "1950",
+    "frontImage": "/images/product/back/door2.jpg",
+    "backImage": "images/product/front/door1.jpg",
+    "description": "Цвет внешней стороны двери медный антик, цвет внутренней стороны возможен в нескольких цветах - итальянский орех, венге, белый венге. Дверной блок в двух размерах: 850х2050; 980х2050",
+    "category": "interior"
+  },
+  {
+    "title": "Входная дверь Президент Х7",
+    "price": "2190",
+    "frontImage": "/images/product/back/door2.jpg",
+    "backImage": "images/product/front/door1.jpg",
+    "description": "С утеплителем из пенополистирола высокой плотности! Внутренняя панель для двери Бастион цвета медный антик.",
+    "category": "interior"
+  },
+  {
+    "title": "Входная дверь Бастион",
+    "price": "7900",
+    "frontImage": "/images/product/back/door.jpg",
+    "backImage": "/images/product/front/door.jpg",
+    "description": "Цвет внешней стороны двери медный антик, цвет внутренней стороны возможен в нескольких цветах - итальянский орех, венге, белый венге. Дверной блок в двух размерах: 850х2050; 980х2050",
+    "category": "interior"
+  },
+  {
+    "title": "Входная дверь Президент Х7",
+    "price": "2190",
+    "frontImage": "/images/product/back/door2.jpg",
+    "backImage": "images/product/front/door1.jpg",
+    "description": "С утеплителем из пенополистирола высокой плотности! Внутренняя панель для двери Бастион цвета медный антик.",
+    "category": "interior"
+  }
+]

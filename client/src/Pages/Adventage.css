@@ -1,0 +1,14 @@
+.headTop {
+    margin-top: 56px;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.flexAdventage {
+    display: flex;
+    padding: 100px 0
+}
+
+.marginAuto {
+    margin: 50px auto;
+}
