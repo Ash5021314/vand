@@ -1,14 +1,22 @@
 const express = require("express");
-require('dotenv').config();
-require('./configs/db');
 const app = express();
-const bodyParser = require("body-parser");
 const path = require("path");
-const { itemRoutes } = require("./routes");
+const bodyParser = require("body-parser");
+const { doorsRoutes, messageRoutes, adminRoutes } = require("./src/routes");
+let cron = require("./src/utils/token_issuer");
+cron.start();
+require("dotenv").config();
+require("./config/db");
 
-app.use(express.static(path.join(__dirname,"public")));
+app.use(express.static(path.join(__dirname, "src/public")));
 app.use(bodyParser.json());
 
-app.use("/items",itemRoutes);
+app.use("/doors", doorsRoutes);
+app.use("/messages", messageRoutes);
+app.use("/admin", adminRoutes);
+
+app.use((req, res, next) => {
+  res.status(404).send({ success: false, msg: "Wrong Url Path" });
+});
 
 module.exports = app;
