@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
-import initDoors from '../interiorDoors'
+import initDoors from '../doors'
 import Container from 'react-bootstrap/Container'
 import Modal from 'react-bootstrap/Modal'
 import DoorApi from "../DoorApi";

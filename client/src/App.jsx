@@ -10,6 +10,7 @@ import Landing from './Components/Landing'
 import Footer from './Components/Footer'
 import Catalogs from './Pages/Catalogs'
 import Administrator from "./Components/Administrator";
+import SignIn from "./Components/SignIn";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Router>
       <Header/>
         <Route exact path='/Administrator' component={Administrator}/>
+        <Route exact path='/SignIn' component={SignIn}/>
           <Route exact path="/" component={Landing}/>
           <Route exact path="/advantage" component={Advantage}/>
           <Route exact path="/catalog" component={Catalog}/>

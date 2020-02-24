@@ -16,7 +16,7 @@ const Brends = () => {
   }
   return (
     <>
-      <h2 className="prodHeader">Межкомнатные двери</h2>
+      <h2 className="prodHeader">Наши Партнеры</h2>
       <p className='alignCenter'>Мы сотрудничаем только с проверенными брендами.</p>
       <OwlCarousel className="owl-theme" margin={70} {...options}>
         <div className="item">
