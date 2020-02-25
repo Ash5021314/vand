@@ -1,4 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="962d5abe-bf23-4059-b400-c70371df19a4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/UserFunctions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/UserFunctions.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vand.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vand.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/SignIn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/SignIn.jsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
   <component name="ProjectId" id="1YDrlc0Nt7lyPdzzPRZK0fSLJJC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="962d5abe-bf23-4059-b400-c70371df19a4" name="Default Changelist" comment="" />
+      <created>1582630676413</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582630676413</updated>
+      <workItem from="1582630691261" duration="7885000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
 </project>
