@@ -4,16 +4,17 @@ const bcrypt = require("bcryptjs");
 const { INVALID_CRED, LOGGED_IN } = require("../utils/response_constants");
 
 Admin.login = async ({ login, password }) => {
-  let date = Math.floor(Date.now() / 1000) + 60 * 60;
   try {
+    let date =
+      Math.floor(Date.now() / 1000) + 60 * process.env.EXPIRATIONS_TIME_MINUTES;
     let user = await Admin.findOne({ login });
     if (user) {
       let isMatch = await bcrypt.compare(password, user.password);
       if (isMatch) {
-        let token = await assign_jwt(data);
+        let token = await assign_jwt(date);
         await Admin.update(
           { _id: user._id },
-          { $push: { tokens: { token, expiredAt: date } } }
+          { $push: { tokens: { token: token, expiredAt: date } } }
         );
         LOGGED_IN.token = token;
         return LOGGED_IN;
@@ -25,6 +26,19 @@ Admin.login = async ({ login, password }) => {
   }
 };
 
+Admin.reg = async ({ login, password }) => {
+  try {
+    let admin = new Admin({
+      login,
+      password
+    });
+    let data = await admin.save();
+    return data;
+  } catch (e) {
+    return e;
+  }
+};
+
 /**
  * Private Functions
  */
@@ -32,12 +46,8 @@ Admin.login = async ({ login, password }) => {
 let assign_jwt = async date => {
   try {
     let token = await jwt.sign(
-      { user: "GAGO" },
-      process.env.JWT_SECRET,
-      { name },
-      {
-        exp: date
-      }
+      { user: "GAGO", exp: date },
+      process.env.JWT_SECRET
     );
     return token;
   } catch (e) {

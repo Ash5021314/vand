@@ -1,11 +1,12 @@
 const CronJob = require("cron").CronJob;
 const Admin = require("../models/Admin");
-const job = new CronJob("15 00 18 * * *", function() {
-  console.log("You will see this message every 15 second");
+const job = new CronJob("00 00 00 * * *", async function() {
+  let date = Math.floor(Date.now() / 1000);
+  await Admin.update(
+    { login: "gago" },
+    { $pull: { tokens: { expiredAt: { $lt: date } } } },
+    { multi: true }
+  );
 });
-// setTimeout(function() {
-//   process.exit(0);
-// }, 7000);
-// job.start();
 
 module.exports = job;

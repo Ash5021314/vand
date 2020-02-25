@@ -74,9 +74,11 @@ module.exports = {
     statusCode: 200,
     token: null
   },
-  //   CANNOT_LOGIN : {
-  //     success
-  //   },
+  UNAUTHIORIZED: {
+    success: false,
+    statusCode: 401,
+    msg: "Unauthorized"
+  },
   INVALID_CRED: { success: false, statusCode: 400, msg: "Invalid Credentials" },
   SERVER_ERROR: {
     success: false,

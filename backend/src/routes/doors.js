@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const { doors } = require("../providers");
 const { SERVER_ERROR } = require("../utils/response_constants");
+const auth_mid = require("./middleware");
 
-router.get("/", async (req, res) => {
+router.get("/", auth_mid, async (req, res) => {
   try {
     const doc = await doors.get();
     return res.status(doc.statusCode).send(doc);
