@@ -13,16 +13,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import {mainListItems, secondaryListItems} from './listItems';
-import MediaCard from "./AdminItem";
-// import Chart from './Chart';
-// import Deposits from './Deposits';
-// import Orders from './Orders';
+import IronDoors from "./IronDoors";
+import InteriorDoors from "./InteriorDoor";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 
 const drawerWidth = 240;
 
@@ -32,6 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
+    width:'100%'
   },
   toolbarIcon: {
     display: 'flex',
@@ -106,6 +103,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Dashboard() {
+  const [click,setClick] = React.useState(true)
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -114,6 +112,20 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const changeDoorToIron = () =>{
+      setClick(true);
+  }
+  const changeDoorToInterior = () =>{
+      setClick(false);
+  }
+  let item;
+  if(click){
+   item = <IronDoors/>
+  }
+  else{
+    item = <InteriorDoors/>
+  }
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
@@ -140,6 +152,7 @@ export default function Dashboard() {
           </IconButton>
         </Toolbar>
       </AppBar>
+
       <Drawer
         variant="permanent"
         classes={{
@@ -147,26 +160,35 @@ export default function Dashboard() {
         }}
         open={open}
       >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon/>
-          </IconButton>
-        </div>
         <Divider/>
-        <List>{mainListItems}</List>
+        <List>
+          <div>
+            <ListItem button>
+              <ListItemText primary="Входная дверь"  onClick={changeDoorToIron}/>
+            </ListItem>
+            <ListItem button>
+              <ListItemText primary="Межкомнатная дверь"  onClick={changeDoorToInterior}/>
+            </ListItem>
+
+          </div>
+        </List>
         <Divider/>
-        <List>{secondaryListItems}</List>
+
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer}/>
+
         <Container maxWidth="lg" className={classes.container}>
+
+
           <Grid container spacing={3}>
-            <MediaCard/>
+            {item}
           </Grid>
           <Box pt={4}>
           </Box>
         </Container>
       </main>
+
     </div>
   );
 }
