@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
-    width:'100%'
+    width: '100%'
   },
   toolbarIcon: {
     display: 'flex',
@@ -103,7 +103,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Dashboard() {
-  const [click,setClick] = React.useState(true)
+  const [click, setClick] = React.useState(true)
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -113,17 +113,22 @@ export default function Dashboard() {
     setOpen(false);
   };
 
-  const changeDoorToIron = () =>{
+  const changeDoorToIron = () => {
+    if (!click) {
+
       setClick(true);
+    }
   }
-  const changeDoorToInterior = () =>{
+  const changeDoorToInterior = () => {
+    if (click) {
+
       setClick(false);
+    }
   }
   let item;
-  if(click){
-   item = <IronDoors/>
-  }
-  else{
+  if (click) {
+    item = <IronDoors/>
+  } else {
     item = <InteriorDoors/>
   }
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
@@ -163,11 +168,11 @@ export default function Dashboard() {
         <Divider/>
         <List>
           <div>
-            <ListItem button>
-              <ListItemText primary="Входная дверь"  onClick={changeDoorToIron}/>
+            <ListItem button onClick={changeDoorToIron}>
+              <ListItemText primary="Входная дверь"/>
             </ListItem>
-            <ListItem button>
-              <ListItemText primary="Межкомнатная дверь"  onClick={changeDoorToInterior}/>
+            <ListItem button onClick={changeDoorToInterior}>
+              <ListItemText primary="Межкомнатная дверь"/>
             </ListItem>
 
           </div>

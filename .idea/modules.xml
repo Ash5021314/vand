@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../new-ebay/.idea/new-ebay.iml" filepath="$PROJECT_DIR$/../new-ebay/.idea/new-ebay.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/vand.iml" filepath="$PROJECT_DIR$/.idea/vand.iml" />
     </modules>
   </component>

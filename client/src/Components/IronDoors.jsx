@@ -19,6 +19,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Slide from "@material-ui/core/Slide";
 import CloseIcon from '@material-ui/icons/Close';
 import Divider from '@material-ui/core/Divider';
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import Avatar from "@material-ui/core/Avatar";
 
 const useStyles = makeStyles({
   root: {
@@ -52,16 +54,21 @@ export default function IronDoors() {
   const [ironDoor, setIronDoors] = useState({})
   const classes = useStyles();
   const classe = useStyle();
-  const [open, setOpen] = React.useState(false);
+  const [openIron, setOpenIron] = React.useState({
+    image: '',
+    open: false
+  });
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setOpenIron({
+      image: '',
+      open: true
+    });
   };
 
   const handleClose = () => {
-    setOpen(false);
+    // setOpenIron(false);
   };
-
 
 
   let iron = doors.filter(item => {
@@ -79,7 +86,7 @@ export default function IronDoors() {
         ironDoor.reverse().map((res, index) => {
           return (
             <Grid item xs={6} md={3} lg={3} key={index}>
-              <Card className={classes.root}  onClick={handleClickOpen}>
+              <Card className={classes.root} onClick={handleClickOpen}>
                 <CardActionArea>
                   <CardMedia
                     className={classes.mediaFront}
@@ -105,11 +112,11 @@ export default function IronDoors() {
           )
         })
       )}
-      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+      <Dialog fullScreen open={openIron.open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar className={classe.appBar}>
           <Toolbar>
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
-              <CloseIcon />
+              <CloseIcon/>
             </IconButton>
             <Typography variant="h6" className={classe.title}>
               Sound
@@ -119,15 +126,27 @@ export default function IronDoors() {
             </Button>
           </Toolbar>
         </AppBar>
-        <List>
-          <ListItem button>
-            <ListItemText primary="Phone ringtone" secondary="Titania" />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemText primary="Default notification ringtone" secondary="Tethys" />
-          </ListItem>
-        </List>
+        <ListItem alignItems="flex-start">
+          <ListItemAvatar>
+            <Avatar alt="Remy Sharp"/>
+          </ListItemAvatar>
+          <ListItemText
+            primary="Brunch this weekend?"
+            secondary={
+              <React.Fragment>
+                <Typography
+                  component="span"
+                  variant="body2"
+                  className={classes.inline}
+                  color="textPrimary"
+                >
+                  Ali Connors
+                </Typography>
+                {" — I'll be in your neighborhood doing errands this…"}
+              </React.Fragment>
+            }
+          />
+        </ListItem>
       </Dialog>
     </>
   );

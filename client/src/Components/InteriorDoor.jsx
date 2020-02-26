@@ -52,14 +52,14 @@ export default function IronDoors() {
   const [interior, setInteriorDoors] = useState({})
   const classes = useStyles();
   const classe = useStyle();
-  const [open, setOpen] = React.useState(false);
+  const [openInterior, setOpenInterior] = React.useState(false);
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setOpenInterior(true);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setOpenInterior(false);
   };
 
 
@@ -105,7 +105,7 @@ export default function IronDoors() {
           )
         })
       )}
-      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+      <Dialog fullScreen open={openInterior} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar className={classe.appBar}>
           <Toolbar>
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
