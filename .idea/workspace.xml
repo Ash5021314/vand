@@ -6,8 +6,6 @@
       <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/UserFunctions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/UserFunctions.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/InteriorDoor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/InteriorDoor.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/IronDoors.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/IronDoors.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +44,7 @@
       <workItem from="1582630691261" duration="17446000" />
       <workItem from="1582708005638" duration="15179000" />
       <workItem from="1582821730179" duration="2583000" />
-      <workItem from="1582825121102" duration="5262000" />
+      <workItem from="1582825121102" duration="13634000" />
     </task>
     <servers />
   </component>
@@ -73,5 +71,16 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1582725178126" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/client/node_modules/@material-ui/core/Avatar/Avatar.d.ts</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
