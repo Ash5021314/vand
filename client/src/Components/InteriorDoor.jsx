@@ -45,14 +45,14 @@ const useStyle = makeStyles(theme => ({
   },
 }));
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+// const Transition = React.forwardRef(function Transition(props, ref) {
+//   return <Slide direction="up" ref={ref} {...props} />;
+// });
 export default function IronDoors() {
   const [interior, setInteriorDoors] = useState({})
   const classes = useStyles();
   const classe = useStyle();
-  const [openInterior, setOpenInterior] = React.useState(false);
+  const [openInterior, setOpenInterior] = useState(false);
 
   const handleClickOpen = () => {
     setOpenInterior(true);
@@ -61,7 +61,6 @@ export default function IronDoors() {
   const handleClose = () => {
     setOpenInterior(false);
   };
-
 
 
   let iron = doors.filter(item => {
@@ -79,7 +78,7 @@ export default function IronDoors() {
         interior.reverse().map((res, index) => {
           return (
             <Grid item xs={6} md={3} lg={3} key={index}>
-              <Card className={classes.root}  onClick={handleClickOpen}>
+              <Card className={classes.root} onClick={handleClickOpen}>
                 <CardActionArea>
                   <CardMedia
                     className={classes.mediaFront}
@@ -105,11 +104,11 @@ export default function IronDoors() {
           )
         })
       )}
-      <Dialog fullScreen open={openInterior} onClose={handleClose} TransitionComponent={Transition}>
+      <Dialog fullScreen open={openInterior} onClose={handleClose}>
         <AppBar className={classe.appBar}>
           <Toolbar>
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
-              <CloseIcon />
+              <CloseIcon/>
             </IconButton>
             <Typography variant="h6" className={classe.title}>
               Sound
@@ -121,11 +120,11 @@ export default function IronDoors() {
         </AppBar>
         <List>
           <ListItem button>
-            <ListItemText primary="Phone ringtone" secondary="Titania" />
+            <ListItemText primary="Phone ringtone" secondary="Titania"/>
           </ListItem>
-          <Divider />
+          <Divider/>
           <ListItem button>
-            <ListItemText primary="Default notification ringtone" secondary="Tethys" />
+            <ListItemText primary="Default notification ringtone" secondary="Tethys"/>
           </ListItem>
         </List>
       </Dialog>

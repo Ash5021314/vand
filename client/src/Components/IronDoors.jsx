@@ -21,6 +21,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Divider from '@material-ui/core/Divider';
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
+import {number, string} from "prop-types";
 
 const useStyles = makeStyles({
   root: {
@@ -47,21 +48,24 @@ const useStyle = makeStyles(theme => ({
   },
 }));
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+// const Transition = React.forwardRef(function Transition(props, ref) {
+//   return <Slide direction="up" ref={ref} {...props} />;
+// });
 export default function IronDoors() {
   const [ironDoor, setIronDoors] = useState({})
   const classes = useStyles();
   const classe = useStyle();
-  const [openIron, setOpenIron] = React.useState({
-    image: '',
+  const [openIron, setOpenIron] = useState({
+    frontimage: '',
+    backimage: '',
+    title: '',
+    price: '',
     open: false
   });
 
   const handleClickOpen = () => {
+
     setOpenIron({
-      image: '',
       open: true
     });
   };
@@ -85,16 +89,31 @@ export default function IronDoors() {
       {!ironDoor.length ? <h2>Loading...</h2> : (
         ironDoor.reverse().map((res, index) => {
           return (
-            <Grid item xs={6} md={3} lg={3} key={index}>
-              <Card className={classes.root} onClick={handleClickOpen}>
+            <Grid item xs={6} md={3} lg={3} key={index}
+
+            >
+              <Card className={classes.root} onClick={handleClickOpen}
+                    {...res}
+
+                    onClick={() => {
+                      setOpenIron({
+                        frontimage: res.frontimage,
+                        backimage: res.backimage,
+                        title: res.title,
+                        price: res.price
+                      })
+                    }
+
+                    }
+              >
                 <CardActionArea>
                   <CardMedia
                     className={classes.mediaFront}
-                    image={res.frontImage}
+                    image={res.frontimage}
                   />
                   <CardMedia
                     className={classes.mediaBack}
-                    image={res.backImage}
+                    image={res.backimage}
                   />
                   <CardContent>
                     <Typography variant="h5" component="h3">
@@ -112,7 +131,7 @@ export default function IronDoors() {
           )
         })
       )}
-      <Dialog fullScreen open={openIron.open} onClose={handleClose} TransitionComponent={Transition}>
+      <Dialog fullScreen open={openIron.open} onClose={handleClose}>
         <AppBar className={classe.appBar}>
           <Toolbar>
             <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">

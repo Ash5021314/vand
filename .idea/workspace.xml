@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="962d5abe-bf23-4059-b400-c70371df19a4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/saveactions_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/Landing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/Landing.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/UserFunctions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/UserFunctions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vand.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vand.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/Administrator.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Administrator.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/InteriorDoor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/InteriorDoor.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/IronDoors.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/IronDoors.jsx" afterDir="false" />
     </list>
@@ -33,6 +29,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../new-ebay" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.saveactions" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
@@ -47,14 +44,27 @@
       <option name="presentableId" value="Default" />
       <updated>1582630676413</updated>
       <workItem from="1582630691261" duration="17446000" />
-      <workItem from="1582708005638" duration="7393000" />
+      <workItem from="1582708005638" duration="15179000" />
+      <workItem from="1582821730179" duration="2583000" />
+      <workItem from="1582825121102" duration="5262000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/client/node_modules/wait-for-expect/lib/toBeInRangeMatcher.d.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/wait-for-expect/lib/waitForExpect.spec.d.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/wait-for-expect/lib/index.d.js" />
+      </list>
+    </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582758571682">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1582758571682" />
     <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1582726349245">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
