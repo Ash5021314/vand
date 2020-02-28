@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
+import React, {useEffect, useState} from "react";
+import {makeStyles} from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Typography from "@material-ui/core/Typography";
 import doors from "../doors";
 import Grid from "@material-ui/core/Grid";
 import Dialog from "@material-ui/core/Dialog";
@@ -14,34 +14,30 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 import CloseIcon from '@material-ui/icons/Close';
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
 import List from "@material-ui/core/List";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 345
   },
   mediaFront: {
     height: 240,
-    width: '49%',
-    float: 'left'
+    width: "49%",
+    float: "left"
   },
   mediaBack: {
     height: 240,
-    width: '49%',
-    float: 'right'
-  },
+    width: "49%",
+    float: "right"
+  }
 });
 const useStyle = makeStyles(theme => ({
   appBar: {
-    position: 'relative',
+    position: "relative"
   },
   title: {
     marginLeft: theme.spacing(2),
-    flex: 1,
   },
   adminDoor: {
     float: 'left',
@@ -64,14 +60,14 @@ const useStyle = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-End'
-  },
+  }
 }));
 
 // const Transition = React.forwardRef(function Transition(props, ref) {
 //   return <Slide direction="up" ref={ref} {...props} />;
 // });
 export default function IronDoors() {
-  const [ironDoor, setIronDoors] = useState({})
+  const [ironDoor, setIronDoors] = useState({});
   const classes = useStyles();
   const classe = useStyle();
   const [openIron, setOpenIron] = useState(false);
@@ -84,10 +80,9 @@ export default function IronDoors() {
     setOpenIron(false);
   };
 
-
   let iron = doors.filter(item => {
     if (item.category === "iron") {
-      return item
+      return item;
     }
   });
   useEffect(() => {
@@ -96,14 +91,19 @@ export default function IronDoors() {
   let x = iron.map(res => {
     return res
   })
-  // console.log(x[0].title);
+
   return (
     <>
-      {!ironDoor.length ? <h2>Loading...</h2> : (
+      {!ironDoor.length ? (
+        <h2>Loading...</h2>
+      ) : (
         ironDoor.reverse().map((res, index) => {
           return (
             <Grid item xs={6} md={3} lg={3} key={index}>
-              <Card className={classes.root} onClick={handleClickOpen}>
+              <Card
+                className={classes.root}
+                onClick={handleClickOpen}
+              >
                 <CardActionArea>
                   <CardMedia
                     className={classes.mediaFront}
@@ -120,19 +120,22 @@ export default function IronDoors() {
                   </CardContent>
                 </CardActionArea>
                 <CardActions>
-                  <Typography component="p">
-                    {res.price} руб
-                  </Typography>
+                  <Typography component="p">{res.price} руб</Typography>
                 </CardActions>
               </Card>
             </Grid>
-          )
+          );
         })
       )}
       <Dialog fullScreen open={openIron} onClose={handleClose}>
         <AppBar className={classe.appBar}>
           <Toolbar>
-            <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="close"
+            >
               <CloseIcon/>
             </IconButton>
             <Typography variant="h6" className={classe.title}>
@@ -168,7 +171,6 @@ export default function IronDoors() {
               <input type="file"/>
             </ListItem>
           </List>
-
         </ListItem>
       </Dialog>
     </>
