@@ -52,9 +52,6 @@ const Items = () => {
                         </div>
                         <Card.Body className="alignCenter">
                           <Card.Title>{res.title}</Card.Title>
-                          <Card.Text>
-                            {res.description.substring(0, 100) + '․․․'}
-                          </Card.Text>
                         </Card.Body>
                         <Card.Footer>
                           <div className="text-muted alignCenter ">{res.price} <span>р.</span></div>
@@ -90,9 +87,6 @@ const Items = () => {
                         </div>
                         <Card.Body className="alignCenter">
                           <Card.Title>{res.title}</Card.Title>
-                          <Card.Text>
-                            {res.description.substring(0, 100) + '․․․'}
-                          </Card.Text>
                         </Card.Body>
                         <Card.Footer>
                           <div className="text-muted alignCenter ">{res.price} <span>р.</span></div>

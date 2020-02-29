@@ -2,25 +2,136 @@
   {
     "title": "Дверь межкомнатная Florence 62001",
     "price": "7900",
+    "fullPrice": "75000",
     "frontImage": "/images/product/back/door.jpg",
     "backImage": "/images/product/front/door.jpg",
-    "description": "Цвет внешней стороны двери медный антик, цвет внутренней стороны возможен в нескольких цветах - итальянский орех, венге, белый венге. Дверной блок в двух размерах: 850х2050; 980х2050",
+    "otherColor": [
+      {
+        "price": "1000",
+        "color": "Светлое Гавно",
+        "image": "/images/product/backLittle/door.jpg"
+      },
+      {
+        "price": "1050",
+        "color": "Темное Гавно",
+        "image": "/images/product/backLittle/door1.jpg"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg"
+      }
+    ],
+    "manufacturer": "Двери Регионов",
+    "doorBlockSize": "850х2050 / 980х2050",
+    "series": "ДС 3",
+    "thickness": "95",
+    "metalSheetThickness": "1.5",
+    "strengthClass": "М4",
+    "performanceValue": "Класс 1",
+    "burglarResistanceClass": "2",
+    "numberOfLoops": "3",
+    "antiSeize": "3",
+    "clipAdjustment": "да",
+    "box": "открытый, 107х51",
+    "platbandDepartureFromTheBox": "70",
+    "mount": "на уши",
+    "insulation": "Базальтовая плита",
+    "castleStrengthening": "1.5",
+    "nightValve": "да",
+    "thermalBreak": "нет",
+    "zinkogrunt": "нет",
+    "doorWeight": " 850х2050/86; 980х2050/91",
     "category": "interior"
   },
   {
     "title": "Дверь межкомнатная Florence 62001",
     "price": "21700",
+    "fullPrice": "75000",
     "frontImage": "/images/product/back/door1.jpg",
     "backImage": "/images/product/front/door1.jpg",
-    "description": "С утеплителем из пенополистирола высокой плотности! Внутренняя панель для двери Бастион цвета медный антик.",
+    "otherColor": [
+      {
+        "price": "1000",
+        "color": "Светлое Гавно",
+        "image": "/images/product/backLittle/door.jpg"
+      },
+      {
+        "price": "1050",
+        "color": "Темное Гавно",
+        "image": "/images/product/backLittle/door1.jpg"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg"
+      }
+    ],
+    "manufacturer": "Двери Регионов",
+    "doorBlockSize": "850х2050 / 980х2050",
+    "series": "ДС 3",
+    "thickness": "95",
+    "metalSheetThickness": "1.5",
+    "strengthClass": "М4",
+    "performanceValue": "Класс 1",
+    "burglarResistanceClass": "2",
+    "numberOfLoops": "3",
+    "antiSeize": "3",
+    "clipAdjustment": "да",
+    "box": "открытый, 107х51",
+    "platbandDepartureFromTheBox": "70",
+    "mount": "на уши",
+    "insulation": "Базальтовая плита",
+    "castleStrengthening": "1.5",
+    "nightValve": "да",
+    "thermalBreak": "нет",
+    "zinkogrunt": "нет",
+    "doorWeight": " 850х2050/86; 980х2050/91",
     "category": "interior"
   },
   {
     "title": "Дверь межкомнатная Florence 62001",
     "price": "1950",
+    "fullPrice": "75000",
     "frontImage": "/images/product/back/door2.jpg",
     "backImage": "/images/product/front/door1.jpg",
-    "description": "Цвет внешней стороны двери медный антик, цвет внутренней стороны возможен в нескольких цветах - итальянский орех, венге, белый венге. Дверной блок в двух размерах: 850х2050; 980х2050",
+    "otherColor": [
+      {
+        "price": "1000",
+        "color": "Светлое Гавно",
+        "image": "/images/product/backLittle/door.jpg"
+      },
+      {
+        "price": "1050",
+        "color": "Темное Гавно",
+        "image": "/images/product/backLittle/door1.jpg"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg"
+      }
+    ],
+    "manufacturer": "Двери Регионов",
+    "doorBlockSize": "850х2050 / 980х2050",
+    "series": "ДС 3",
+    "thickness": "95",
+    "metalSheetThickness": "1.5",
+    "strengthClass": "М4",
+    "performanceValue": "Класс 1",
+    "burglarResistanceClass": "2",
+    "numberOfLoops": "3",
+    "antiSeize": "3",
+    "clipAdjustment": "да",
+    "box": "открытый, 107х51",
+    "platbandDepartureFromTheBox": "70",
+    "mount": "на уши",
+    "insulation": "Базальтовая плита",
+    "castleStrengthening": "1.5",
+    "nightValve": "да",
+    "thermalBreak": "нет",
+    "zinkogrunt": "нет",
+    "doorWeight": " 850х2050/86; 980х2050/91",
     "category": "interior"
   },
   {
@@ -28,15 +139,85 @@
     "price": "1950",
     "frontImage": "/images/product/back/door2.jpg",
     "backImage": "/images/product/front/door1.jpg",
-    "description": "Цвет внешней стороны двери медный антик, цвет внутренней стороны возможен в нескольких цветах - итальянский орех, венге, белый венге. Дверной блок в двух размерах: 850х2050; 980х2050",
+    "backLittle": [
+      {
+        "price": "1000",
+        "image": "/images/product/backLittle/door.jpg"
+      },
+      {
+        "price": "1050",
+        "image": "/images/product/backLittle/door1.jpg"
+      },
+      {
+        "price": "1100",
+        "image": "/images/product/backLittle/door2.jpg"
+      }
+    ],
+    "manufacturer": "Двери Регионов",
+    "doorBlockSize": "850х2050 / 980х2050",
+    "series": "ДС 3",
+    "thickness": "95",
+    "metalSheetThickness": "1.5",
+    "strengthClass": "М4",
+    "performanceValue": "Класс 1",
+    "burglarResistanceClass": "2",
+    "numberOfLoops": "3",
+    "antiSeize": "3",
+    "clipAdjustment": "да",
+    "box": "открытый, 107х51",
+    "platbandDepartureFromTheBox": "70",
+    "mount": "на уши",
+    "insulation": "Базальтовая плита",
+    "castleStrengthening": "1.5",
+    "nightValve": "да",
+    "thermalBreak": "нет",
+    "zinkogrunt": "нет",
+    "doorWeight": " 850х2050/86; 980х2050/91",
     "category": "iron"
   },
   {
     "title": "Дверь межкомнатная Florence 62001",
     "price": "2190",
+    "fullPrice": "75000",
     "frontImage": "/images/product/back/door2.jpg",
     "backImage": "/images/product/front/door1.jpg",
-    "description": "С утеплителем из пенополистирола высокой плотности! Внутренняя панель для двери Бастион цвета медный антик.",
+    "otherColor": [
+      {
+        "price": "1000",
+        "color": "Светлое Гавно",
+        "image": "/images/product/backLittle/door.jpg"
+      },
+      {
+        "price": "1050",
+        "color": "Темное Гавно",
+        "image": "/images/product/backLittle/door1.jpg"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg"
+      }
+    ],
+    "manufacturer": "Двери Регионов",
+    "doorBlockSize": "850х2050 / 980х2050",
+    "series": "ДС 3",
+    "thickness": "95",
+    "metalSheetThickness": "1.5",
+    "strengthClass": "М4",
+    "performanceValue": "Класс 1",
+    "burglarResistanceClass": "2",
+    "numberOfLoops": "3",
+    "antiSeize": "3",
+    "clipAdjustment": "да",
+    "box": "открытый, 107х51",
+    "platbandDepartureFromTheBox": "70",
+    "mount": "на уши",
+    "insulation": "Базальтовая плита",
+    "castleStrengthening": "1.5",
+    "nightValve": "да",
+    "thermalBreak": "нет",
+    "zinkogrunt": "нет",
+    "doorWeight": " 850х2050/86; 980х2050/91",
     "category": "interior"
   },
   {
@@ -44,15 +225,85 @@
     "price": "1950",
     "frontImage": "/images/product/back/door2.jpg",
     "backImage": "/images/product/front/door1.jpg",
-    "description": "Цвет внешней стороны двери медный антик, цвет внутренней стороны возможен в нескольких цветах - итальянский орех, венге, белый венге. Дверной блок в двух размерах: 850х2050; 980х2050",
+    "backLittle": [
+      {
+        "price": "1000",
+        "image": "/images/product/backLittle/door.jpg"
+      },
+      {
+        "price": "1050",
+        "image": "/images/product/backLittle/door1.jpg"
+      },
+      {
+        "price": "1100",
+        "image": "/images/product/backLittle/door2.jpg"
+      }
+    ],
+    "manufacturer": "Двери Регионов",
+    "doorBlockSize": "850х2050 / 980х2050",
+    "series": "ДС 3",
+    "thickness": "95",
+    "metalSheetThickness": "1.5",
+    "strengthClass": "М4",
+    "performanceValue": "Класс 1",
+    "burglarResistanceClass": "2",
+    "numberOfLoops": "3",
+    "antiSeize": "3",
+    "clipAdjustment": "да",
+    "box": "открытый, 107х51",
+    "platbandDepartureFromTheBox": "70",
+    "mount": "на уши",
+    "insulation": "Базальтовая плита",
+    "castleStrengthening": "1.5",
+    "nightValve": "да",
+    "thermalBreak": "нет",
+    "zinkogrunt": "нет",
+    "doorWeight": " 850х2050/86; 980х2050/91",
     "category": "iron"
   },
   {
     "title": "Дверь межкомнатная Florence 62001",
     "price": "7900",
+    "fullPrice": "75000",
     "frontImage": "/images/product/back/door.jpg",
     "backImage": "/images/product/front/door.jpg",
-    "description": "Цвет внешней стороны двери медный антик, цвет внутренней стороны возможен в нескольких цветах - итальянский орех, венге, белый венге. Дверной блок в двух размерах: 850х2050; 980х2050",
+    "otherColor": [
+      {
+        "price": "1000",
+        "color": "Светлое Гавно",
+        "image": "/images/product/backLittle/door.jpg"
+      },
+      {
+        "price": "1050",
+        "color": "Темное Гавно",
+        "image": "/images/product/backLittle/door1.jpg"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg"
+      }
+    ],
+    "manufacturer": "Двери Регионов",
+    "doorBlockSize": "850х2050 / 980х2050",
+    "series": "ДС 3",
+    "thickness": "95",
+    "metalSheetThickness": "1.5",
+    "strengthClass": "М4",
+    "performanceValue": "Класс 1",
+    "burglarResistanceClass": "2",
+    "numberOfLoops": "3",
+    "antiSeize": "3",
+    "clipAdjustment": "да",
+    "box": "открытый, 107х51",
+    "platbandDepartureFromTheBox": "70",
+    "mount": "на уши",
+    "insulation": "Базальтовая плита",
+    "castleStrengthening": "1.5",
+    "nightValve": "да",
+    "thermalBreak": "нет",
+    "zinkogrunt": "нет",
+    "doorWeight": " 850х2050/86; 980х2050/91",
     "category": "interior"
   },
   {
@@ -60,15 +311,85 @@
     "price": "7900",
     "frontImage": "/images/product/back/door.jpg",
     "backImage": "/images/product/front/door.jpg",
-    "description": "Цвет внешней стороны двери медный антик, цвет внутренней стороны возможен в нескольких цветах - итальянский орех, венге, белый венге. Дверной блок в двух размерах: 850х2050; 980х2050",
+    "backLittle": [
+      {
+        "price": "1000",
+        "image": "/images/product/backLittle/door.jpg"
+      },
+      {
+        "price": "1050",
+        "image": "/images/product/backLittle/door1.jpg"
+      },
+      {
+        "price": "1100",
+        "image": "/images/product/backLittle/door2.jpg"
+      }
+    ],
+    "manufacturer": "Двери Регионов",
+    "doorBlockSize": "850х2050 / 980х2050",
+    "series": "ДС 3",
+    "thickness": "95",
+    "metalSheetThickness": "1.5",
+    "strengthClass": "М4",
+    "performanceValue": "Класс 1",
+    "burglarResistanceClass": "2",
+    "numberOfLoops": "3",
+    "antiSeize": "3",
+    "clipAdjustment": "да",
+    "box": "открытый, 107х51",
+    "platbandDepartureFromTheBox": "70",
+    "mount": "на уши",
+    "insulation": "Базальтовая плита",
+    "castleStrengthening": "1.5",
+    "nightValve": "да",
+    "thermalBreak": "нет",
+    "zinkogrunt": "нет",
+    "doorWeight": " 850х2050/86; 980х2050/91",
     "category": "iron"
   },
   {
     "title": "Дверь межкомнатная Florence 62001",
     "price": "2190",
+    "fullPrice": "75000",
     "frontImage": "/images/product/back/door2.jpg",
     "backImage": "/images/product/front/door1.jpg",
-    "description": "С утеплителем из пенополистирола высокой плотности! Внутренняя панель для двери Бастион цвета медный антик.",
+    "otherColor": [
+      {
+        "price": "1000",
+        "color": "Светлое Гавно",
+        "image": "/images/product/backLittle/door.jpg"
+      },
+      {
+        "price": "1050",
+        "color": "Темное Гавно",
+        "image": "/images/product/backLittle/door1.jpg"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg"
+      }
+    ],
+    "manufacturer": "Двери Регионов",
+    "doorBlockSize": "850х2050 / 980х2050",
+    "series": "ДС 3",
+    "thickness": "95",
+    "metalSheetThickness": "1.5",
+    "strengthClass": "М4",
+    "performanceValue": "Класс 1",
+    "burglarResistanceClass": "2",
+    "numberOfLoops": "3",
+    "antiSeize": "3",
+    "clipAdjustment": "да",
+    "box": "открытый, 107х51",
+    "platbandDepartureFromTheBox": "70",
+    "mount": "на уши",
+    "insulation": "Базальтовая плита",
+    "castleStrengthening": "1.5",
+    "nightValve": "да",
+    "thermalBreak": "нет",
+    "zinkogrunt": "нет",
+    "doorWeight": " 850х2050/86; 980х2050/91",
     "category": "interior"
   },
   {
@@ -76,7 +397,40 @@
     "price": "2190",
     "frontImage": "/images/product/back/door2.jpg",
     "backImage": "/images/product/front/door1.jpg",
-    "description": "С утеплителем из пенополистирола высокой плотности! Внутренняя панель для двери Бастион цвета медный антик.",
+    "backLittle": [
+      {
+        "price": "1000",
+        "image": "/images/product/backLittle/door.jpg"
+      },
+      {
+        "price": "1050",
+        "image": "/images/product/backLittle/door1.jpg"
+      },
+      {
+        "price": "1100",
+        "image": "/images/product/backLittle/door2.jpg"
+      }
+    ],
+    "manufacturer": "Двери Регионов",
+    "doorBlockSize": "850х2050 / 980х2050",
+    "series": "ДС 3",
+    "thickness": "95",
+    "metalSheetThickness": "1.5",
+    "strengthClass": "М4",
+    "performanceValue": "Класс 1",
+    "burglarResistanceClass": "2",
+    "numberOfLoops": "3",
+    "antiSeize": "3",
+    "clipAdjustment": "да",
+    "box": "открытый, 107х51",
+    "platbandDepartureFromTheBox": "70",
+    "mount": "на уши",
+    "insulation": "Базальтовая плита",
+    "castleStrengthening": "1.5",
+    "nightValve": "да",
+    "thermalBreak": "нет",
+    "zinkogrunt": "нет",
+    "doorWeight": " 850х2050/86; 980х2050/91",
     "category": "iron"
   }
 ]

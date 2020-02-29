@@ -13,9 +13,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
-import ListItem from "@material-ui/core/ListItem";
 import CloseIcon from '@material-ui/icons/Close';
-import List from "@material-ui/core/List";
+import Table from "react-bootstrap/Table";
 
 const useStyles = makeStyles({
   root: {
@@ -36,18 +35,18 @@ const useStyle = makeStyles(theme => ({
   appBar: {
     position: "relative"
   },
-  title: {
-    marginLeft: theme.spacing(2),
+  save: {
+    float: 'right',
   },
   adminDoor: {
-    float: 'left',
     height: '200px',
-    marginLeft: '20px'
+    marginLeft: '20px',
+    marginRight: '50px'
   },
   adminBackDoor: {
-    float: 'left',
-    height: '70px',
-    marginLeft: '20px'
+    height: '100px',
+    marginLeft: '20px',
+    marginRight: '50px'
   },
   flex: {
     display: 'flex'
@@ -56,16 +55,16 @@ const useStyle = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column'
   },
+  flexBetween: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
   flexDirectionEnd: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-End'
   }
 }));
-
-// const Transition = React.forwardRef(function Transition(props, ref) {
-//   return <Slide direction="up" ref={ref} {...props} />;
-// });
 export default function IronDoors() {
   const [ironDoor, setIronDoors] = useState({});
   const classes = useStyles();
@@ -129,7 +128,7 @@ export default function IronDoors() {
       )}
       <Dialog fullScreen open={openIron} onClose={handleClose}>
         <AppBar className={classe.appBar}>
-          <Toolbar>
+          <Toolbar className={classe.flexBetween}>
             <IconButton
               edge="start"
               color="inherit"
@@ -138,40 +137,675 @@ export default function IronDoors() {
             >
               <CloseIcon/>
             </IconButton>
-            <Typography variant="h6" className={classe.title}>
-              {x[0].title}
-            </Typography>
             <Button autoFocus color="inherit" onClick={handleClose}>
-              save
+              САХРАНИТЬ
             </Button>
           </Toolbar>
         </AppBar>
-        <ListItem alignItems="flex-start">
-          <List className={classe.flex}>
-            <ListItem className={classe.flexDirection}>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Дверь с наружи</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
               <img alt="Remy Sharp" src={x[0].frontImage} className={classe.adminDoor}/>
               <input type="file"/>
-            </ListItem>
-            <ListItem className={classe.flexDirection}>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Дверь из нутри</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
               <img alt="Remy Sharp" src={x[0].backImage} className={classe.adminDoor}/>
               <input type="file"/>
-            </ListItem>
-          </List>
-          <List>
-            <ListItem className={classe.flexDirectionEnd}>
-              <img alt="Remy Sharp" src={x[0].backImage} className={classe.adminBackDoor}/>
-              <input type="file"/>
-            </ListItem>
-            <ListItem className={classe.flexDirectionEnd}>
-              <img alt="Remy Sharp" src={x[0].backImage} className={classe.adminBackDoor}/>
-              <input type="file"/>
-            </ListItem>
-            <ListItem className={classe.flexDirectionEnd}>
-              <img alt="Remy Sharp" src={x[0].backImage} className={classe.adminBackDoor}/>
-              <input type="file"/>
-            </ListItem>
-          </List>
-        </ListItem>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Панель для входных дверей</th>
+            <th>Цена</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          {
+            x[0].backLittle.map((res, index) => {
+              return (
+                <tr key={index}>
+                  <td>
+                    <img alt="Remy Sharp" src={res.image} className={classe.adminBackDoor}/>
+                    <input type="file"/>
+                  </td>
+                  <td>
+                    <input type="text" defaultValue={res.price}/>
+                  </td>
+                  <td>
+                    <Button variant="contained" color="primary">
+                      Обнавить
+                    </Button>
+                  </td>
+                  <td>
+                    <Button variant="contained" color="secondary">
+                      Удалить
+                    </Button>
+                  </td>
+                </tr>
+              )
+            })
+
+          }
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Производитель</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].manufacturer} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>ИмЯ</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].title} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Размер дверного блока</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].doorBlockSize} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Серия</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].series} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Толщина полотна (мм)</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].metalSheetThickness} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Толщина листа металла (мм.)</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].thickness} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Класс прочности</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].strengthClass} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Значение по эксплутационным характеристикам</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].performanceValue} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Класс устойчивости к взлому</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].burglarResistanceClass} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Количество петель</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].numberOfLoops} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Противосъемы</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].antiSeize} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Регулировка прижима</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].clipAdjustment} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Коробка</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].box} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Вылет наличника от короба</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].platbandDepartureFromTheBox} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Крепление</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].mount} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Утеплитель</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].insulation} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Усиление замковой зоны</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].castleStrengthening} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Ночная задвижка</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].nightValve} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Терморазрыв</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].thermalBreak} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Цинкогрунт</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].zinkogrunt} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Вес двери</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].doorWeight} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Цена</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="text" defaultValue={x[0].price} style={{width: "90%"}}/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Обнавить
+              </Button>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
+              </Button>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
       </Dialog>
     </>
   );

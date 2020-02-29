@@ -2,44 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="962d5abe-bf23-4059-b400-c70371df19a4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/public/static/js/2.629ee105.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/public/static/js/2.629ee105.chunk.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/public/static/js/main.e21c1fc5.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/public/static/js/main.e21c1fc5.chunk.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/build/static/js/2.629ee105.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/build/static/js/2.629ee105.chunk.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/build/static/js/main.e21c1fc5.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/build/static/js/main.e21c1fc5.chunk.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/doors1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/product/backLittle/door.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/product/backLittle/door1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/product/backLittle/door2.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/Landing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/Landing.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/UserFunctions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/UserFunctions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/public/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/public/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/public/precache-manifest.a04a71a801dc8df21b0cfb70afc546c1.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/public/precache-manifest.0274a0939ca5449351c75f9cfbc4ea7d.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/public/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/public/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/public/static/css/2.59b79a08.chunk.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/static/css/2.0e36740a.chunk.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/public/static/css/2.59b79a08.chunk.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/static/css/2.0e36740a.chunk.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/public/static/js/2.391bbfdc.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/public/static/js/2.391bbfdc.chunk.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/public/static/js/2.629ee105.chunk.js.LICENSE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/public/static/js/2.391bbfdc.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/public/static/js/main.021ad5b0.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/public/static/js/main.021ad5b0.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/precache-manifest.a04a71a801dc8df21b0cfb70afc546c1.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/precache-manifest.0274a0939ca5449351c75f9cfbc4ea7d.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/css/2.59b79a08.chunk.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/public/static/css/2.0e36740a.chunk.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/css/2.59b79a08.chunk.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/public/static/css/2.0e36740a.chunk.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/js/2.391bbfdc.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/js/2.391bbfdc.chunk.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/static/js/2.629ee105.chunk.js.LICENSE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/js/2.391bbfdc.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/js/main.021ad5b0.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/js/main.021ad5b0.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Administrator.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Administrator.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/InteriorDoor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/InteriorDoor.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/IronDoors.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/IronDoors.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Pages/Catalog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/Catalog.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Pages/Catalogs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/Catalogs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Items.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Items.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/doors.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/doors.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,13 +27,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1YDrlc0Nt7lyPdzzPRZK0fSLJJC" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../new-ebay" />
@@ -78,7 +57,8 @@
       <workItem from="1582630691261" duration="17446000" />
       <workItem from="1582708005638" duration="15179000" />
       <workItem from="1582821730179" duration="2583000" />
-      <workItem from="1582825121102" duration="14331000" />
+      <workItem from="1582825121102" duration="14397000" />
+      <workItem from="1582900027178" duration="23121000" />
     </task>
     <servers />
   </component>
@@ -92,6 +72,9 @@
       </list>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582758571682">
       <screen x="0" y="0" width="1366" height="728" />
@@ -101,17 +84,16 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1582726349245" />
-    <state x="184" y="6" key="SettingsEditor" timestamp="1582725178126">
+    <state x="184" y="6" key="SettingsEditor" timestamp="1582929923448">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1582725178126" />
+    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1582929923448" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/client/node_modules/@material-ui/core/Avatar/Avatar.d.ts</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
