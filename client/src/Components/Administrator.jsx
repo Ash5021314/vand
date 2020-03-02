@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -20,6 +20,11 @@ import InteriorDoors from "./InteriorDoor";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import CloseIcon from "@material-ui/icons/Close";
+import Table from "react-bootstrap/Table";
+import {Form} from "react-bootstrap";
+import Col from "react-bootstrap/Col";
 
 const drawerWidth = 240;
 
@@ -107,13 +112,54 @@ const useStyles = makeStyles(theme => ({
     }
   }))
 ;
-
+const useStyle = makeStyles(theme => ({
+  appBar: {
+    position: "relative"
+  },
+  save: {
+    float: 'right',
+  },
+  adminDoor: {
+    height: '200px',
+    marginLeft: '20px',
+    marginRight: '50px'
+  },
+  adminBackDoor: {
+    height: '100px',
+    marginLeft: '20px',
+    marginRight: '50px'
+  },
+  flex: {
+    display: 'flex'
+  },
+  flexDirection: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  flexBetween: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  flexDirectionEnd: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-End'
+  },
+  titleP: {
+    fontWeight: 'bold',
+  }
+}));
 export default function Dashboard() {
   const [click, setClick] = React.useState(true)
   const classes = useStyles();
+  const classe = useStyle();
   const [open, setOpen] = React.useState(true);
+  const [openInsert, setOpenInsert] = useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
+  };
+  const handleClose = () => {
+    setOpenInsert(false);
   };
   const handleDrawerClose = () => {
     setOpen(false);
@@ -121,13 +167,11 @@ export default function Dashboard() {
 
   const changeDoorToIron = () => {
     if (!click) {
-
       setClick(true);
     }
   }
   const changeDoorToInterior = () => {
     if (click) {
-
       setClick(false);
     }
   }
@@ -138,70 +182,221 @@ export default function Dashboard() {
     item = <InteriorDoors/>
   }
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
   return (
-    <div className={classes.root}>
-      <CssBaseline/>
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-          >
-            <MenuIcon/>
-          </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            ПАНЕЛЬ АДМИНИСТРАТОРА
-          </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon/>
-            </Badge>
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+    <>
+      <div className={classes.root}>
+        <CssBaseline/>
+        <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+          <Toolbar className={classes.toolbar}>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+            >
+              <MenuIcon/>
+            </IconButton>
+            <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+              ПАНЕЛЬ АДМИНИСТРАТОРА
+            </Typography>
+            <IconButton color="inherit">
+              <Badge badgeContent={4} color="secondary">
+                <NotificationsIcon/>
+              </Badge>
+            </IconButton>
+          </Toolbar>
+        </AppBar>
 
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-        }}
-        open={open}
-      >
-        <Divider/>
-        <List>
-          <div>
-            <ListItem button onClick={changeDoorToIron}>
-              <ListItemText primary="Входная дверь"/>
-            </ListItem>
-            <ListItem button onClick={changeDoorToInterior}>
-              <ListItemText primary="Межкомнатная дверь"/>
-            </ListItem>
+        <Drawer
+          variant="permanent"
+          classes={{
+            paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+          }}
+          open={open}
+        >
+          <Divider/>
+          <List>
+            <div>
+              <ListItem button onClick={changeDoorToIron}>
+                <ListItemText primary="Входная дверь"/>
+              </ListItem>
+              <ListItem button onClick={changeDoorToInterior}>
+                <ListItemText primary="Межкомнатная дверь"/>
+              </ListItem>
 
-          </div>
-        </List>
-        <Divider/>
+            </div>
+          </List>
+          <Divider/>
 
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer}/>
-        <Container maxWidth="lg" className={classes.container}>
-          <Button variant="contained" color="primary" className={classes.addButton}>
-            Добавить
-          </Button>
+        </Drawer>
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer}/>
+          <Container maxWidth="lg" className={classes.container}>
+            <Button
+              onClick={() => setOpenInsert(true)}
+              variant="contained" color="primary"
+              className={classes.addButton}
+            >
+              Добавить
+            </Button>
 
 
-          <Grid container spacing={3}>
-            {item}
-          </Grid>
-          <Box pt={4}>
-          </Box>
-        </Container>
-      </main>
+            <Grid container spacing={3}>
+              {item}
+            </Grid>
+            <Box pt={4}>
+            </Box>
+          </Container>
+        </main>
 
-    </div>
+      </div>
+      <Dialog fullScreen open={openInsert} onClose={handleClose}>
+        <AppBar className={classe.appBar}>
+          <Toolbar className={classe.flexBetween}>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="close"
+            >
+              <CloseIcon/>
+            </IconButton>
+            <Button autoFocus color="inherit" onClick={handleClose}>
+              САХРАНИТЬ
+            </Button>
+          </Toolbar>
+        </AppBar>
+        <Table striped bordered hover>
+          <tbody>
+          <tr>
+            <td>
+              <Form.Group as={Col} controlId="formGridState">
+                <Form.Label className={classe.titleP}>Категория</Form.Label>
+                <Form.Control as="select">
+                  <option>Входная</option>
+                  <option>Межкомнатная</option>
+                </Form.Control>
+              </Form.Group>
+            </td>
+            <td>
+              <p className={classe.titleP}>Загрузить переднее фото</p>
+              <input type="file"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Загрузить заднее фото</p>
+              <input type="file"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Производитель</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Имя</p>
+              <input type="text"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p className={classe.titleP}>Размер дверного блока</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Серия</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Толщина полотна (мм)</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Толщина листа металла (мм.)</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Класс прочности</p>
+              <input type="text"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p className={classe.titleP}>Значение по эксплутационным характеристикам</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Класс устойчивости к взлому</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Количество петель</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Противосъемы</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Регулировка прижима</p>
+              <input type="text"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p className={classe.titleP}>Коробка</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Вылет наличника от короба</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Крепление</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Утеплитель</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Усиление замковой зоны</p>
+              <input type="text"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p className={classe.titleP}>Ночная задвижка</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Ночная задвижка</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Терморазрыв</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Цинкогрунт</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Вес двери</p>
+              <input type="text"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p className={classe.titleP}>Цена</p>
+              <input type="text"/>
+            </td>
+            <td>
+              <p className={classe.titleP}>Полная Цена</p>
+              <input type="text"/>
+            </td>
+          </tr>
+          </tbody>
+        </Table>
+      </Dialog>
+    </>
   );
 }

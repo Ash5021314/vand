@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Iron from "./images/catalog/iron.png";
@@ -14,29 +14,25 @@ const Catalog = () => {
         <h2 className="headTop">Каталог</h2>
         <Row>
           <Col xs={6} md={5}>
-            {/* <a href="/catalogs"> */}
             <Link to="/catalogs/iron">
               <div className="w-100 imageHover">
-                <img src={Iron} alt="" className="w-100 image" />
+                <img src={Iron} alt="" className="w-100 image"/>
                 <div className="middle">
                   <div className="text">входные двери</div>
                 </div>
               </div>
             </Link>
-            {/* </a> */}
           </Col>
-          <Col xs={0} md={2} />
+          <Col xs={0} md={2}/>
           <Col xs={6} md={5}>
-            {/* <a href="/catalogs"> */}
             <Link to="/catalogs/iron2">
               <div className="w-100 imageHover">
-                <img src={Interior} alt="" className="w-100 image" />
+                <img src={Interior} alt="" className="w-100 image"/>
                 <div className="middle">
                   <div className="text">межкомнатные двери</div>
                 </div>
               </div>
             </Link>
-            {/* </a> */}
           </Col>
         </Row>
       </Container>

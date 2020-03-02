@@ -11,6 +11,7 @@ import Footer from "./Components/Footer";
 import Catalogs from "./Pages/Catalogs";
 import Administrator from "./Components/Administrator";
 import SignIn from "./Components/SignIn";
+import DoorsDesc from "./Pages/DoorsDesc";
 
 function App() {
   return (
@@ -24,8 +25,8 @@ function App() {
         <Route exact path="/catalog" component={Catalog}/>
         <Route exact path="/contact" component={Contact}/>
         <Route path="/catalogs" component={Catalogs}/>
+        <Route path="/doorsDesc" component={DoorsDesc}/>
       </Router>
-      <Footer/>
     </>
   );
 }

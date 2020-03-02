@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -65,11 +65,12 @@ const useStyle = makeStyles(theme => ({
     justifyContent: 'flex-End'
   }
 }));
-export default function IronDoors() {
+export default function IronDoors({openInsert, setOpenInsert}) {
   const [ironDoor, setIronDoors] = useState({});
+  const [openIron, setOpenIron] = useState(false);
+  const inpRef = useRef();
   const classes = useStyles();
   const classe = useStyle();
-  const [openIron, setOpenIron] = useState(false);
 
   const handleClickOpen = () => {
     setOpenIron(true);
@@ -181,7 +182,10 @@ export default function IronDoors() {
           <tr>
             <td>
               <img alt="Remy Sharp" src={x[0].backImage} className={classe.adminDoor}/>
-              <input type="file"/>
+              <Button variant="contained" color="primary" onClick={() => inpRef.current.click()}>
+                Choose file
+              </Button>
+              <input type="file" ref={inpRef} hidden/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -206,8 +210,21 @@ export default function IronDoors() {
           </tr>
           </thead>
           <tbody>
+          <tr>
+            <td>
+              <input type="file"/>
+            </td>
+            <td>
+              <input type="text"/>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Добавить
+              </Button>
+            </td>
+          </tr>
           {
-            x[0].backLittle.map((res, index) => {
+            x[0].otherColor.map((res, index) => {
               return (
                 <tr key={index}>
                   <td>
@@ -263,7 +280,7 @@ export default function IronDoors() {
         <Table striped bordered hover>
           <thead>
           <tr className="text-light bg-dark">
-            <th>ИмЯ</th>
+            <th>Имя</th>
             <th>Обнавить</th>
             <th>Удалить</th>
           </tr>

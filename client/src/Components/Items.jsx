@@ -33,7 +33,7 @@ const Items = () => {
         <h2 className="prodHeader">Межкомнатные двери</h2>
         <CardDeck>
           {!ironDoor.length ? <h2>Loading...</h2> : (
-            <Row>
+            <Row style={{width: '100%'}}>
               {
                 ironDoor.reverse().slice(0, 4).map((res, index) => {
                   return (<Col xs={6} md={3} key={index}>

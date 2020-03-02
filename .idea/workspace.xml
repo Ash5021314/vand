@@ -2,26 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="962d5abe-bf23-4059-b400-c70371df19a4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/public/images/product/backLittle/door.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/images/product/backLittle/door1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/images/product/backLittle/door2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Pages/DoorsDesc.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Pages/DoorsDesc.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/Landing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/Landing.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/UserFunctions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/UserFunctions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/precache-manifest.2261b2c8a3bd54ec4ced0c38432f62cb.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/static/css/main.28472fb4.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/static/css/main.28472fb4.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/static/js/2.22c2b9cd.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/static/js/2.22c2b9cd.chunk.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/static/js/2.22c2b9cd.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/static/js/main.e470150e.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/static/js/main.e470150e.chunk.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Admin.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/Administrator.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Administrator.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/InteriorDoor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/InteriorDoor.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/IronDoors.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/IronDoors.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/Items.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Items.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Components/Landing.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Landing.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/Catalog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/Catalog.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/Catalogs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/Catalogs.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/doors.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/doors.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/doors1.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ndoors1.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,6 +60,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../new-ebay" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.saveactions" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -58,7 +79,9 @@
       <workItem from="1582708005638" duration="15179000" />
       <workItem from="1582821730179" duration="2583000" />
       <workItem from="1582825121102" duration="14397000" />
-      <workItem from="1582900027178" duration="23121000" />
+      <workItem from="1582900027178" duration="23384000" />
+      <workItem from="1582987938926" duration="14012000" />
+      <workItem from="1583074173089" duration="24188000" />
     </task>
     <servers />
   </component>
@@ -80,6 +103,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1582758571682" />
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583112012128">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1583112012128" />
     <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1582726349245">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -88,6 +115,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1582929923448" />
+    <state x="380" y="96" width="606" height="536" key="find.popup" timestamp="1582988776072">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="380" y="96" width="606" height="536" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1582988776072" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

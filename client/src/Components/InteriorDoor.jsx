@@ -200,13 +200,25 @@ export default function IronDoors() {
           <thead>
           <tr className="text-light bg-dark">
             <th>Выбор цветов двери</th>
-            <th>Цена</th>
             <th>Цвет</th>
             <th>Обнавить</th>
             <th>Удалить</th>
           </tr>
           </thead>
           <tbody>
+          <tr>
+            <td>
+              <input type="file"/>
+            </td>
+            <td>
+              <input type="text"/>
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Добавить
+              </Button>
+            </td>
+          </tr>
           {
             x[0].otherColor.map((res, index) => {
               return (
@@ -214,9 +226,6 @@ export default function IronDoors() {
                   <td>
                     <img alt="Remy Sharp" src={res.image} className={classe.adminBackDoor}/>
                     <input type="file"/>
-                  </td>
-                  <td>
-                    <input type="text" defaultValue={res.price}/>
                   </td>
                   <td>
                     <input type="text" defaultValue={res.color}/>
@@ -267,7 +276,7 @@ export default function IronDoors() {
         <Table striped bordered hover>
           <thead>
           <tr className="text-light bg-dark">
-            <th>ИмЯ</th>
+            <th>Имя</th>
             <th>Обнавить</th>
             <th>Удалить</th>
           </tr>
