@@ -3,17 +3,16 @@ import Container from "react-bootstrap/Container";
 import allDoors from "../doors";
 import {Row} from "react-bootstrap";
 import Col from "react-bootstrap/Col";
-import './DoorsDesc.css';
+import './IronDesc.css';
 import Footer from "../Components/Footer";
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Image from "../data"
-import Button from "@material-ui/core/Button";
 import Table from "react-bootstrap/Table";
 
 
-const DoorsDesc = () => {
+const IronDesc = (props) => {
   const [style, setStyle] = useState({
     active: 0
   })
@@ -129,6 +128,7 @@ const DoorsDesc = () => {
             </div>
           </Col>
           <Col xs={12} md={12}>
+            <p className="moreSlide">Дополнительные фотографии</p>
             {!slide.length ? <h2>Loading...</h2> : (
               <OwlCarousel className="owl-theme" margin={70} {...options}>
                 {
@@ -144,14 +144,166 @@ const DoorsDesc = () => {
             )}
           </Col>
           <Col xs={12} md={12}>
-            <Table striped bordered hover>
+            <Table striped bordered hover className="descTable">
               <tbody>
               <tr>
                 <td>
-                  <input type="file"/>
+                  <p>Производитель</p>
                 </td>
                 <td>
-                  <input type="text"/>
+                  {allDoors[0].manufacturer}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Размер дверного блока</p>
+                </td>
+                <td>
+                  {allDoors[0].doorBlockSize}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Серия</p>
+                </td>
+                <td>
+                  {allDoors[0].series}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Толщина полотна мм.</p>
+                </td>
+                <td>
+                  {allDoors[0].thickness}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Толщина листа металла мм.</p>
+                </td>
+                <td>
+                  {allDoors[0].metalSheetThickness}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Класс прочности</p>
+                </td>
+                <td>
+                  {allDoors[0].strengthClass}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Значение по эксплутационным характеристикам</p>
+                </td>
+                <td>
+                  {allDoors[0].performanceValue}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Класс устойчивости к взлому</p>
+                </td>
+                <td>
+                  {allDoors[0].burglarResistanceClass}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Количество петель</p>
+                </td>
+                <td>
+                  {allDoors[0].numberOfLoops}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Противосъемы</p>
+                </td>
+                <td>
+                  {allDoors[0].antiSeize}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Регулировка прижима</p>
+                </td>
+                <td>
+                  {allDoors[0].clipAdjustment}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Короб</p>
+                </td>
+                <td>
+                  {allDoors[0].box}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Вылет наличника от короба</p>
+                </td>
+                <td>
+                  {allDoors[0].platbandDepartureFromTheBox}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Крепление</p>
+                </td>
+                <td>
+                  {allDoors[0].mount}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Утеплитель</p>
+                </td>
+                <td>
+                  {allDoors[0].insulation}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Усиление замковой зоны</p>
+                </td>
+                <td>
+                  {allDoors[0].castleStrengthening}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Ночная задвижка</p>
+                </td>
+                <td>
+                  {allDoors[0].nightValve}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Терморазрыв</p>
+                </td>
+                <td>
+                  {allDoors[0].thermalBreak}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Цинкогрунт</p>
+                </td>
+                <td>
+                  {allDoors[0].zinkogrunt}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Вес двери</p>
+                </td>
+                <td>
+                  {allDoors[0].doorWeight}
                 </td>
               </tr>
               </tbody>
@@ -164,4 +316,4 @@ const DoorsDesc = () => {
   );
 };
 
-export default DoorsDesc;
+export default IronDesc;

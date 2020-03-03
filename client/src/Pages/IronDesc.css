@@ -83,3 +83,12 @@
 .item img {
     height: 100%;
 }
+
+.descTable td {
+    font-weight: bold;
+}
+
+.moreSlide {
+    text-align: center;
+    margin: 20px 0;
+}
