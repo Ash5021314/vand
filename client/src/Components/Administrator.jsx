@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -25,6 +25,9 @@ import CloseIcon from "@material-ui/icons/Close";
 import Table from "react-bootstrap/Table";
 import {Form} from "react-bootstrap";
 import Col from "react-bootstrap/Col";
+
+import { connect } from "react-redux";
+import { Init } from "../store/actions/auhtAction"
 
 const drawerWidth = 240;
 
@@ -149,18 +152,24 @@ const useStyle = makeStyles(theme => ({
     fontWeight: 'bold',
   }
 }));
-export default function Dashboard() {
+function Dashboard(props) {
   const [click, setClick] = React.useState(true)
   const classes = useStyles();
   const classe = useStyle();
   const [open, setOpen] = React.useState(true);
   const [openInsert, setOpenInsert] = useState(false);
+
+  useEffect(()=>{
+    props.Init();
+  },[])
   const handleDrawerOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpenInsert(false);
   };
+
+
   const handleDrawerClose = () => {
     setOpen(false);
   };
@@ -396,3 +405,5 @@ export default function Dashboard() {
     </>
   );
 }
+
+export default connect(null,{ Init })(Dashboard)
