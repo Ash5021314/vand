@@ -14,7 +14,7 @@ export const login = doc => {
       data: doc
     })
       .then(data => {
-        dispatch(setAuthToken(data.data.token));
+       dispatch(setAuthToken(data.data.token));
       })
       .catch(e => console.log("Not Allowed"));
   };
@@ -33,37 +33,44 @@ const setAuthToken = token => {
 
 export const Init = () => {
   return async dispatch => {
-    const token = localStorage.getItem("a_a_key");
+    try {
+      const token = localStorage.getItem("a_a_key");
       let verifyToken = await checkToken(token);
       if (verifyToken) {
         dispatch(setAuthToken(token));
       } else {
         dispatch(logout());
       }
+    } catch (e) {
+      dispatch(logout());
+    }
   };
 };
 
-const checkToken = token => {
-  axios({
-    method: "GET",
-    url: `${domain}/admin/jwt_check`,
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization":`${token}`
-    }
-  }).then(doc => {
-    const { data } = doc;
+const checkToken = async token => {
+  try {
+    let response = await axios({
+      method: "GET",
+      url: `${domain}/admin/jwt_check`,
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `${token}`
+      }
+    });
+    const { data } = response;
     if (data.success) {
       return true;
     } else {
       return false;
     }
-  });
+  } catch (e) {
+    return false;
+  }
 };
 
 export const logout = () => {
   return dispatch => {
-    localStorage.removeItem('a_a_key');
+    localStorage.removeItem("a_a_key");
     dispatch({ type: ADMIN_LOGOUT });
   };
 };
