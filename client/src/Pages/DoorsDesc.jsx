@@ -1,10 +1,16 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Container from "react-bootstrap/Container";
 import allDoors from "../doors";
 import {Row} from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import './DoorsDesc.css';
 import Footer from "../Components/Footer";
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+import Image from "../data"
+import Button from "@material-ui/core/Button";
+import Table from "react-bootstrap/Table";
 
 
 const DoorsDesc = () => {
@@ -13,8 +19,24 @@ const DoorsDesc = () => {
   })
   const [info, setInfo] = useState({
     image: allDoors[0].otherColor[0].image,
-    price: allDoors[0].otherColor[0].price
+    price: allDoors[0].otherColor[0].price,
+    side: allDoors[0].otherColor[0].side,
+    color: allDoors[0].otherColor[0].color,
+    picture: allDoors[0].otherColor[0].picture
   })
+  const [slide, setSlide] = useState([])
+  useEffect(() => {
+    setSlide(Image.images.moreImage)
+  }, [])
+  const options = {
+    items: 4,
+    nav: false,
+    loop: true,
+    autoplay: true,
+    slideBy: 1,
+    dots: false,
+    smartSpeed: 1000
+  }
   const back = {
     background: '#EDEDED',
     position: 'absolute',
@@ -25,6 +47,14 @@ const DoorsDesc = () => {
     marginTop: '100px',
     paddingBottom: '50px'
   }
+  const item = {
+    height: "200px",
+    width: "100px",
+    margin: "20px 70px"
+  }
+  const itemImg = {
+    height: '100%'
+  }
   const handleClick = (index) => {
     setStyle({
       active: index
@@ -33,7 +63,10 @@ const DoorsDesc = () => {
   const getInfo = (item) => {
     setInfo({
       image: item.image,
-      price: item.price
+      price: item.price,
+      side: item.side,
+      color: item.color,
+      picture: item.picture
     })
   }
   const onClick = (index, item) => {
@@ -52,9 +85,9 @@ const DoorsDesc = () => {
                   <img src={allDoors[0].frontImage} alt=""/>
                 </div>
                 <div className="doorParagraph">
-                  <p>Внешная Сторона</p>
-                  <p>Цвет: Альберо Блэк Рисунок грань</p>
-                  <p>Рисунок: Фрезерованный МДФ с ПВХ покрытием</p>
+                  <p>{allDoors[0].side}</p>
+                  <p>Цвет: {allDoors[0].frontColor}</p>
+                  <p>Рисунок: {allDoors[0].picture}</p>
                 </div>
               </div>
               <div className="image">
@@ -62,9 +95,9 @@ const DoorsDesc = () => {
                   <img src={info.image} alt=""/>
                 </div>
                 <div className="doorParagraph">
-                  <p>Внешная Сторона</p>
-                  <p>Цвет: Альберо Блэк Рисунок грань</p>
-                  <p>Рисунок: Фрезерованный МДФ с ПВХ покрытием</p>
+                  <p>{info.side}</p>
+                  <p>Цвет: {info.color}</p>
+                  <p>Рисунок: {info.picture}</p>
                 </div>
               </div>
             </div>
@@ -94,6 +127,35 @@ const DoorsDesc = () => {
                 })
               }
             </div>
+          </Col>
+          <Col xs={12} md={12}>
+            {!slide.length ? <h2>Loading...</h2> : (
+              <OwlCarousel className="owl-theme" margin={70} {...options}>
+                {
+                  slide.map(res => {
+                    return (
+                      <div className="item" style={item} key={res}>
+                        <img alt="" src={res} style={{itemImg}}/>
+                      </div>
+                    )
+                  })
+                }
+              </OwlCarousel>
+            )}
+          </Col>
+          <Col xs={12} md={12}>
+            <Table striped bordered hover>
+              <tbody>
+              <tr>
+                <td>
+                  <input type="file"/>
+                </td>
+                <td>
+                  <input type="text"/>
+                </td>
+              </tr>
+              </tbody>
+            </Table>
           </Col>
         </Row>
       </Container>

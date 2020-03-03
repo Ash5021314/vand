@@ -4,22 +4,65 @@
     "priceFront": "3900",
     "fullPrice": "2000",
     "frontImage": "/images/product/back/door.jpg",
-    "backImage": "/images/product/front/door.jpg",
+    "frontColor": "Альберо Блэк Рисунок грань",
+    "side": "Внешная Сторона",
+    "picture": "Фрезерованный МДФ с ПВХ покрытием",
     "otherColor": [
       {
         "price": "1000",
         "color": "Светлое Гавно",
-        "image": "/images/product/backLittle/door.jpg"
+        "image": "/images/product/backLittle/door.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1050",
         "color": "Темное Гавно",
-        "image": "/images/product/backLittle/door1.jpg"
+        "image": "/images/product/backLittle/door1.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1100",
         "color": "Сгушеное молоко",
-        "image": "/images/product/backLittle/door2.jpg"
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       }
     ],
     "manufacturer": "Двери Регионов",

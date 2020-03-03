@@ -170,36 +170,36 @@ export default function IronDoors({openInsert, setOpenInsert}) {
           </tr>
           </tbody>
         </Table>
-        <Table striped bordered hover>
-          <thead>
-          <tr className="text-light bg-dark">
-            <th>Дверь из нутри</th>
-            <th>Обнавить</th>
-            <th>Удалить</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>
-              <img alt="Remy Sharp" src={x[0].backImage} className={classe.adminDoor}/>
-              <Button variant="contained" color="primary" onClick={() => inpRef.current.click()}>
-                Choose file
-              </Button>
-              <input type="file" ref={inpRef} hidden/>
-            </td>
-            <td>
-              <Button variant="contained" color="primary">
-                Обнавить
-              </Button>
-            </td>
-            <td>
-              <Button variant="contained" color="secondary">
-                Удалить
-              </Button>
-            </td>
-          </tr>
-          </tbody>
-        </Table>
+        {/*<Table striped bordered hover>*/}
+        {/*  <thead>*/}
+        {/*  <tr className="text-light bg-dark">*/}
+        {/*    <th>Дверь из нутри</th>*/}
+        {/*    <th>Обнавить</th>*/}
+        {/*    <th>Удалить</th>*/}
+        {/*  </tr>*/}
+        {/*  </thead>*/}
+        {/*  <tbody>*/}
+        {/*  <tr>*/}
+        {/*    <td>*/}
+        {/*      <img alt="Remy Sharp" src={x[0].backImage} className={classe.adminDoor}/>*/}
+        {/*      <Button variant="contained" color="primary" onClick={() => inpRef.current.click()}>*/}
+        {/*        Choose file*/}
+        {/*      </Button>*/}
+        {/*      <input type="file" ref={inpRef} hidden/>*/}
+        {/*    </td>*/}
+        {/*    <td>*/}
+        {/*      <Button variant="contained" color="primary">*/}
+        {/*        Обнавить*/}
+        {/*      </Button>*/}
+        {/*    </td>*/}
+        {/*    <td>*/}
+        {/*      <Button variant="contained" color="secondary">*/}
+        {/*        Удалить*/}
+        {/*      </Button>*/}
+        {/*    </td>*/}
+        {/*  </tr>*/}
+        {/*  </tbody>*/}
+        {/*</Table>*/}
         <Table striped bordered hover>
           <thead>
           <tr className="text-light bg-dark">

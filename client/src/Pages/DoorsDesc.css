@@ -49,17 +49,18 @@
 
 .littleDoors {
     margin-top: 20px;
-    width: 90%;
-    height: 300px;
+    width: 95%;
+    height: 446px;
     display: flex;
     flex-wrap: wrap;
-    /*justify-content: space-between;*/
+    overflow: scroll;
+    overflow-x: hidden
 }
 
 .little {
     height: 200px;
     cursor: pointer;
-    margin-left: 24px;
+    margin-left: 20px;
     margin-top: 10px;
     width: 20%;
 }
@@ -76,4 +77,9 @@
 .price {
     display: flex;
     justify-content: space-around;
+}
+
+
+.item img {
+    height: 100%;
 }

@@ -2,34 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="962d5abe-bf23-4059-b400-c70371df19a4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/Pages/DoorsDesc.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/Pages/DoorsDesc.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/moreImage/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/moreImage/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/moreImage/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/moreImage/4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/moreImage/5.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/Landing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/Landing.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/UserFunctions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/UserFunctions.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/precache-manifest.2261b2c8a3bd54ec4ced0c38432f62cb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/css/main.28472fb4.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/css/main.28472fb4.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/js/2.22c2b9cd.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/js/2.22c2b9cd.chunk.js.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/js/2.22c2b9cd.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/js/main.e470150e.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/js/main.e470150e.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/Admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Admin.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/Administrator.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Administrator.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/InteriorDoor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/InteriorDoor.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Components/IronDoors.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/IronDoors.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/Items.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Items.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Components/Landing.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Components/Landing.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Pages/Catalog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/Catalog.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Pages/Catalogs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/Catalogs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/DoorsDesc.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/DoorsDesc.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/DoorsDesc.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/DoorsDesc.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/data.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/doors.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/doors.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/doors1.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ndoors1.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +69,9 @@
       <workItem from="1582825121102" duration="14397000" />
       <workItem from="1582900027178" duration="23384000" />
       <workItem from="1582987938926" duration="14012000" />
-      <workItem from="1583074173089" duration="24188000" />
+      <workItem from="1583074173089" duration="25251000" />
+      <workItem from="1583135670120" duration="7599000" />
+      <workItem from="1583245785195" duration="4454000" />
     </task>
     <servers />
   </component>
@@ -126,6 +116,11 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/client/node_modules/@material-ui/core/Avatar/Avatar.d.ts</url>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/client/src/Components/IronDoors.jsx</url>
+          <line>145</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

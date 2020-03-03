@@ -284,10 +284,6 @@ export default function Dashboard() {
               <input type="file"/>
             </td>
             <td>
-              <p className={classe.titleP}>Загрузить заднее фото</p>
-              <input type="file"/>
-            </td>
-            <td>
               <p className={classe.titleP}>Производитель</p>
               <input type="text"/>
             </td>
@@ -295,12 +291,12 @@ export default function Dashboard() {
               <p className={classe.titleP}>Имя</p>
               <input type="text"/>
             </td>
-          </tr>
-          <tr>
             <td>
               <p className={classe.titleP}>Размер дверного блока</p>
               <input type="text"/>
             </td>
+          </tr>
+          <tr>
             <td>
               <p className={classe.titleP}>Серия</p>
               <input type="text"/>
@@ -317,12 +313,12 @@ export default function Dashboard() {
               <p className={classe.titleP}>Класс прочности</p>
               <input type="text"/>
             </td>
-          </tr>
-          <tr>
             <td>
               <p className={classe.titleP}>Значение по эксплутационным характеристикам</p>
               <input type="text"/>
             </td>
+          </tr>
+          <tr>
             <td>
               <p className={classe.titleP}>Класс устойчивости к взлому</p>
               <input type="text"/>
@@ -339,12 +335,12 @@ export default function Dashboard() {
               <p className={classe.titleP}>Регулировка прижима</p>
               <input type="text"/>
             </td>
-          </tr>
-          <tr>
             <td>
               <p className={classe.titleP}>Коробка</p>
               <input type="text"/>
             </td>
+          </tr>
+          <tr>
             <td>
               <p className={classe.titleP}>Вылет наличника от короба</p>
               <input type="text"/>
@@ -361,12 +357,12 @@ export default function Dashboard() {
               <p className={classe.titleP}>Усиление замковой зоны</p>
               <input type="text"/>
             </td>
-          </tr>
-          <tr>
             <td>
               <p className={classe.titleP}>Ночная задвижка</p>
               <input type="text"/>
             </td>
+          </tr>
+          <tr>
             <td>
               <p className={classe.titleP}>Ночная задвижка</p>
               <input type="text"/>
@@ -383,12 +379,12 @@ export default function Dashboard() {
               <p className={classe.titleP}>Вес двери</p>
               <input type="text"/>
             </td>
-          </tr>
-          <tr>
             <td>
               <p className={classe.titleP}>Цена</p>
               <input type="text"/>
             </td>
+          </tr>
+          <tr>
             <td>
               <p className={classe.titleP}>Полная Цена</p>
               <input type="text"/>
