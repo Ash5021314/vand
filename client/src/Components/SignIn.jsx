@@ -12,6 +12,10 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import axios from "axios";
+
+import { connect } from "react-redux";
+import { login } from "../store/actions/auhtAction";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -33,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignIn() {
+function SignIn(props) {
   const [input, setInput] = useState({
     login: "",
     password: ""
@@ -48,27 +52,31 @@ export default function SignIn() {
 
   const onSubmit = async event => {
     event.preventDefault();
-    console.log(input);
-    fetch("/admin/login", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        login: input.login,
-        password: input.password
-      })
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        if (data.success && data.token) {
-          localStorage.setItem("access_key", data.token);
-        } else {
-          alert(data.msg);
-        }
-      });
+    // console.log(input);
+    // fetch("/admin/login", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify({
+    //     login: input.login,
+    //     password: input.password
+    //   })
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     console.log(data);
+    //     if (data.success && data.token) {
+    //       localStorage.setItem("access_key", data.token);
+    //     } else {
+    //       alert(data.msg);
+    //     }
+    //   });
+    props.login({
+      login: input.login,
+      password: input.password
+    });
   };
 
   const classes = useStyles();
@@ -141,3 +149,5 @@ export default function SignIn() {
     </Container>
   );
 }
+
+export default connect(null, { login })(SignIn);

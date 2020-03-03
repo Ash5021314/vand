@@ -1,7 +1,7 @@
 const Admin = require("../models/Admin");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const { INVALID_CRED, LOGGED_IN } = require("../utils/response_constants");
+const { INVALID_CRED, LOGGED_IN,UNAUTHIORIZED } = require("../utils/response_constants");
 
 Admin.login = async ({ login, password }) => {
   try {
@@ -36,6 +36,20 @@ Admin.reg = async ({ login, password }) => {
     return data;
   } catch (e) {
     return e;
+  }
+};
+
+Admin.checkJwt = async token => {
+  try {
+    let isActive = jwt.verify(token, process.env.JWT_SECRET);
+    let isExist =await Admin.find({ tokens: { $elemMatch: { token } } });
+    if (isActive && isExist) {
+      return { success: true, msg: "Token is active",statusCode:200 };
+    } else {
+      return UNAUTHIORIZED;
+    }
+  } catch (e) {
+    return UNAUTHIORIZED;
   }
 };
 

@@ -22,4 +22,14 @@ router.post("/reg", async (req, res) => {
   }
 });
 
+router.get("/jwt_check", async (req, res) => {
+  try {
+    let token = req.headers["authorization"];
+    let response = await admin.checkJwt(token);
+    return res.status(response.statusCode).send(response);
+  } catch (e) {
+    return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR);
+  }
+});
+
 module.exports = router;
