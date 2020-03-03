@@ -7,9 +7,12 @@
       <change beforePath="$PROJECT_DIR$/../new-ebay/client/src/component/UserFunctions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../new-ebay/client/src/component/UserFunctions.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/public/static/js/main.3316ab43.chunk.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/public/static/js/main.3316ab43.chunk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/build/static/js/main.3316ab43.chunk.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/static/js/main.3316ab43.chunk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/Pages/Catalogs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/Catalogs.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Pages/DoorsDesc.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/DoorsDesc.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/Pages/DoorsDesc.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/DoorsDesc.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/DoorsDesc.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/IronDesc.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Pages/DoorsDesc.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/Pages/IronDesc.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +66,7 @@
       <workItem from="1582987938926" duration="14012000" />
       <workItem from="1583074173089" duration="25251000" />
       <workItem from="1583135670120" duration="7599000" />
-      <workItem from="1583245785195" duration="11394000" />
+      <workItem from="1583245785195" duration="12224000" />
     </task>
     <servers />
   </component>

@@ -10,7 +10,7 @@ export default function(state = initialState, action) {
     case ADMIN_LOGIN:
       return {
         ...state,
-        token: action.payload.token,
+        token: action.payload,
         isAuthenticated: true
       };
     case ADMIN_LOGOUT:
