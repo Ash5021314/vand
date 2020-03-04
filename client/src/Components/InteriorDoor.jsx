@@ -173,8 +173,11 @@ export default function IronDoors() {
         <Table striped bordered hover>
           <thead>
           <tr className="text-light bg-dark">
-            <th>Выбор цветов двери</th>
+            <th>Панель для входных дверей</th>
+            <th>Цена</th>
             <th>Цвет</th>
+            <th>Сторона</th>
+            <th>Зарисовка</th>
             <th>Обнавить</th>
             <th>Удалить</th>
           </tr>
@@ -183,6 +186,15 @@ export default function IronDoors() {
           <tr>
             <td>
               <input type="file"/>
+            </td>
+            <td>
+              <input type="text"/>
+            </td>
+            <td>
+              <input type="text"/>
+            </td>
+            <td>
+              <input type="text"/>
             </td>
             <td>
               <input type="text"/>
@@ -202,7 +214,16 @@ export default function IronDoors() {
                     <input type="file"/>
                   </td>
                   <td>
+                    <input type="text" defaultValue={res.price}/>
+                  </td>
+                  <td>
                     <input type="text" defaultValue={res.color}/>
+                  </td>
+                  <td>
+                    <input type="text" defaultValue={res.side}/>
+                  </td>
+                  <td>
+                    <input type="text" defaultValue={res.picture}/>
                   </td>
                   <td>
                     <Button variant="contained" color="primary">

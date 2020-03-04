@@ -203,7 +203,6 @@ function Dashboard(props) {
       [event.target.name]:
       event.target.value
     })
-
   }
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   return (
@@ -305,7 +304,7 @@ function Dashboard(props) {
             <td>
               <Form.Group as={Col} controlId="formGridState">
                 <Form.Label className={classe.titleP}>Категория</Form.Label>
-                <Form.Control as="select">
+                <Form.Control as="select" name="selectCategory" onChange={onchange}>
                   <option name="iron">Входная</option>
                   <option name="interior">Межкомнатная</option>
                 </Form.Control>

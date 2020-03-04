@@ -28,7 +28,7 @@ function App() {
         <Route exact path="/catalog" component={Catalog}/>
         <Route exact path="/contact" component={Contact}/>
         <Route path="/catalogs" component={Catalogs}/>
-        <Route path="/doorsDesc" component={DoorDesc}/>
+        <Route path="/doorDesc" component={DoorDesc}/>
       </Router>
     </Provider>
   );

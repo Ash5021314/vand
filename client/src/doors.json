@@ -192,15 +192,59 @@
     "otherColor": [
       {
         "price": "1000",
-        "image": "/images/product/backLittle/door.jpg"
+        "color": "Светлое Гавно",
+        "image": "/images/product/backLittle/door.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1050",
-        "image": "/images/product/backLittle/door1.jpg"
+        "color": "Темное Гавно",
+        "image": "/images/product/backLittle/door1.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1100",
-        "image": "/images/product/backLittle/door2.jpg"
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
+      },
+      {
+        "price": "1100",
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       }
     ],
     "manufacturer": "Двери Регионов",

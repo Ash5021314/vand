@@ -65,10 +65,12 @@ const useStyle = makeStyles(theme => ({
     justifyContent: 'flex-End'
   }
 }));
+
 export default function IronDoors({openInsert, setOpenInsert}) {
   const [ironDoor, setIronDoors] = useState({});
   const [openIron, setOpenIron] = useState(false);
-  const inpRef = useRef();
+  const [value, setValue] = useState({});
+
   const classes = useStyles();
   const classe = useStyle();
 
@@ -88,7 +90,14 @@ export default function IronDoors({openInsert, setOpenInsert}) {
   useEffect(() => {
     setIronDoors(iron);
   }, []);
-
+  const onChange = (event) => {
+    setValue({
+      ...value,
+      [event.target.name]:
+      event.target.value
+    })
+  }
+  console.log(value);
   return (
     <>
       {!ironDoor.length ? (
@@ -152,7 +161,7 @@ export default function IronDoors({openInsert, setOpenInsert}) {
           <tr>
             <td>
               <img alt="Remy Sharp" src={iron[0].frontImage} className={classe.adminDoor}/>
-              <input type="file"/>
+              <input type="file" name="frontImage"/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -173,6 +182,9 @@ export default function IronDoors({openInsert, setOpenInsert}) {
           <tr className="text-light bg-dark">
             <th>Панель для входных дверей</th>
             <th>Цена</th>
+            <th>Цвет</th>
+            <th>Сторона</th>
+            <th>Зарисовка</th>
             <th>Обнавить</th>
             <th>Удалить</th>
           </tr>
@@ -180,10 +192,19 @@ export default function IronDoors({openInsert, setOpenInsert}) {
           <tbody>
           <tr>
             <td>
-              <input type="file"/>
+              <input type="file" name="frontImageInsert"/>
             </td>
             <td>
-              <input type="text"/>
+              <input type="text" name="priceInsert"/>
+            </td>
+            <td>
+              <input type="text" name="colorInsert"/>
+            </td>
+            <td>
+              <input type="text" name="sideInsert"/>
+            </td>
+            <td>
+              <input type="text" name="pictureInsert"/>
             </td>
             <td>
               <Button variant="contained" color="secondary">
@@ -197,10 +218,19 @@ export default function IronDoors({openInsert, setOpenInsert}) {
                 <tr key={index}>
                   <td>
                     <img alt="Remy Sharp" src={res.image} className={classe.adminBackDoor}/>
-                    <input type="file"/>
+                    <input type="file" name="littleImage" onChange={onChange}/>
                   </td>
                   <td>
-                    <input type="text" defaultValue={res.price}/>
+                    <input type="text" name="littlePrice" onChange={onChange} defaultValue={res.price}/>
+                  </td>
+                  <td>
+                    <input type="text" name="littleColor" onChange={onChange} defaultValue={res.color}/>
+                  </td>
+                  <td>
+                    <input type="text" name="littleSide" onChange={onChange} defaultValue={res.side}/>
+                  </td>
+                  <td>
+                    <input type="text" name="LittlePicture" onChange={onChange} defaultValue={res.picture}/>
                   </td>
                   <td>
                     <Button variant="contained" color="primary">
