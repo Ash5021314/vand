@@ -9,13 +9,11 @@ import {Link} from "react-router-dom";
 
 const Catalogs = props => {
   const [doors, setDoors] = useState([]);
-  const [href, setHref] = useState("/Contact");
 
   let selectedCategory = 'interior';
   useEffect(() => {
     if (props.location.pathname === "/catalogs/iron") {
       selectedCategory = 'iron'
-      setHref("/IronDesc")
     }
     setDoors(allDoors.filter(item => item.category === selectedCategory))
   }, []);
@@ -41,7 +39,7 @@ const Catalogs = props => {
                     key={index}
 
                   >
-                    <Link to={href}>
+                    <Link to="/DoorDesc">
                       <Card className="mb-5">
                         <div className="flip-box">
                           <div className="flip-box-inner">

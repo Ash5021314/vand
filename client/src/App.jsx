@@ -11,7 +11,7 @@ import Footer from "./Components/Footer";
 import Catalogs from "./Pages/Catalogs";
 import Administrator from "./Components/Administrator";
 import SignIn from "./Components/SignIn";
-import IronDesc from "./Pages/IronDesc";
+import DoorDesc from "./Pages/DoorDesc";
 
 import {Provider} from "react-redux";
 import store from "./store/configureStore";
@@ -28,7 +28,7 @@ function App() {
         <Route exact path="/catalog" component={Catalog}/>
         <Route exact path="/contact" component={Contact}/>
         <Route path="/catalogs" component={Catalogs}/>
-        <Route path="/doorsDesc" component={IronDesc}/>
+        <Route path="/doorsDesc" component={DoorDesc}/>
       </Router>
     </Provider>
   );

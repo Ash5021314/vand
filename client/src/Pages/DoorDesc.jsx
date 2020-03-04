@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import allDoors from "../doors";
 import {Row} from "react-bootstrap";
 import Col from "react-bootstrap/Col";
-import './IronDesc.css';
+import './DoorDesc.css';
 import Footer from "../Components/Footer";
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -12,7 +12,7 @@ import Image from "../data"
 import Table from "react-bootstrap/Table";
 
 
-const IronDesc = (props) => {
+const DoorDesc = () => {
   const [style, setStyle] = useState({
     active: 0
   })
@@ -316,4 +316,4 @@ const IronDesc = (props) => {
   );
 };
 
-export default IronDesc;
+export default DoorDesc;
