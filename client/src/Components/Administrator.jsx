@@ -26,8 +26,14 @@ import Table from "react-bootstrap/Table";
 import {Form} from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 
+
 import {connect} from "react-redux";
 import {Init} from "../store/actions/auhtAction";
+import Notification from "./Notification";
+import Fade from "@material-ui/core/Fade";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
+import Paper from "@material-ui/core/Paper";
 
 const drawerWidth = 240;
 
@@ -151,6 +157,24 @@ const useStyle = makeStyles(theme => ({
     fontWeight: "bold"
   }
 }));
+const useStyless = makeStyles(theme => ({
+  root: {
+    height: 180,
+  },
+
+  paper: {
+    margin: theme.spacing(1),
+  },
+  svg: {
+    width: 100,
+    height: 100,
+  },
+  polygon: {
+    fill: theme.palette.common.white,
+    stroke: theme.palette.divider,
+    strokeWidth: 1,
+  },
+}));
 
 function Dashboard(props) {
   const [click, setClick] = React.useState(true);
@@ -160,6 +184,7 @@ function Dashboard(props) {
   const [openInsert, setOpenInsert] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [value, setValue] = useState({});
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     props.Init();
@@ -171,7 +196,6 @@ function Dashboard(props) {
     setOpen(true);
   };
   const handleClose = () => {
-    console.log(value);
     setOpenInsert(false);
   };
 
@@ -196,7 +220,7 @@ function Dashboard(props) {
     item = <InteriorDoors/>;
   }
   console.log(isAuthenticated);
-
+  const classess = useStyless();
   const onchange = (event) => {
     setValue({
       ...value,
@@ -204,6 +228,9 @@ function Dashboard(props) {
       event.target.value
     })
   }
+  const handleChange = () => {
+    setChecked(prev => !prev);
+  };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   return (
     <>
@@ -235,12 +262,35 @@ function Dashboard(props) {
             >
               ПАНЕЛЬ АДМИНИСТРАТОРА
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon/>
-              </Badge>
-            </IconButton>
+
+
+            <FormControlLabel
+              control={
+                <IconButton checked={checked} color="inherit" onClick={handleChange}>
+                  <Badge badgeContent={4} color="secondary">
+                    <NotificationsIcon/>
+                  </Badge>
+                </IconButton>
+              }
+            />
+
+            {/*<div className={classes.container}>*/}
+            {/*  <Fade in={checked}>*/}
+            {/*    <Paper elevation={4} className={classes.paper}>*/}
+            {/*      <svg className={classes.svg}>*/}
+            {/*        <polygon points="0,100 50,00, 100,100" className={classes.polygon}/>*/}
+            {/*      </svg>*/}
+            {/*    </Paper>*/}
+            {/*  </Fade>*/}
+            {/*</div>*/}
+
+
+            <Fade in={checked}>
+              <Notification/>
+
+            </Fade>
           </Toolbar>
+
         </AppBar>
 
         <Drawer
