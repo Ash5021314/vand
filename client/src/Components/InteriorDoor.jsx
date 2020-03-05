@@ -15,6 +15,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import CloseIcon from '@material-ui/icons/Close';
 import Table from "react-bootstrap/Table";
+import moreDoor from "../data";
 
 const useStyles = makeStyles({
   root: {
@@ -153,7 +154,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <img alt="Remy Sharp" src={x[0].frontImage} className={classe.adminDoor}/>
+              <img alt="Remy Sharp" src={interior[0].frontImage} className={classe.adminDoor}/>
               <input type="file"/>
             </td>
             <td>
@@ -172,35 +173,11 @@ export default function IronDoors() {
         <Table striped bordered hover>
           <thead>
           <tr className="text-light bg-dark">
-            <th>Дверь из нутри</th>
-            <th>Обнавить</th>
-            <th>Удалить</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>
-              <img alt="Remy Sharp" src={x[0].backImage} className={classe.adminDoor}/>
-              <input type="file"/>
-            </td>
-            <td>
-              <Button variant="contained" color="primary">
-                Обнавить
-              </Button>
-            </td>
-            <td>
-              <Button variant="contained" color="secondary">
-                Удалить
-              </Button>
-            </td>
-          </tr>
-          </tbody>
-        </Table>
-        <Table striped bordered hover>
-          <thead>
-          <tr className="text-light bg-dark">
-            <th>Выбор цветов двери</th>
+            <th>Панель для входных дверей</th>
+            <th>Цена</th>
             <th>Цвет</th>
+            <th>Сторона</th>
+            <th>Зарисовка</th>
             <th>Обнавить</th>
             <th>Удалить</th>
           </tr>
@@ -214,13 +191,22 @@ export default function IronDoors() {
               <input type="text"/>
             </td>
             <td>
+              <input type="text"/>
+            </td>
+            <td>
+              <input type="text"/>
+            </td>
+            <td>
+              <input type="text"/>
+            </td>
+            <td>
               <Button variant="contained" color="secondary">
                 Добавить
               </Button>
             </td>
           </tr>
           {
-            x[0].otherColor.map((res, index) => {
+            interior[0].otherColor.map((res, index) => {
               return (
                 <tr key={index}>
                   <td>
@@ -228,7 +214,16 @@ export default function IronDoors() {
                     <input type="file"/>
                   </td>
                   <td>
+                    <input type="text" defaultValue={res.price}/>
+                  </td>
+                  <td>
                     <input type="text" defaultValue={res.color}/>
+                  </td>
+                  <td>
+                    <input type="text" defaultValue={res.side}/>
+                  </td>
+                  <td>
+                    <input type="text" defaultValue={res.picture}/>
                   </td>
                   <td>
                     <Button variant="contained" color="primary">
@@ -258,7 +253,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].manufacturer} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].manufacturer} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -284,7 +279,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].title} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].title} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -310,7 +305,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].doorBlockSize} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].doorBlockSize} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -336,7 +331,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].series} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].series} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -362,7 +357,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].metalSheetThickness} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].metalSheetThickness} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -388,7 +383,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].thickness} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].thickness} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -414,7 +409,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].strengthClass} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].strengthClass} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -440,7 +435,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].performanceValue} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].performanceValue} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -466,7 +461,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].burglarResistanceClass} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].burglarResistanceClass} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -492,7 +487,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].numberOfLoops} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].numberOfLoops} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -518,7 +513,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].antiSeize} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].antiSeize} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -544,7 +539,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].clipAdjustment} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].clipAdjustment} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -570,7 +565,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].box} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].box} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -596,7 +591,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].platbandDepartureFromTheBox} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].platbandDepartureFromTheBox} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -622,7 +617,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].mount} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].mount} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -648,7 +643,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].insulation} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].insulation} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -674,7 +669,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].castleStrengthening} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].castleStrengthening} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -700,7 +695,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].nightValve} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].nightValve} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -726,7 +721,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].thermalBreak} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].thermalBreak} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -752,7 +747,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].zinkogrunt} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].zinkogrunt} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -778,7 +773,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].doorWeight} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].doorWeight} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -804,7 +799,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].price} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].price} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -830,7 +825,7 @@ export default function IronDoors() {
           <tbody>
           <tr>
             <td>
-              <input type="text" defaultValue={x[0].fullPrice} style={{width: "90%"}}/>
+              <input type="text" defaultValue={interior[0].fullPrice} style={{width: "90%"}}/>
             </td>
             <td>
               <Button variant="contained" color="primary">
@@ -843,6 +838,50 @@ export default function IronDoors() {
               </Button>
             </td>
           </tr>
+          </tbody>
+        </Table>
+
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Дополнительные фото</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="file"/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Добавить
+              </Button>
+            </td>
+          </tr>
+          {
+            interior[0].moreImage.map(item => {
+              return (
+                <tr>
+                  <td>
+                    <img alt="Remy Sharp" src={item} className={classe.adminDoor}/>
+                    <input type="file"/>
+                  </td>
+                  <td>
+                    <Button variant="contained" color="primary">
+                      Обнавить
+                    </Button>
+                  </td>
+                  <td>
+                    <Button variant="contained" color="secondary">
+                      Удалить
+                    </Button>
+                  </td>
+                </tr>
+              )
+            })
+          }
           </tbody>
         </Table>
       </Dialog>

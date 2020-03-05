@@ -11,7 +11,9 @@ import Footer from "./Components/Footer";
 import Catalogs from "./Pages/Catalogs";
 import Administrator from "./Components/Administrator";
 import SignIn from "./Components/SignIn";
-import DoorsDesc from "./Pages/DoorsDesc";
+import DoorDesc from "./Pages/DoorDesc";
+
+import PrivateRoute from "./Components/PrivateRoute";
 
 import { Provider } from "react-redux";
 import store from "./store/configureStore";
@@ -20,7 +22,8 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Route path="/Administrator" component={Administrator} />
+        <Route exact path="/Administrator" component={Administrator} />
+        {/* <PrivateRoute path="/Administrator" component={Administrator} /> */}
         <Header />
         <Route exact path="/SignIn" component={SignIn} />
         <Route exact path="/" component={Landing} />
@@ -28,7 +31,7 @@ function App() {
         <Route exact path="/catalog" component={Catalog} />
         <Route exact path="/contact" component={Contact} />
         <Route path="/catalogs" component={Catalogs} />
-        <Route path="/doorsDesc" component={DoorsDesc} />
+        <Route path="/doorDesc" component={DoorDesc} />
       </Router>
     </Provider>
   );

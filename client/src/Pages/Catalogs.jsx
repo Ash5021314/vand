@@ -10,8 +10,8 @@ import {Link} from "react-router-dom";
 const Catalogs = props => {
   const [doors, setDoors] = useState([]);
 
+  let selectedCategory = 'interior';
   useEffect(() => {
-    let selectedCategory = 'interior';
     if (props.location.pathname === "/catalogs/iron") {
       selectedCategory = 'iron'
     }
@@ -39,7 +39,7 @@ const Catalogs = props => {
                     key={index}
 
                   >
-                    <Link to='/DoorsDesc'>
+                    <Link to="/DoorDesc">
                       <Card className="mb-5">
                         <div className="flip-box">
                           <div className="flip-box-inner">
