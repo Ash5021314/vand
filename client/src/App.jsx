@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Header from "./Components/Header";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import Advantage from "./Pages/Advantage";
 import Catalog from "./Pages/Catalog";
 import Contact from "./Pages/Contact";
@@ -15,7 +15,7 @@ import DoorDesc from "./Pages/DoorDesc";
 
 import PrivateRoute from "./Components/PrivateRoute";
 
-import { Provider } from "react-redux";
+import {Provider} from "react-redux";
 import store from "./store/configureStore";
 
 function App() {

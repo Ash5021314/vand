@@ -976,6 +976,50 @@ export default function IronDoors({ openInsert, setOpenInsert }) {
             })}
           </tbody>
         </Table>
+
+        <Table striped bordered hover>
+          <thead>
+          <tr className="text-light bg-dark">
+            <th>Дополнительные фото</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <input type="file"/>
+            </td>
+            <td>
+              <Button variant="contained" color="primary">
+                Добавить
+              </Button>
+            </td>
+          </tr>
+          {
+            iron[0].moreImage.map((item, index) => {
+              return (
+                <tr key={index}>
+                  <td>
+                    <img alt="Remy Sharp" src={item} className={classe.adminDoor}/>
+                    <input type="file"/>
+                  </td>
+                  <td>
+                    <Button variant="contained" color="primary">
+                      Обнавить
+                    </Button>
+                  </td>
+                  <td>
+                    <Button variant="contained" color="secondary">
+                      Удалить
+                    </Button>
+                  </td>
+                </tr>
+              )
+            })
+          }
+          </tbody>
+        </Table>
       </Dialog>
     </>
   );

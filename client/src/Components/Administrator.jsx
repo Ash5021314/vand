@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
@@ -23,7 +23,7 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import CloseIcon from "@material-ui/icons/Close";
 import Table from "react-bootstrap/Table";
-import { Form } from "react-bootstrap";
+import {Form} from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 
 import axios from "axios";
@@ -199,9 +199,9 @@ function Dashboard(props) {
   };
   let item;
   if (click) {
-    item = <IronDoors />;
+    item = <IronDoors/>;
   } else {
-    item = <InteriorDoors />;
+    item = <InteriorDoors/>;
   }
   // console.log(isAuthenticated);
 
@@ -221,7 +221,7 @@ function Dashboard(props) {
   return (
     <>
       <div className={classes.root}>
-        <CssBaseline />
+        <CssBaseline/>
         <AppBar
           position="absolute"
           className={clsx(classes.appBar, open && classes.appBarShift)}
@@ -237,7 +237,7 @@ function Dashboard(props) {
                 open && classes.menuButtonHidden
               )}
             >
-              <MenuIcon />
+              <MenuIcon/>
             </IconButton>
             <Typography
               component="h1"
@@ -250,7 +250,7 @@ function Dashboard(props) {
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
+                <NotificationsIcon/>
               </Badge>
             </IconButton>
           </Toolbar>
@@ -263,21 +263,21 @@ function Dashboard(props) {
           }}
           open={open}
         >
-          <Divider />
+          <Divider/>
           <List>
             <div>
               <ListItem button onClick={changeDoorToIron}>
-                <ListItemText primary="Входная дверь" />
+                <ListItemText primary="Входная дверь"/>
               </ListItem>
               <ListItem button onClick={changeDoorToInterior}>
-                <ListItemText primary="Межкомнатная дверь" />
+                <ListItemText primary="Межкомнатная дверь"/>
               </ListItem>
             </div>
           </List>
-          <Divider />
+          <Divider/>
         </Drawer>
         <main className={classes.content}>
-          <div className={classes.appBarSpacer} />
+          <div className={classes.appBarSpacer}/>
           <Container maxWidth="lg" className={classes.container}>
             <Button
               onClick={() => setOpenInsert(true)}
@@ -304,7 +304,7 @@ function Dashboard(props) {
               onClick={handleClose}
               aria-label="close"
             >
-              <CloseIcon />
+              <CloseIcon/>
             </IconButton>
             <Button autoFocus color="inherit" onClick={handleClose}>
               САХРАНИТЬ
