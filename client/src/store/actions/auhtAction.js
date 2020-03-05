@@ -14,7 +14,7 @@ export const login = doc => {
       data: doc
     })
       .then(data => {
-       dispatch(setAuthToken(data.data.token));
+        dispatch(setAuthToken(data.data.token));
       })
       .catch(e => console.log("Not Allowed"));
   };
@@ -36,12 +36,11 @@ export const Init = () => {
     try {
       const token = localStorage.getItem("a_a_key");
       let verifyToken = await checkToken(token);
-      if (verifyToken) {
-        dispatch(setAuthToken(token));
-      } else {
+      if (!verifyToken) {
         dispatch(logout());
       }
     } catch (e) {
+      console.log(e);
       dispatch(logout());
     }
   };

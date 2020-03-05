@@ -4,11 +4,13 @@ import { combineReducers } from "redux";
 import authReducer from "./reducers/authReducer";
 import layoutReducer from "./reducers/layoutReducer";
 import messageReducer from "./reducers/messageReducer";
+import doorsReducer from "./reducers/doorsReducer";
 
 let rootReducer = combineReducers({
   auth: authReducer,
   layout: layoutReducer,
-  message: messageReducer
+  message: messageReducer,
+  doors: doorsReducer
 });
 
 const initialState = {};

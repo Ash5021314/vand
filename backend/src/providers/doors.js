@@ -22,12 +22,9 @@ Door.get = async () => {
   }
 };
 
-Door.create = async ({ title, price }) => {
+Door.create = async doc => {
   try {
-    const door = new Door({
-      title,
-      price
-    });
+    const door = new Door(doc.data);
     const data = await door.save();
     DOOR_CREATED.data = data;
     return DOOR_CREATED;
