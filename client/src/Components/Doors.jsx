@@ -14,6 +14,7 @@ import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
 import CloseIcon from '@material-ui/icons/Close'
 import Table from 'react-bootstrap/Table'
+import Pagination from '@material-ui/lab/Pagination'
 
 const useStyles = makeStyles({
   root: {
@@ -28,6 +29,11 @@ const useStyles = makeStyles({
     height: 240,
     width: '49%',
     float: 'right',
+  },
+  center: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '20px 0',
   },
 })
 const useStyle = makeStyles(() => ({
@@ -106,6 +112,7 @@ export default function Doors({selectedDoors}) {
 
   return (
     <>
+
       {!selectedDoors.length ? (
         <h2>Loading...</h2>
       ) : (
@@ -133,9 +140,11 @@ export default function Doors({selectedDoors}) {
                 </CardActions>
               </Card>
             </Grid>
+
           )
         })
       )}
+
       <Dialog fullScreen open={open} onClose={handleClose}>
         <AppBar className={classe.appBar}>
           <Toolbar className={classe.flexBetween}>
@@ -1001,6 +1010,9 @@ export default function Doors({selectedDoors}) {
           </>
         )}
       </Dialog>
+      <div className={classes.center}>
+        <Pagination count={10} size="large"/>
+      </div>
     </>
   )
 }

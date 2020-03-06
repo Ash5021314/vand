@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from "react";
-import { Navbar } from "react-bootstrap";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
-import "./Header.css";
-import { Link } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
+import React, {useState, useEffect} from 'react'
+import {Navbar} from 'react-bootstrap'
+import Container from 'react-bootstrap/Container'
+import Nav from 'react-bootstrap/Nav'
+import Button from 'react-bootstrap/Button'
+import './Header.css'
+import {Link} from 'react-router-dom'
+import Modal from 'react-bootstrap/Modal'
+import Form from 'react-bootstrap/Form'
 
-import { connect } from "react-redux";
-import { sendMessage } from "../store/actions/messageAction";
+import {connect} from 'react-redux'
+import {sendMessage} from '../store/actions/messageAction'
 
 const Header = props => {
-  const [show, setShow] = useState(false);
-  const [message, setMessage] = useState({ name: "", phone: "" });
+  const [show, setShow] = useState(false)
+  const [message, setMessage] = useState({name: '', phone: ''})
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   const onChange = e => {
     setMessage({
       ...message,
-      [e.target.name]: e.target.value
-    });
-  };
+      [e.target.name]: e.target.value,
+    })
+  }
 
   const onSubmit = e => {
-    e.preventDefault();
-    props.sendMessage(message);
-  };
+    e.preventDefault()
+    props.sendMessage(message)
+  }
 
   return (
     <>
@@ -71,13 +71,13 @@ const Header = props => {
       >
         <Container>
           <Navbar.Brand href="/">VANDOORS</Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto ml-auto">
               <Link to="/">Главная</Link>
               <Link to="/advantage">Наши преимущества</Link>
               <Link to="/catalog">Каталог</Link>
-              <Link to="/SignIn">Расположение</Link>
+              <Link to="/contact">Расположение</Link>
             </Nav>
             <Button className="custom-bg" onClick={handleShow}>
               Вызвать замерщика
@@ -86,7 +86,7 @@ const Header = props => {
         </Container>
       </Navbar>
     </>
-  );
-};
+  )
+}
 
-export default connect(null, { sendMessage })(Header);
+export default connect(null, {sendMessage})(Header)

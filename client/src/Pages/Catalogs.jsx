@@ -7,9 +7,23 @@ import allDoors from '../doors'
 import Container from 'react-bootstrap/Container'
 import {Link} from 'react-router-dom'
 import Footer from '../Components/Footer'
+import {makeStyles} from '@material-ui/core/styles'
+import Pagination from '@material-ui/lab/Pagination'
 
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    '& > *': {
+      marginTop: theme.spacing(2),
+    },
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '20px 0',
+  },
+}))
 const Catalogs = props => {
   const [doors, setDoors] = useState([])
+  const classes = useStyles()
 
   let selectedCategory = 'interior'
   useEffect(() => {
@@ -81,6 +95,9 @@ const Catalogs = props => {
             </Row>
           )}
         </CardDeck>
+        <div className={classes.root}>
+          <Pagination count={10} size="large"/>
+        </div>
       </Container>
       <Footer/>
     </>
