@@ -30,6 +30,9 @@ import Notification from './Notification'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import {createDoor} from '../store/actions/doorsAction'
 import doors from '../doors'
+import Orders from './Orders'
+import AdminSlider from './AdminSlider'
+import AboutAdmin from './AboutAdmin'
 
 const drawerWidth = 240
 
@@ -186,8 +189,9 @@ function Dashboard(props) {
 
   const menus = {
     doors: <Doors selectedDoors={doors.filter(({category}) => category === doorType)}/>,
-    orders: <div>Orders</div>,
-    slider: <div>Slider</div>,
+    orders: <Orders/>,
+    slider: <AdminSlider/>,
+    about: <AboutAdmin/>,
   }
   // useEffect(() => {
   //   props.Init();
@@ -209,18 +213,7 @@ function Dashboard(props) {
     }
   }
 
-  // const handleDrawerClose = () => {
-  //   setOpen(false);
-  // };
-  // const changeDoorToIron = () => {
-  //   setDoorType('iron');
-  // };
-  // const changeDoorToInterior = () => {
-  //   setDoorType('interior');
-  // };
-
   // console.log(isAuthenticated);
-  // const classess = useStyless();
   const onchange = (event) => {
     setValue({
       ...value,
@@ -238,10 +231,14 @@ function Dashboard(props) {
     })
   }
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
-  console.log('checked', checked)
   const notificationStyle = {
     display: checked ? 'block' : 'none',
   }
+
+  function handleCloseInsert() {
+    setOpen(false)
+  }
+
   return (
     <>
       <div className={classes.root}>
@@ -284,17 +281,6 @@ function Dashboard(props) {
                   </IconButton>
                 }
               />
-
-              {/*<div className={classes.container}>*/}
-              {/*  <Fade in={checked}>*/}
-              {/*    <Paper elevation={4} className={classes.paper}>*/}
-              {/*      <svg className={classes.svg}>*/}
-              {/*        <polygon points="0,100 50,00, 100,100" className={classes.polygon}/>*/}
-              {/*      </svg>*/}
-              {/*    </Paper>*/}
-              {/*  </Fade>*/}
-              {/*</div>*/}
-
               <div style={notificationStyle}>
                 <Notification/>
               </div>
@@ -332,7 +318,12 @@ function Dashboard(props) {
               <ListItem button onClick={() => {
                 setActiveMenu('slider')
               }}>
-                <ListItemText primary="Slider"/>
+                <ListItemText primary="Слайдер"/>
+              </ListItem>
+              <ListItem button onClick={() => {
+                setActiveMenu('about')
+              }}>
+                <ListItemText primary="О Нас"/>
               </ListItem>
             </div>
           </List>
@@ -363,7 +354,7 @@ function Dashboard(props) {
             <IconButton
               edge="start"
               color="inherit"
-              onClick={handleClose}
+              onClick={() => setOpenInsert(false)}
               aria-label="close"
             >
               <CloseIcon/>

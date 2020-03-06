@@ -92,10 +92,10 @@ export default function Doors({selectedDoors}) {
   }
   const onLittleChange = (value, arrayName, name, index) => {
     setSelectedDoor((selectedDoor) => {
+      console.log(selectedDoor)
       const newArray = [...selectedDoor[arrayName]]
       const field = newArray[index]
       field[name] = value
-      console.log(newArray)
 
       return {
         ...selectedDoor,
@@ -104,7 +104,6 @@ export default function Doors({selectedDoors}) {
     })
   }
 
-  console.log('selectedDoor', selectedDoor)
   return (
     <>
       {!selectedDoors.length ? (
@@ -976,53 +975,12 @@ export default function Doors({selectedDoors}) {
                 return (
                   <tr key={index}>
                     <td>
-                      <img
-                        alt="Remy Sharp"
-                        src={item}
-                        className={classe.adminDoor}
+                      <img alt="Remy Sharp" src={item.image} className={classe.adminDoor}/>
+                      <input type="file" name="littleSlide"
+                             onChange={(event) => {
+                               onLittleChange(event.target.value, 'moreImage', 'image', index)
+                             }}
                       />
-                      <input type="file"/>
-                    </td>
-                    <td>
-                      <Button variant="contained" color="primary">
-                        Обнавить
-                      </Button>
-                    </td>
-                    <td>
-                      <Button variant="contained" color="secondary">
-                        Удалить
-                      </Button>
-                    </td>
-                  </tr>
-                )
-              })}
-              </tbody>
-            </Table>
-            <Table striped bordered hover>
-              <thead>
-              <tr className="text-light bg-dark">
-                <th>Дополнительные фото</th>
-                <th>Обнавить</th>
-                <th>Удалить</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>
-                  <input type="file"/>
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Добавить
-                  </Button>
-                </td>
-              </tr>
-              {selectedDoor.moreImage && selectedDoor.moreImage.map((item, index) => {
-                return (
-                  <tr key={index}>
-                    <td>
-                      <img alt="Remy Sharp" src={item} className={classe.adminDoor}/>
-                      <input type="file"/>
                     </td>
                     <td>
                       <Button variant="contained" color="primary">

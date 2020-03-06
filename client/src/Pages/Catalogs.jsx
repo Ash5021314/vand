@@ -1,22 +1,23 @@
-import React, {useEffect, useState} from "react";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import CardDeck from "react-bootstrap/CardDeck";
-import allDoors from "../doors";
-import Container from "react-bootstrap/Container";
-import {Link} from "react-router-dom";
+import React, {useEffect, useState} from 'react'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card'
+import CardDeck from 'react-bootstrap/CardDeck'
+import allDoors from '../doors'
+import Container from 'react-bootstrap/Container'
+import {Link} from 'react-router-dom'
+import Footer from '../Components/Footer'
 
 const Catalogs = props => {
-  const [doors, setDoors] = useState([]);
+  const [doors, setDoors] = useState([])
 
-  let selectedCategory = 'interior';
+  let selectedCategory = 'interior'
   useEffect(() => {
-    if (props.location.pathname === "/catalogs/iron") {
+    if (props.location.pathname === '/catalogs/iron') {
       selectedCategory = 'iron'
     }
     setDoors(allDoors.filter(item => item.category === selectedCategory))
-  }, []);
+  }, [])
   // getDoors(url){
   //   fetch(url,{
   //   Response.
@@ -49,7 +50,7 @@ const Catalogs = props => {
                                 src={res.frontImage}
                                 style={
                                   {
-                                    height: "100%"
+                                    height: '100%',
                                   }
                                 }
                               />
@@ -58,8 +59,8 @@ const Catalogs = props => {
                               <Card.Img
                                 variant="top"
                                 src={res.backImage}
-                                style={{height: "100%"}}
-                                alt={"a"}
+                                style={{height: '100%'}}
+                                alt={'a'}
                               />
                             </div>
                           </div>
@@ -75,14 +76,15 @@ const Catalogs = props => {
                       </Card>
                     </Link>
                   </Col>
-                );
+                )
               })}
             </Row>
           )}
         </CardDeck>
       </Container>
+      <Footer/>
     </>
-  );
-};
+  )
+}
 
-export default Catalogs;
+export default Catalogs

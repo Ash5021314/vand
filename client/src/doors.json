@@ -268,11 +268,18 @@
     "zinkogrunt": "нет",
     "doorWeight": " 850х2050/86; 980х2050/91",
     "moreImage": [
-      "/images/moreImage/1.jpg",
-      "/images/moreImage/2.jpg",
-      "/images/moreImage/3.jpg",
-      "/images/moreImage/4.jpg",
-      "/images/moreImage/5.jpg"
+      {
+        "image": "/images/moreImage/1.jpg"
+      },
+      {
+        "image": "/images/moreImage/2.jpg"
+      },
+      {
+        "image": "/images/moreImage/3.jpg"
+      },
+      {
+        "image": "/images/moreImage/4.jpg"
+      }
     ],
     "category": "iron"
   },

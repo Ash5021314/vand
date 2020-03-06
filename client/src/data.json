@@ -2,9 +2,15 @@
   "images": {
     "about": "/images/about/about.jpg",
     "slideImages": [
-      "/images/slideImages/images.jpg",
-      "/images/slideImages/blue_house.jpg",
-      "/images/slideImages/door-image.jpg"
+      {
+        "name": "/images/slideImages/images.jpg"
+      },
+      {
+        "name": "/images/slideImages/blue_house.jpg"
+      },
+      {
+        "name": "/images/slideImages/door-image.jpg"
+      }
     ],
     "moreImage": [
       "/images/moreImage/1.jpg",

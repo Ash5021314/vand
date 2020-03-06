@@ -13,6 +13,7 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
+import Footer from '../Components/Footer'
 
 const Advantage = () => {
 
@@ -129,6 +130,7 @@ const Advantage = () => {
           </Col>
         </Row>
       </Container>
+      <Footer/>
     </>
   )
 }

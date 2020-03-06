@@ -1,69 +1,46 @@
-import React, {useState} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
-import IconButton from '@material-ui/core/IconButton';
-import CommentIcon from '@material-ui/icons/Comment';
+import React, {useState} from 'react'
+import {makeStyles} from '@material-ui/core/styles'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import Checkbox from '@material-ui/core/Checkbox'
+import Message from '../message'
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     maxWidth: 360,
-    backgroundColor: "#00A9F7",
+    backgroundColor: '#00A9F7',
     position: 'absolute',
     top: '43px',
-    right: "45px"
+    right: '45px',
   },
-}));
+}))
 
 const Notification = () => {
-  const classes = useStyles();
-  const [checked, setChecked] = useState([0]);
+  const classes = useStyles()
+  const [checked, setChecked] = useState('')
 
   const handleToggle = value => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-  };
-
+    setChecked(value)
+  }
   return (
     <List className={classes.root}>
-      {[0, 1, 2, 3].map(value => {
-        const labelId = `checkbox-list-label-${value}`;
-
+      {Message.map((value, index) => {
         return (
-          <ListItem className="panel" key={value} role={undefined} dense button onClick={handleToggle(value)}>
+          <ListItem className="panel" key={index} dense button>
             <ListItemIcon>
               <Checkbox
-                edge="start"
-                // checked={checked.indexOf(value) !== -1}
-                tabIndex={-1}
-                disableRipple
-                inputProps={{'aria-labelledby': labelId}}
+                onClick={handleToggle(value)}
               />
             </ListItemIcon>
-            <ListItemText id={labelId} primary={`Line item ${value + 1}`}/>
-            <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="comments">
-                <CommentIcon/>
-              </IconButton>
-            </ListItemSecondaryAction>
+            <ListItemText primary={` ${value.name} - ${value.phone}`}/>
           </ListItem>
-        );
+        )
       })}
     </List>
   )
-};
+}
 
-export default Notification;
+export default Notification

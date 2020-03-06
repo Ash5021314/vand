@@ -1,11 +1,12 @@
-import React from "react";
-import Container from "react-bootstrap/Container";
-import {Link} from "react-router-dom";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Iron from "./images/catalog/iron.png";
-import Interior from "./images/catalog/interier.png";
-import "./Catalog.css";
+import React from 'react'
+import Container from 'react-bootstrap/Container'
+import {Link} from 'react-router-dom'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Iron from './images/catalog/iron.png'
+import Interior from './images/catalog/interier.png'
+import './Catalog.css'
+import Footer from '../Components/Footer'
 
 const Catalog = () => {
   return (
@@ -36,8 +37,9 @@ const Catalog = () => {
           </Col>
         </Row>
       </Container>
+      <Footer/>
     </>
-  );
-};
+  )
+}
 
-export default Catalog;
+export default Catalog

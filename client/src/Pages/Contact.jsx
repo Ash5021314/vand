@@ -1,8 +1,9 @@
 import React from 'react'
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
 import './Contact.css'
+import Footer from '../Components/Footer'
 
 const Contact = () => {
 
@@ -24,6 +25,7 @@ const Contact = () => {
           </Col>
         </Row>
       </Container>
+      <Footer/>
     </>
   )
 }
