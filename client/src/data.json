@@ -12,12 +12,49 @@
         "name": "/images/slideImages/door-image.jpg"
       }
     ],
-    "moreImage": [
-      "/images/moreImage/1.jpg",
-      "/images/moreImage/2.jpg",
-      "/images/moreImage/3.jpg",
-      "/images/moreImage/4.jpg",
-      "/images/moreImage/5.jpg"
+    "slideBrends": [
+      {
+        "name": "/images/brends/adenBau.jpg"
+      },
+      {
+        "name": "/images/brends/agd.jpg"
+      },
+      {
+        "name": "/images/brends/archie.jpg"
+      },
+      {
+        "name": "/images/brends/DveriReg.jpg"
+      },
+      {
+        "name": "/images/brends/genesis.jpg"
+      },
+      {
+        "name": "/images/brends/lecma.jpg"
+      },
+      {
+        "name": "/images/brends/morelli.jpg"
+      },
+      {
+        "name": "/images/brends/okadoor.jpg"
+      },
+      {
+        "name": "/images/brends/porteVista.jpg"
+      },
+      {
+        "name": "/images/brends/regidoors.jpg"
+      },
+      {
+        "name": "/images/brends/sillur.jpg"
+      },
+      {
+        "name": "/images/brends/uberture.jpg"
+      },
+      {
+        "name": "/images/brends/valberg.jpg"
+      },
+      {
+        "name": "/images/brends/vantage.jpg"
+      }
     ]
   }
 }

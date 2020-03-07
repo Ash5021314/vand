@@ -20,6 +20,7 @@ import store from './store/configureStore'
 import Orders from './Components/Orders'
 import AdminSlider from './Components/AdminSlider'
 import AboutAdmin from './Components/AboutAdmin'
+import AdminBrends from './Components/AdminBrends'
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/orders" component={Orders}/>
         <Route path="/adminSlider" component={AdminSlider}/>
         <Route path="/aboutAdmin" component={AboutAdmin}/>
+        <Route path="/adminBrends" component={AdminBrends}/>
       </Router>
     </Provider>
   )

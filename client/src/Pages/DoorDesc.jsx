@@ -1,32 +1,37 @@
-import React, {useEffect, useState} from 'react';
-import Container from "react-bootstrap/Container";
-import allDoors from "../doors";
-import {Row} from "react-bootstrap";
-import Col from "react-bootstrap/Col";
-import './DoorDesc.css';
-import Footer from "../Components/Footer";
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
-import Image from "../data"
-import Table from "react-bootstrap/Table";
+import React, {useEffect, useState} from 'react'
+import Container from 'react-bootstrap/Container'
+import allDoors from '../doors'
+import {Row} from 'react-bootstrap'
+import Col from 'react-bootstrap/Col'
+import './DoorDesc.css'
+import Footer from '../Components/Footer'
+import OwlCarousel from 'react-owl-carousel'
+import 'owl.carousel/dist/assets/owl.carousel.css'
+import 'owl.carousel/dist/assets/owl.theme.default.css'
+import Image from '../data'
+import slideImage from '../doors'
+import Table from 'react-bootstrap/Table'
 
 
 const DoorDesc = () => {
   const [style, setStyle] = useState({
-    active: 0
+    active: 0,
   })
   const [info, setInfo] = useState({
     image: allDoors[0].otherColor[0].image,
     price: allDoors[0].otherColor[0].price,
     side: allDoors[0].otherColor[0].side,
     color: allDoors[0].otherColor[0].color,
-    picture: allDoors[0].otherColor[0].picture
+    picture: allDoors[0].otherColor[0].picture,
   })
   const [slide, setSlide] = useState([])
+  let slider = slideImage[0].moreImage.map(item => {
+    return item
+  })
   useEffect(() => {
-    setSlide(Image.images.moreImage)
+    setSlide(slideImage[0].moreImage)
   }, [])
+
   const options = {
     items: 4,
     nav: false,
@@ -34,29 +39,29 @@ const DoorDesc = () => {
     autoplay: true,
     slideBy: 1,
     dots: false,
-    smartSpeed: 1000
+    smartSpeed: 1000,
   }
   const back = {
     background: '#EDEDED',
     position: 'absolute',
-    width: '100%'
+    width: '100%',
   }
   const backContent = {
     background: 'white',
     marginTop: '100px',
-    paddingBottom: '50px'
+    paddingBottom: '50px',
   }
   const item = {
-    height: "200px",
-    width: "100px",
-    margin: "20px 70px"
+    height: '200px',
+    width: '100px',
+    margin: '20px 70px',
   }
   const itemImg = {
-    height: '100%'
+    height: '100%',
   }
   const handleClick = (index) => {
     setStyle({
-      active: index
+      active: index,
     })
   }
   const getInfo = (item) => {
@@ -65,17 +70,17 @@ const DoorDesc = () => {
       price: item.price,
       side: item.side,
       color: item.color,
-      picture: item.picture
+      picture: item.picture,
     })
   }
   const onClick = (index, item) => {
-    handleClick(index);
+    handleClick(index)
     getInfo(item)
   }
   return (
     <div style={back}>
       <Container style={backContent}>
-        <h2 className={"header"}>{allDoors[0].title}</h2>
+        <h2 className={'header'}>{allDoors[0].title}</h2>
         <Row>
           <Col xs={6} md={6}>
             <div className="leftSide">
@@ -132,10 +137,10 @@ const DoorDesc = () => {
             {!slide.length ? <h2>Loading...</h2> : (
               <OwlCarousel className="owl-theme" margin={70} {...options}>
                 {
-                  slide.map(res => {
+                  slide.map((res, index) => {
                     return (
-                      <div className="item" style={item} key={res}>
-                        <img alt="" src={res} style={{itemImg}}/>
+                      <div className="item" style={item} key={index}>
+                        <img alt="" src={res.image} style={{itemImg}}/>
                       </div>
                     )
                   })
@@ -313,7 +318,7 @@ const DoorDesc = () => {
       </Container>
       <Footer/>
     </div>
-  );
-};
+  )
+}
 
-export default DoorDesc;
+export default DoorDesc

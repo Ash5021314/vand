@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import Container from 'react-bootstrap/Container'
 import './Items.css'
-import doors from "../doors";
-import CardDeck from "react-bootstrap/CardDeck";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
+import doors from '../doors'
+import CardDeck from 'react-bootstrap/CardDeck'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+import {Link} from 'react-router-dom'
 
 const Items = () => {
   const [ironDoor, setIronDoors] = useState({})
@@ -14,12 +15,12 @@ const Items = () => {
 
 
   let iron = doors.filter(item => {
-    if (item.category === "iron") {
+    if (item.category === 'iron') {
       return item
     }
   })
   let interior = doors.filter(item => {
-    if (item.category === "interior") {
+    if (item.category === 'interior') {
       return item
     }
   })
@@ -63,7 +64,9 @@ const Items = () => {
               }
             </Row>
           )}
-          <Button variant="info" className="buttonCenter">увидеть больше</Button>
+          <Button variant="info" className="buttonCenter"><Link to="catalogs/iron2"
+                                                                style={{color: 'white', textDecoration: 'none'}}>увидеть
+            больше</Link></Button>
         </CardDeck>
         <h2 className="prodHeader">Входные двери</h2>
         <CardDeck>
@@ -98,7 +101,9 @@ const Items = () => {
               }
             </Row>
           )}
-          <Button variant="info" className="buttonCenter">увидеть больше</Button>
+          <Button variant="info" className="buttonCenter"><Link to="catalogs/iron"
+                                                                style={{color: 'white', textDecoration: 'none'}}>увидеть
+            больше</Link></Button>
         </CardDeck>
       </Container>
 

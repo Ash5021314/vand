@@ -26,8 +26,14 @@ const Header = props => {
   }
 
   const onSubmit = e => {
+    let re = /[0-9]/
     e.preventDefault()
+    if (!re.test(message.phone)) {
+
+      return false
+    }
     props.sendMessage(message)
+    handleClose()
   }
 
   return (
@@ -45,18 +51,21 @@ const Header = props => {
                 name="name"
                 onChange={onChange}
                 placeholder="Ваше имя"
+                required={true}
               />
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
+              <p>Введите номер телефона</p>
               <Form.Control
                 type="text"
                 name="phone"
                 onChange={onChange}
                 placeholder="Ваш телефон"
+                required={true}
               />
             </Form.Group>
-            <Button className="custom-bg" type="submit" onClick={handleClose}>
+            <Button className="custom-bg" type="submit">
               вызвать
             </Button>
           </Form>
