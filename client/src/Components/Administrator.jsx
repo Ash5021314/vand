@@ -37,6 +37,7 @@ import AboutAdmin from './AboutAdmin'
 import AdminBrends from './AdminBrends'
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 import Modal from 'react-bootstrap/Modal'
+import {Link} from 'react-router-dom'
 
 const drawerWidth = 240
 
@@ -123,43 +124,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '20px',
   },
 }))
-const useStyle = makeStyles(() => ({
-  appBar: {
-    position: 'relative',
-  },
-  save: {
-    float: 'right',
-  },
-  adminDoor: {
-    height: '200px',
-    marginLeft: '20px',
-    marginRight: '50px',
-  },
-  adminBackDoor: {
-    height: '100px',
-    marginLeft: '20px',
-    marginRight: '50px',
-  },
-  flex: {
-    display: 'flex',
-  },
-  flexDirection: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  flexBetween: {
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-  flexDirectionEnd: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-End',
-  },
-  titleP: {
-    fontWeight: 'bold',
-  },
-}))
+
 const useStyless = makeStyles(theme => ({
   root: {
     height: 180,
@@ -183,16 +148,12 @@ function Dashboard(props) {
   const [doorType, setDoorType] = React.useState('iron')
   // one of doors, orders, slider
   const [activeMenu, setActiveMenu] = React.useState('doors')
-  const classe = useStyle()
+
   const [open, setOpen] = React.useState(true)
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [value, setValue] = useState({})
   const [checked, setChecked] = useState(false)
   const [modalShow, setModalShow] = useState(false)
-  const [openInsertIron, setOpenInsertIron] = useState(false)
-  const [openInsertInterior, setOpenInsertInterior] = useState(false)
   const classes = useStyles()
-
 
   function MyVerticallyCenteredModal(props) {
     return (
@@ -205,30 +166,32 @@ function Dashboard(props) {
         <Modal.Body>
           <h4>Добавить дверьи</h4>
           <div>
-            <Button
-              style={{
-                width: '45%',
-                margin: '2%',
-              }}
-              onClick={() => setOpenInsertIron(true)}
-              variant="contained"
-              color="primary"
-              className={classes.addButton}
-            >
-              Входные
-            </Button>
-            <Button
-              style={{
-                width: '45%',
-                margin: '2%',
-              }}
-              onClick={() => setOpenInsertInterior(true)}
-              variant="contained"
-              color="primary"
-              className={classes.addButton}
-            >
-              Межкомнатные
-            </Button>
+            <Link to="/createDoor/iron" style={{
+              width: '45%',
+              margin: '2%',
+            }}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.addButton}
+                style={{float: 'none'}}
+              >
+                Входные
+              </Button>
+            </Link>
+            <Link to="/createDoor/interior" style={{
+              width: '45%',
+              margin: '2%',
+            }}>
+              <Button
+                style={{float: 'none'}}
+                variant="contained"
+                color="primary"
+                className={classes.addButton}
+              >
+                Межкомнатные
+              </Button>
+            </Link>
           </div>
         </Modal.Body>
       </Modal>
@@ -254,36 +217,13 @@ function Dashboard(props) {
   const handleDrawerOpen = () => {
     setOpen(true)
   }
-  const handleClose = async () => {
-    let img = new FormData()
-    img.append('img', value.img)
-    delete value.img
-    Object.keys(value).map(key => {
-      img.append(key, value[key])
-    })
-    let resp = await props.createDoor(img, value)
-    if (resp.success) {
-      setOpenInsertIron(false)
-      setOpenInsertInterior(false)
-    }
-  }
 
-  // console.log(isAuthenticated);
-  const onchange = event => {
-    setValue({
-      ...value,
-      [event.target.name]: event.target.value,
-    })
-  }
   const handleChange = () => {
     setChecked(prev => !prev)
   }
-  const onImagePick = e => {
-    setValue({
-      ...value,
-      img: e.target.files[0],
-    })
-  }
+
+  // console.log(isAuthenticated);
+
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
   const notificationStyle = {
     display: checked ? 'block' : 'none',
@@ -391,6 +331,7 @@ function Dashboard(props) {
           <div className={classes.appBarSpacer}/>
           <Container maxWidth="lg" className={classes.container}>
 
+            {console.log('aaaa', modalShow)}
             <ButtonToolbar>
               <Button
                 onClick={() => setModalShow(true)}
@@ -414,219 +355,8 @@ function Dashboard(props) {
           </Container>
         </main>
       </div>
-      <Dialog fullScreen open={openInsertIron || openInsertInterior} onClose={handleClose}>
-        {openInsertIron ? (
-          <>
-            <AppBar className={classe.appBar}>
-              <Toolbar className={classe.flexBetween}>
-                <IconButton
-                  edge="start"
-                  color="inherit"
-                  onClick={() => setOpenInsertIron(false)}
-                  aria-label="close"
-                >
-                  <CloseIcon/>
-                </IconButton>
-                <Button autoFocus color="inherit" onClick={handleClose}>
-                  САХРАНИТЬ
-                </Button>
-              </Toolbar>
-            </AppBar>
-            <Table striped bordered hover>
-              <tbody>
-              <tr>
-                <td>
-                  <Form.Group as={Col} controlId="formGridState">
-                    <Form.Label className={classe.titleP}>Категория</Form.Label>
-                    <Form.Control as="select" name="category" onChange={onchange} disabled>
-                      <option name="iron">Входная</option>
-                    </Form.Control>
-                  </Form.Group>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Загрузить переднее фото</p>
-                  <input type="file" name="frontImage" onChange={onImagePick}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Цвет передней двери</p>
-                  <input type="text" name="frontColor" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Сторона двери</p>
-                  <input type="text" name="side" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Зарисовка двери</p>
-                  <input type="text" name="picture" onChange={onchange}/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p className={classe.titleP}>Производитель</p>
-                  <input type="text" name="manufacturer" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Имя</p>
-                  <input type="text" name="title" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Размер дверного блока</p>
-                  <input type="text" name="doorBlockSize" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Серия</p>
-                  <input type="text" name="series" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Толщина полотна (мм)</p>
-                  <input type="text" name="thickness" onChange={onchange}/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p className={classe.titleP}>Толщина листа металла (мм.)</p>
-                  <input type="text" name="metalSheetThickness" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Класс прочности</p>
-                  <input type="text" name="strengthClass" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>
-                    Значение по эксплутационным характеристикам
-                  </p>
-                  <input type="text" name="performanceValue" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Класс устойчивости к взлому</p>
-                  <input type="text" name="burglarResistanceClass" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Количество петель</p>
-                  <input type="text" name="numberOfLoops" onChange={onchange}/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p className={classe.titleP}>Противосъемы</p>
-                  <input type="text" name="antiSeize" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Регулировка прижима</p>
-                  <input type="text" name="clipAdjustment" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Коробка</p>
-                  <input type="text" name="box" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Вылет наличника от короба</p>
-                  <input type="text" name="platbandDepartureFromTheBox" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Крепление</p>
-                  <input type="text" name="mount" onChange={onchange}/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p className={classe.titleP}>Утеплитель</p>
-                  <input type="text" name="insulation" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Усиление замковой зоны</p>
-                  <input type="text" name="castleStrengthening" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Ночная задвижка</p>
-                  <input type="text" name="nightValve" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Терморазрыв</p>
-                  <input type="text" name="thermalBreak" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Цинкогрунт</p>
-                  <input type="text" name="zinkogrunt" onChange={onchange}/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p className={classe.titleP}>Вес двери</p>
-                  <input type="text" name="doorWeight" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Цена</p>
-                  <input type="text" name="price" onChange={onchange}/>
-                </td>
-              </tr>
-              </tbody>
-            </Table>
-          </>
-        ) : (
-          <>
-            <AppBar className={classe.appBar}>
-              <Toolbar className={classe.flexBetween}>
-                <IconButton
-                  edge="start"
-                  color="inherit"
-                  onClick={() => setOpenInsertInterior(false)}
-                  aria-label="close"
-                >
-                  <CloseIcon/>
-                </IconButton>
-                <Button autoFocus color="inherit" onClick={handleClose}>
-                  САХРАНИТЬ
-                </Button>
-              </Toolbar>
-            </AppBar>
-            <Table striped bordered hover>
-              <tbody>
-              <tr>
-                <td>
-                  <Form.Group as={Col} controlId="formGridState">
-                    <Form.Label className={classe.titleP}>Категория</Form.Label>
-                    <Form.Control as="select" name="category" onChange={onchange} disabled>
-                      <option name="interior">Межкомнатная</option>
-                    </Form.Control>
-                  </Form.Group>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Производитель</p>
-                  <input type="text" name="manufacturer" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Имя</p>
-                  <input type="text" name="title" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Размер дверного блока</p>
-                  <input type="text" name="doorBlockSize" onChange={onchange}/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p className={classe.titleP}>Серия</p>
-                  <input type="text" name="series" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Внутреннее наполнение</p>
-                  <input type="text" name="inside" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Покрытие</p>
-                  <input type="text" name="coating" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Тип остекления</p>
-                  <input type="text" name="glazing" onChange={onchange}/>
-                </td>
-              </tr>
-              </tbody>
-            </Table>
-          </>
-        )}
-      </Dialog>
+
+
     </>
   )
 }

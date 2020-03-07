@@ -21,6 +21,7 @@ import Orders from './Components/Orders'
 import AdminSlider from './Components/AdminSlider'
 import AboutAdmin from './Components/AboutAdmin'
 import AdminBrends from './Components/AdminBrends'
+import CreateDoor from './Components/CreateDoor'
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="/adminSlider" component={AdminSlider}/>
         <Route path="/aboutAdmin" component={AboutAdmin}/>
         <Route path="/adminBrends" component={AdminBrends}/>
+        <Route path="/createDoor" component={CreateDoor}/>
       </Router>
     </Provider>
   )
