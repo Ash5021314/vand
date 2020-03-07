@@ -33,6 +33,7 @@ import doors from '../doors'
 import Orders from './Orders'
 import AdminSlider from './AdminSlider'
 import AboutAdmin from './AboutAdmin'
+import AdminBrends from './AdminBrends'
 
 const drawerWidth = 240
 
@@ -192,6 +193,7 @@ function Dashboard(props) {
     orders: <Orders/>,
     slider: <AdminSlider/>,
     about: <AboutAdmin/>,
+    brends: <AdminBrends/>,
   }
   // useEffect(() => {
   //   props.Init();
@@ -324,6 +326,11 @@ function Dashboard(props) {
                 setActiveMenu('about')
               }}>
                 <ListItemText primary="О Нас"/>
+              </ListItem>
+              <ListItem button onClick={() => {
+                setActiveMenu('brends')
+              }}>
+                <ListItemText primary="Бренды"/>
               </ListItem>
             </div>
           </List>

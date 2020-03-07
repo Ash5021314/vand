@@ -86,11 +86,18 @@
     "zinkogrunt": "нет",
     "doorWeight": " 850х2050/86; 980х2050/91",
     "moreImage": [
-      "/images/moreImage/1.jpg",
-      "/images/moreImage/2.jpg",
-      "/images/moreImage/3.jpg",
-      "/images/moreImage/4.jpg",
-      "/images/moreImage/5.jpg"
+      {
+        "image": "/images/moreImage/1.jpg"
+      },
+      {
+        "image": "/images/moreImage/2.jpg"
+      },
+      {
+        "image": "/images/moreImage/3.jpg"
+      },
+      {
+        "image": "/images/moreImage/4.jpg"
+      }
     ],
     "category": "interior"
   },
@@ -99,22 +106,27 @@
     "price": "21700",
     "fullPrice": "75000",
     "frontImage": "/images/product/back/door1.jpg",
-    "backImage": "/images/product/front/door1.jpg",
     "otherColor": [
       {
         "price": "1000",
         "color": "Светлое Гавно",
-        "image": "/images/product/backLittle/door.jpg"
+        "image": "/images/product/backLittle/door.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1050",
         "color": "Темное Гавно",
-        "image": "/images/product/backLittle/door1.jpg"
+        "image": "/images/product/backLittle/door1.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1100",
         "color": "Сгушеное молоко",
-        "image": "/images/product/backLittle/door2.jpg"
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       }
     ],
     "manufacturer": "Двери Регионов",
@@ -137,6 +149,20 @@
     "thermalBreak": "нет",
     "zinkogrunt": "нет",
     "doorWeight": " 850х2050/86; 980х2050/91",
+    "moreImage": [
+      {
+        "image": "/images/moreImage/1.jpg"
+      },
+      {
+        "image": "/images/moreImage/2.jpg"
+      },
+      {
+        "image": "/images/moreImage/3.jpg"
+      },
+      {
+        "image": "/images/moreImage/4.jpg"
+      }
+    ],
     "category": "interior"
   },
   {
@@ -149,17 +175,23 @@
       {
         "price": "1000",
         "color": "Светлое Гавно",
-        "image": "/images/product/backLittle/door.jpg"
+        "image": "/images/product/backLittle/door.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1050",
         "color": "Темное Гавно",
-        "image": "/images/product/backLittle/door1.jpg"
+        "image": "/images/product/backLittle/door1.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1100",
         "color": "Сгушеное молоко",
-        "image": "/images/product/backLittle/door2.jpg"
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       }
     ],
     "manufacturer": "Двери Регионов",
@@ -182,6 +214,20 @@
     "thermalBreak": "нет",
     "zinkogrunt": "нет",
     "doorWeight": " 850х2050/86; 980х2050/91",
+    "moreImage": [
+      {
+        "image": "/images/moreImage/1.jpg"
+      },
+      {
+        "image": "/images/moreImage/2.jpg"
+      },
+      {
+        "image": "/images/moreImage/3.jpg"
+      },
+      {
+        "image": "/images/moreImage/4.jpg"
+      }
+    ],
     "category": "interior"
   },
   {
@@ -293,17 +339,23 @@
       {
         "price": "1000",
         "color": "Светлое Гавно",
-        "image": "/images/product/backLittle/door.jpg"
+        "image": "/images/product/backLittle/door.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1050",
         "color": "Темное Гавно",
-        "image": "/images/product/backLittle/door1.jpg"
+        "image": "/images/product/backLittle/door1.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1100",
         "color": "Сгушеное молоко",
-        "image": "/images/product/backLittle/door2.jpg"
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       }
     ],
     "manufacturer": "Двери Регионов",
@@ -326,6 +378,20 @@
     "thermalBreak": "нет",
     "zinkogrunt": "нет",
     "doorWeight": " 850х2050/86; 980х2050/91",
+    "moreImage": [
+      {
+        "image": "/images/moreImage/1.jpg"
+      },
+      {
+        "image": "/images/moreImage/2.jpg"
+      },
+      {
+        "image": "/images/moreImage/3.jpg"
+      },
+      {
+        "image": "/images/moreImage/4.jpg"
+      }
+    ],
     "category": "interior"
   },
   {
@@ -336,15 +402,24 @@
     "otherColor": [
       {
         "price": "1000",
-        "image": "/images/product/backLittle/door.jpg"
+        "color": "Светлое Гавно",
+        "image": "/images/product/backLittle/door.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1050",
-        "image": "/images/product/backLittle/door1.jpg"
+        "color": "Темное Гавно",
+        "image": "/images/product/backLittle/door1.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1100",
-        "image": "/images/product/backLittle/door2.jpg"
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       }
     ],
     "manufacturer": "Двери Регионов",
@@ -367,6 +442,20 @@
     "thermalBreak": "нет",
     "zinkogrunt": "нет",
     "doorWeight": " 850х2050/86; 980х2050/91",
+    "moreImage": [
+      {
+        "image": "/images/moreImage/1.jpg"
+      },
+      {
+        "image": "/images/moreImage/2.jpg"
+      },
+      {
+        "image": "/images/moreImage/3.jpg"
+      },
+      {
+        "image": "/images/moreImage/4.jpg"
+      }
+    ],
     "category": "iron"
   },
   {
@@ -379,17 +468,23 @@
       {
         "price": "1000",
         "color": "Светлое Гавно",
-        "image": "/images/product/backLittle/door.jpg"
+        "image": "/images/product/backLittle/door.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1050",
         "color": "Темное Гавно",
-        "image": "/images/product/backLittle/door1.jpg"
+        "image": "/images/product/backLittle/door1.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1100",
         "color": "Сгушеное молоко",
-        "image": "/images/product/backLittle/door2.jpg"
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       }
     ],
     "manufacturer": "Двери Регионов",
@@ -412,6 +507,20 @@
     "thermalBreak": "нет",
     "zinkogrunt": "нет",
     "doorWeight": " 850х2050/86; 980х2050/91",
+    "moreImage": [
+      {
+        "image": "/images/moreImage/1.jpg"
+      },
+      {
+        "image": "/images/moreImage/2.jpg"
+      },
+      {
+        "image": "/images/moreImage/3.jpg"
+      },
+      {
+        "image": "/images/moreImage/4.jpg"
+      }
+    ],
     "category": "interior"
   },
   {
@@ -422,15 +531,24 @@
     "otherColor": [
       {
         "price": "1000",
-        "image": "/images/product/backLittle/door.jpg"
+        "color": "Светлое Гавно",
+        "image": "/images/product/backLittle/door.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1050",
-        "image": "/images/product/backLittle/door1.jpg"
+        "color": "Темное Гавно",
+        "image": "/images/product/backLittle/door1.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1100",
-        "image": "/images/product/backLittle/door2.jpg"
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       }
     ],
     "manufacturer": "Двери Регионов",
@@ -453,6 +571,20 @@
     "thermalBreak": "нет",
     "zinkogrunt": "нет",
     "doorWeight": " 850х2050/86; 980х2050/91",
+    "moreImage": [
+      {
+        "image": "/images/moreImage/1.jpg"
+      },
+      {
+        "image": "/images/moreImage/2.jpg"
+      },
+      {
+        "image": "/images/moreImage/3.jpg"
+      },
+      {
+        "image": "/images/moreImage/4.jpg"
+      }
+    ],
     "category": "iron"
   },
   {
@@ -465,17 +597,23 @@
       {
         "price": "1000",
         "color": "Светлое Гавно",
-        "image": "/images/product/backLittle/door.jpg"
+        "image": "/images/product/backLittle/door.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1050",
         "color": "Темное Гавно",
-        "image": "/images/product/backLittle/door1.jpg"
+        "image": "/images/product/backLittle/door1.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1100",
         "color": "Сгушеное молоко",
-        "image": "/images/product/backLittle/door2.jpg"
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       }
     ],
     "manufacturer": "Двери Регионов",
@@ -498,6 +636,20 @@
     "thermalBreak": "нет",
     "zinkogrunt": "нет",
     "doorWeight": " 850х2050/86; 980х2050/91",
+    "moreImage": [
+      {
+        "image": "/images/moreImage/1.jpg"
+      },
+      {
+        "image": "/images/moreImage/2.jpg"
+      },
+      {
+        "image": "/images/moreImage/3.jpg"
+      },
+      {
+        "image": "/images/moreImage/4.jpg"
+      }
+    ],
     "category": "interior"
   },
   {
@@ -508,15 +660,24 @@
     "otherColor": [
       {
         "price": "1000",
-        "image": "/images/product/backLittle/door.jpg"
+        "color": "Светлое Гавно",
+        "image": "/images/product/backLittle/door.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1050",
-        "image": "/images/product/backLittle/door1.jpg"
+        "color": "Темное Гавно",
+        "image": "/images/product/backLittle/door1.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1100",
-        "image": "/images/product/backLittle/door2.jpg"
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       }
     ],
     "manufacturer": "Двери Регионов",
@@ -539,6 +700,20 @@
     "thermalBreak": "нет",
     "zinkogrunt": "нет",
     "doorWeight": " 850х2050/86; 980х2050/91",
+    "moreImage": [
+      {
+        "image": "/images/moreImage/1.jpg"
+      },
+      {
+        "image": "/images/moreImage/2.jpg"
+      },
+      {
+        "image": "/images/moreImage/3.jpg"
+      },
+      {
+        "image": "/images/moreImage/4.jpg"
+      }
+    ],
     "category": "iron"
   },
   {
@@ -549,15 +724,24 @@
     "otherColor": [
       {
         "price": "1000",
-        "image": "/images/product/backLittle/door.jpg"
+        "color": "Светлое Гавно",
+        "image": "/images/product/backLittle/door.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1050",
-        "image": "/images/product/backLittle/door1.jpg"
+        "color": "Темное Гавно",
+        "image": "/images/product/backLittle/door1.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       },
       {
         "price": "1100",
-        "image": "/images/product/backLittle/door2.jpg"
+        "color": "Сгушеное молоко",
+        "image": "/images/product/backLittle/door2.jpg",
+        "side": "Внутренная Сторона",
+        "picture": "LIGHT MD 003"
       }
     ],
     "manufacturer": "Двери Регионов",
@@ -580,6 +764,20 @@
     "thermalBreak": "нет",
     "zinkogrunt": "нет",
     "doorWeight": " 850х2050/86; 980х2050/91",
+    "moreImage": [
+      {
+        "image": "/images/moreImage/1.jpg"
+      },
+      {
+        "image": "/images/moreImage/2.jpg"
+      },
+      {
+        "image": "/images/moreImage/3.jpg"
+      },
+      {
+        "image": "/images/moreImage/4.jpg"
+      }
+    ],
     "category": "iron"
   }
 ]

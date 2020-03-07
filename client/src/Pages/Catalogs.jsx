@@ -72,7 +72,7 @@ const Catalogs = props => {
                             <div className="flip-box-back">
                               <Card.Img
                                 variant="top"
-                                src={res.backImage}
+                                src={res.otherColor[0].image}
                                 style={{height: '100%'}}
                                 alt={'a'}
                               />
@@ -80,7 +80,7 @@ const Catalogs = props => {
                           </div>
                         </div>
                         <Card.Body className="alignCenter">
-                          <Card.Title>{res.title}</Card.Title>
+                          <Card.Title style={{color: 'grey', textDecoration: 'none'}}>{res.title}</Card.Title>
                         </Card.Body>
                         <Card.Footer>
                           <div className="text-muted alignCenter ">
