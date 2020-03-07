@@ -34,6 +34,8 @@ import Orders from './Orders'
 import AdminSlider from './AdminSlider'
 import AboutAdmin from './AboutAdmin'
 import AdminBrends from './AdminBrends'
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
+import Modal from 'react-bootstrap/Modal'
 
 const drawerWidth = 240
 
@@ -176,17 +178,63 @@ const useStyless = makeStyles(theme => ({
   },
 }))
 
+
 function Dashboard(props) {
   const [doorType, setDoorType] = React.useState('iron')
   // one of doors, orders, slider
   const [activeMenu, setActiveMenu] = React.useState('doors')
-  const classes = useStyles()
   const classe = useStyle()
   const [open, setOpen] = React.useState(true)
-  const [openInsert, setOpenInsert] = useState(false)
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [value, setValue] = useState({})
   const [checked, setChecked] = useState(false)
+  const [modalShow, setModalShow] = useState(false)
+  const [openInsertIron, setOpenInsertIron] = useState(false)
+  const [openInsertInterior, setOpenInsertInterior] = useState(false)
+  const classes = useStyles()
+
+
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="md"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Body>
+          <h4>Добавить дверьи</h4>
+          <div>
+            <Button
+              style={{
+                width: '45%',
+                margin: '2%',
+              }}
+              onClick={() => setOpenInsertIron(true)}
+              variant="contained"
+              color="primary"
+              className={classes.addButton}
+            >
+              Входные
+            </Button>
+            <Button
+              style={{
+                width: '45%',
+                margin: '2%',
+              }}
+              onClick={() => setOpenInsertInterior(true)}
+              variant="contained"
+              color="primary"
+              className={classes.addButton}
+            >
+              Межкомнатные
+            </Button>
+          </div>
+        </Modal.Body>
+      </Modal>
+    )
+  }
+
 
   const menus = {
     doors: <Doors selectedDoors={doors.filter(({category}) => category === doorType)}/>,
@@ -211,7 +259,8 @@ function Dashboard(props) {
     delete value.img
     let resp = await props.createDoor(img, value)
     if (resp.success) {
-      setOpenInsert(false)
+      setOpenInsertIron(false)
+      setOpenInsertInterior(false)
     }
   }
 
@@ -339,14 +388,22 @@ function Dashboard(props) {
         <main className={classes.content}>
           <div className={classes.appBarSpacer}/>
           <Container maxWidth="lg" className={classes.container}>
-            <Button
-              onClick={() => setOpenInsert(true)}
-              variant="contained"
-              color="primary"
-              className={classes.addButton}
-            >
-              Добавить
-            </Button>
+
+            <ButtonToolbar>
+              <Button
+                onClick={() => setModalShow(true)}
+                variant="contained"
+                color="primary"
+                className={classes.addButton}
+              >
+                Добавить
+              </Button>
+
+              <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+              />
+            </ButtonToolbar>
 
             <Grid container spacing={3}>
               {menus[activeMenu]}
@@ -355,157 +412,305 @@ function Dashboard(props) {
           </Container>
         </main>
       </div>
-      <Dialog fullScreen open={openInsert} onClose={handleClose}>
-        <AppBar className={classe.appBar}>
-          <Toolbar className={classe.flexBetween}>
-            <IconButton
-              edge="start"
-              color="inherit"
-              onClick={() => setOpenInsert(false)}
-              aria-label="close"
-            >
-              <CloseIcon/>
-            </IconButton>
-            <Button autoFocus color="inherit" onClick={handleClose}>
-              САХРАНИТЬ
-            </Button>
-          </Toolbar>
-        </AppBar>
-        <Table striped bordered hover>
-          <tbody>
-          <tr>
-            <td>
-              <Form.Group as={Col} controlId="formGridState">
-                <Form.Label className={classe.titleP}>Категория</Form.Label>
-                <Form.Control as="select" name="category" onChange={onchange}>
-                  <option name="iron">Входная</option>
-                  <option name="interior">Межкомнатная</option>
-                </Form.Control>
-              </Form.Group>
-            </td>
-            <td>
-              <p className={classe.titleP}>Загрузить переднее фото</p>
-              <input type="file" name="upFile" onChange={onImagePick}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Цвет передней двери</p>
-              <input type="text" name="colorfrontDoor" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Сторона двери</p>
-              <input type="text" name="sideDoor" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Зарисовка двери</p>
-              <input type="text" name="picDoor" onChange={onchange}/>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p className={classe.titleP}>Производитель</p>
-              <input type="text" name="manufacture" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Имя</p>
-              <input type="text" name="doorName" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Размер дверного блока</p>
-              <input type="text" name="blockSize" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Серия</p>
-              <input type="text" name="seria" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Толщина полотна (мм)</p>
-              <input type="text" name="tolPol" onChange={onchange}/>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p className={classe.titleP}>Толщина листа металла (мм.)</p>
-              <input type="text" name="tolList" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Класс прочности</p>
-              <input type="text" name="classStrong" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>
-                Значение по эксплутационным характеристикам
-              </p>
-              <input type="text" name="valEks" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Класс устойчивости к взлому</p>
-              <input type="text" name="classProchnost" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Количество петель</p>
-              <input type="text" name="petli" onChange={onchange}/>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p className={classe.titleP}>Противосъемы</p>
-              <input type="text" name="protivosyom" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Регулировка прижима</p>
-              <input type="text" name="regulirovka" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Коробка</p>
-              <input type="text" name="box" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Вылет наличника от короба</p>
-              <input type="text" name="vilet" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Крепление</p>
-              <input type="text" name="kreplenie" onChange={onchange}/>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p className={classe.titleP}>Утеплитель</p>
-              <input type="text" name="utiplitel" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Усиление замковой зоны</p>
-              <input type="text" name="usilenieWinter" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Ночная задвижка</p>
-              <input type="text" name="nightMove" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Терморазрыв</p>
-              <input type="text" name="termorazriv" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Цинкогрунт</p>
-              <input type="text" name="cinkogrunt" onChange={onchange}/>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p className={classe.titleP}>Вес двери</p>
-              <input type="text" name="doorHeight" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Цена</p>
-              <input type="text" name="price" onChange={onchange}/>
-            </td>
-            <td>
-              <p className={classe.titleP}>Полная Цена</p>
-              <input type="text" name="fullPrice" onChange={onchange}/>
-            </td>
-          </tr>
-          </tbody>
-        </Table>
+      <Dialog fullScreen open={openInsertIron || openInsertInterior} onClose={handleClose}>
+        {openInsertIron ? (
+          <>
+            <AppBar className={classe.appBar}>
+              <Toolbar className={classe.flexBetween}>
+                <IconButton
+                  edge="start"
+                  color="inherit"
+                  onClick={() => setOpenInsertIron(false)}
+                  aria-label="close"
+                >
+                  <CloseIcon/>
+                </IconButton>
+                <Button autoFocus color="inherit" onClick={handleClose}>
+                  САХРАНИТЬ
+                </Button>
+              </Toolbar>
+            </AppBar>
+            <Table striped bordered hover>
+              <tbody>
+              <tr>
+                <td>
+                  <Form.Group as={Col} controlId="formGridState">
+                    <Form.Label className={classe.titleP}>Категория</Form.Label>
+                    <Form.Control as="select" name="category" onChange={onchange}>
+                      <option name="iron">Входная</option>
+                      <option name="interior">Межкомнатная</option>
+                    </Form.Control>
+                  </Form.Group>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Загрузить переднее фото</p>
+                  <input type="file" name="upFile" onChange={onImagePick}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Цвет передней двери</p>
+                  <input type="text" name="colorfrontDoor" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Сторона двери</p>
+                  <input type="text" name="sideDoor" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Зарисовка двери</p>
+                  <input type="text" name="picDoor" onChange={onchange}/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p className={classe.titleP}>Производитель</p>
+                  <input type="text" name="manufacture" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Имя</p>
+                  <input type="text" name="doorName" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Размер дверного блока</p>
+                  <input type="text" name="blockSize" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Серия</p>
+                  <input type="text" name="seria" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Толщина полотна (мм)</p>
+                  <input type="text" name="tolPol" onChange={onchange}/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p className={classe.titleP}>Толщина листа металла (мм.)</p>
+                  <input type="text" name="tolList" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Класс прочности</p>
+                  <input type="text" name="classStrong" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>
+                    Значение по эксплутационным характеристикам
+                  </p>
+                  <input type="text" name="valEks" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Класс устойчивости к взлому</p>
+                  <input type="text" name="classProchnost" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Количество петель</p>
+                  <input type="text" name="petli" onChange={onchange}/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p className={classe.titleP}>Противосъемы</p>
+                  <input type="text" name="protivosyom" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Регулировка прижима</p>
+                  <input type="text" name="regulirovka" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Коробка</p>
+                  <input type="text" name="box" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Вылет наличника от короба</p>
+                  <input type="text" name="vilet" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Крепление</p>
+                  <input type="text" name="kreplenie" onChange={onchange}/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p className={classe.titleP}>Утеплитель</p>
+                  <input type="text" name="utiplitel" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Усиление замковой зоны</p>
+                  <input type="text" name="usilenieWinter" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Ночная задвижка</p>
+                  <input type="text" name="nightMove" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Терморазрыв</p>
+                  <input type="text" name="termorazriv" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Цинкогрунт</p>
+                  <input type="text" name="cinkogrunt" onChange={onchange}/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p className={classe.titleP}>Вес двери</p>
+                  <input type="text" name="doorHeight" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Цена</p>
+                  <input type="text" name="price" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Полная Цена</p>
+                  <input type="text" name="fullPrice" onChange={onchange}/>
+                </td>
+              </tr>
+              </tbody>
+            </Table>
+          </>
+        ) : (
+          <>
+            <AppBar className={classe.appBar}>
+              <Toolbar className={classe.flexBetween}>
+                <IconButton
+                  edge="start"
+                  color="inherit"
+                  onClick={() => setOpenInsertInterior(false)}
+                  aria-label="close"
+                >
+                  <CloseIcon/>
+                </IconButton>
+                <Button autoFocus color="inherit" onClick={handleClose}>
+                  САХРАНИТЬ
+                </Button>
+              </Toolbar>
+            </AppBar>
+            <Table striped bordered hover>
+              <tbody>
+              <tr>
+                <td>
+                  <p className={classe.titleP}>Загрузить переднее фото</p>
+                  <input type="file" name="upFile" onChange={onImagePick}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Цвет передней двери</p>
+                  <input type="text" name="colorfrontDoor" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Сторона двери</p>
+                  <input type="text" name="sideDoor" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Зарисовка двери</p>
+                  <input type="text" name="picDoor" onChange={onchange}/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p className={classe.titleP}>Производитель</p>
+                  <input type="text" name="manufacture" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Имя</p>
+                  <input type="text" name="doorName" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Размер дверного блока</p>
+                  <input type="text" name="blockSize" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Серия</p>
+                  <input type="text" name="seria" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Толщина полотна (мм)</p>
+                  <input type="text" name="tolPol" onChange={onchange}/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p className={classe.titleP}>Толщина листа металла (мм.)</p>
+                  <input type="text" name="tolList" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Класс прочности</p>
+                  <input type="text" name="classStrong" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>
+                    Значение по эксплутационным характеристикам
+                  </p>
+                  <input type="text" name="valEks" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Класс устойчивости к взлому</p>
+                  <input type="text" name="classProchnost" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Количество петель</p>
+                  <input type="text" name="petli" onChange={onchange}/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p className={classe.titleP}>Противосъемы</p>
+                  <input type="text" name="protivosyom" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Регулировка прижима</p>
+                  <input type="text" name="regulirovka" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Коробка</p>
+                  <input type="text" name="box" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Вылет наличника от короба</p>
+                  <input type="text" name="vilet" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Крепление</p>
+                  <input type="text" name="kreplenie" onChange={onchange}/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p className={classe.titleP}>Утеплитель</p>
+                  <input type="text" name="utiplitel" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Усиление замковой зоны</p>
+                  <input type="text" name="usilenieWinter" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Ночная задвижка</p>
+                  <input type="text" name="nightMove" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Терморазрыв</p>
+                  <input type="text" name="termorazriv" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Цинкогрунт</p>
+                  <input type="text" name="cinkogrunt" onChange={onchange}/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p className={classe.titleP}>Вес двери</p>
+                  <input type="text" name="doorHeight" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Цена</p>
+                  <input type="text" name="price" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Полная Цена</p>
+                  <input type="text" name="fullPrice" onChange={onchange}/>
+                </td>
+              </tr>
+              </tbody>
+            </Table>
+          </>
+        )}
       </Dialog>
     </>
   )
