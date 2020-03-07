@@ -15,16 +15,18 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
+    console.log(req.body);
     const doc = await messages.send(req.body);
     return res.status(doc.statusCode).send(doc);
   } catch (e) {
+    console.log(e);
     return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR);
   }
 });
 
 router.patch("/:id", async (req, res) => {
   try {
-    const doc = await messages.seen(req.params.id, req.query.seen);
+    const doc = await messages.seen(req.params.id);
     return res.status(doc.statusCode).send(doc);
   } catch (e) {
     return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR);

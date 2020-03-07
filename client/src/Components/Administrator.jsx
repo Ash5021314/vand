@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import clsx from 'clsx'
 import {makeStyles} from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -29,6 +29,7 @@ import {Init} from '../store/actions/auhtAction'
 import Notification from './Notification'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import {createDoor} from '../store/actions/doorsAction'
+import {getHomePage} from '../store/actions/layoutAction'
 import doors from '../doors'
 import Orders from './Orders'
 import AdminSlider from './AdminSlider'
@@ -178,7 +179,6 @@ const useStyless = makeStyles(theme => ({
   },
 }))
 
-
 function Dashboard(props) {
   const [doorType, setDoorType] = React.useState('iron')
   // one of doors, orders, slider
@@ -243,10 +243,11 @@ function Dashboard(props) {
     about: <AboutAdmin/>,
     brends: <AdminBrends/>,
   }
-  // useEffect(() => {
-  //   props.Init();
-  //   // console.log(props.auth);
-  // }, []);
+  useEffect(() => {
+    //   props.Init();
+    props.getHomePage()
+    //   // console.log(props.auth);
+  }, [])
   // useEffect(() => {
   //   setIsAuthenticated(props.auth.isAuthenticated);
   // }, [props.auth.isAuthenticated]);
@@ -257,6 +258,9 @@ function Dashboard(props) {
     let img = new FormData()
     img.append('img', value.img)
     delete value.img
+    Object.keys(value).map(key => {
+      img.append(key, value[key])
+    })
     let resp = await props.createDoor(img, value)
     if (resp.success) {
       setOpenInsertIron(false)
@@ -265,11 +269,10 @@ function Dashboard(props) {
   }
 
   // console.log(isAuthenticated);
-  const onchange = (event) => {
+  const onchange = event => {
     setValue({
       ...value,
-      [event.target.name]:
-      event.target.value,
+      [event.target.name]: event.target.value,
     })
   }
   const handleChange = () => {
@@ -321,7 +324,6 @@ function Dashboard(props) {
               >
                 ПАНЕЛЬ АДМИНИСТРАТОРА
               </Typography>
-
 
               <FormControlLabel
                 control={
@@ -436,83 +438,82 @@ function Dashboard(props) {
                 <td>
                   <Form.Group as={Col} controlId="formGridState">
                     <Form.Label className={classe.titleP}>Категория</Form.Label>
-                    <Form.Control as="select" name="category" onChange={onchange}>
+                    <Form.Control as="select" name="category" onChange={onchange} disabled>
                       <option name="iron">Входная</option>
-                      <option name="interior">Межкомнатная</option>
                     </Form.Control>
                   </Form.Group>
                 </td>
                 <td>
                   <p className={classe.titleP}>Загрузить переднее фото</p>
-                  <input type="file" name="upFile" onChange={onImagePick}/>
+                  <input type="file" name="frontImage" onChange={onImagePick}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Цвет передней двери</p>
-                  <input type="text" name="colorfrontDoor" onChange={onchange}/>
+                  <input type="text" name="frontColor" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Сторона двери</p>
-                  <input type="text" name="sideDoor" onChange={onchange}/>
+                  <input type="text" name="side" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Зарисовка двери</p>
-                  <input type="text" name="picDoor" onChange={onchange}/>
+                  <input type="text" name="picture" onChange={onchange}/>
                 </td>
               </tr>
               <tr>
                 <td>
                   <p className={classe.titleP}>Производитель</p>
-                  <input type="text" name="manufacture" onChange={onchange}/>
+                  <input type="text" name="manufacturer" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Имя</p>
-                  <input type="text" name="doorName" onChange={onchange}/>
+                  <input type="text" name="title" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Размер дверного блока</p>
-                  <input type="text" name="blockSize" onChange={onchange}/>
+                  <input type="text" name="doorBlockSize" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Серия</p>
-                  <input type="text" name="seria" onChange={onchange}/>
+                  <input type="text" name="series" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Толщина полотна (мм)</p>
-                  <input type="text" name="tolPol" onChange={onchange}/>
+                  <input type="text" name="thickness" onChange={onchange}/>
                 </td>
               </tr>
               <tr>
                 <td>
                   <p className={classe.titleP}>Толщина листа металла (мм.)</p>
-                  <input type="text" name="tolList" onChange={onchange}/>
+                  <input type="text" name="metalSheetThickness" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Класс прочности</p>
-                  <input type="text" name="classStrong" onChange={onchange}/>
+                  <input type="text" name="strengthClass" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>
                     Значение по эксплутационным характеристикам
                   </p>
-                  <input type="text" name="valEks" onChange={onchange}/>
+                  <input type="text" name="performanceValue" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Класс устойчивости к взлому</p>
-                  <input type="text" name="classProchnost" onChange={onchange}/>
+                  <input type="text" name="burglarResistanceClass" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Количество петель</p>
-                  <input type="text" name="petli" onChange={onchange}/>
+                  <input type="text" name="numberOfLoops" onChange={onchange}/>
                 </td>
               </tr>
               <tr>
                 <td>
                   <p className={classe.titleP}>Противосъемы</p>
-                  <input type="text" name="protivosyom" onChange={onchange}/>
+                  <input type="text" name="antiSeize" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Регулировка прижима</p>
-                  <input type="text" name="regulirovka" onChange={onchange}/>
+                  <input type="text" name="clipAdjustment" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Коробка</p>
@@ -520,47 +521,43 @@ function Dashboard(props) {
                 </td>
                 <td>
                   <p className={classe.titleP}>Вылет наличника от короба</p>
-                  <input type="text" name="vilet" onChange={onchange}/>
+                  <input type="text" name="platbandDepartureFromTheBox" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Крепление</p>
-                  <input type="text" name="kreplenie" onChange={onchange}/>
+                  <input type="text" name="mount" onChange={onchange}/>
                 </td>
               </tr>
               <tr>
                 <td>
                   <p className={classe.titleP}>Утеплитель</p>
-                  <input type="text" name="utiplitel" onChange={onchange}/>
+                  <input type="text" name="insulation" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Усиление замковой зоны</p>
-                  <input type="text" name="usilenieWinter" onChange={onchange}/>
+                  <input type="text" name="castleStrengthening" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Ночная задвижка</p>
-                  <input type="text" name="nightMove" onChange={onchange}/>
+                  <input type="text" name="nightValve" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Терморазрыв</p>
-                  <input type="text" name="termorazriv" onChange={onchange}/>
+                  <input type="text" name="thermalBreak" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Цинкогрунт</p>
-                  <input type="text" name="cinkogrunt" onChange={onchange}/>
+                  <input type="text" name="zinkogrunt" onChange={onchange}/>
                 </td>
               </tr>
               <tr>
                 <td>
                   <p className={classe.titleP}>Вес двери</p>
-                  <input type="text" name="doorHeight" onChange={onchange}/>
+                  <input type="text" name="doorWeight" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Цена</p>
                   <input type="text" name="price" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Полная Цена</p>
-                  <input type="text" name="fullPrice" onChange={onchange}/>
                 </td>
               </tr>
               </tbody>
@@ -587,124 +584,42 @@ function Dashboard(props) {
               <tbody>
               <tr>
                 <td>
-                  <p className={classe.titleP}>Загрузить переднее фото</p>
-                  <input type="file" name="upFile" onChange={onImagePick}/>
+                  <Form.Group as={Col} controlId="formGridState">
+                    <Form.Label className={classe.titleP}>Категория</Form.Label>
+                    <Form.Control as="select" name="category" onChange={onchange} disabled>
+                      <option name="interior">Межкомнатная</option>
+                    </Form.Control>
+                  </Form.Group>
                 </td>
-                <td>
-                  <p className={classe.titleP}>Цвет передней двери</p>
-                  <input type="text" name="colorfrontDoor" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Сторона двери</p>
-                  <input type="text" name="sideDoor" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Зарисовка двери</p>
-                  <input type="text" name="picDoor" onChange={onchange}/>
-                </td>
-              </tr>
-              <tr>
                 <td>
                   <p className={classe.titleP}>Производитель</p>
-                  <input type="text" name="manufacture" onChange={onchange}/>
+                  <input type="text" name="manufacturer" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Имя</p>
-                  <input type="text" name="doorName" onChange={onchange}/>
+                  <input type="text" name="title" onChange={onchange}/>
                 </td>
                 <td>
                   <p className={classe.titleP}>Размер дверного блока</p>
-                  <input type="text" name="blockSize" onChange={onchange}/>
+                  <input type="text" name="doorBlockSize" onChange={onchange}/>
                 </td>
+              </tr>
+              <tr>
                 <td>
                   <p className={classe.titleP}>Серия</p>
-                  <input type="text" name="seria" onChange={onchange}/>
+                  <input type="text" name="series" onChange={onchange}/>
                 </td>
                 <td>
-                  <p className={classe.titleP}>Толщина полотна (мм)</p>
-                  <input type="text" name="tolPol" onChange={onchange}/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p className={classe.titleP}>Толщина листа металла (мм.)</p>
-                  <input type="text" name="tolList" onChange={onchange}/>
+                  <p className={classe.titleP}>Внутреннее наполнение</p>
+                  <input type="text" name="inside" onChange={onchange}/>
                 </td>
                 <td>
-                  <p className={classe.titleP}>Класс прочности</p>
-                  <input type="text" name="classStrong" onChange={onchange}/>
+                  <p className={classe.titleP}>Покрытие</p>
+                  <input type="text" name="coating" onChange={onchange}/>
                 </td>
                 <td>
-                  <p className={classe.titleP}>
-                    Значение по эксплутационным характеристикам
-                  </p>
-                  <input type="text" name="valEks" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Класс устойчивости к взлому</p>
-                  <input type="text" name="classProchnost" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Количество петель</p>
-                  <input type="text" name="petli" onChange={onchange}/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p className={classe.titleP}>Противосъемы</p>
-                  <input type="text" name="protivosyom" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Регулировка прижима</p>
-                  <input type="text" name="regulirovka" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Коробка</p>
-                  <input type="text" name="box" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Вылет наличника от короба</p>
-                  <input type="text" name="vilet" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Крепление</p>
-                  <input type="text" name="kreplenie" onChange={onchange}/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p className={classe.titleP}>Утеплитель</p>
-                  <input type="text" name="utiplitel" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Усиление замковой зоны</p>
-                  <input type="text" name="usilenieWinter" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Ночная задвижка</p>
-                  <input type="text" name="nightMove" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Терморазрыв</p>
-                  <input type="text" name="termorazriv" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Цинкогрунт</p>
-                  <input type="text" name="cinkogrunt" onChange={onchange}/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p className={classe.titleP}>Вес двери</p>
-                  <input type="text" name="doorHeight" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Цена</p>
-                  <input type="text" name="price" onChange={onchange}/>
-                </td>
-                <td>
-                  <p className={classe.titleP}>Полная Цена</p>
-                  <input type="text" name="fullPrice" onChange={onchange}/>
+                  <p className={classe.titleP}>Тип остекления</p>
+                  <input type="text" name="glazing" onChange={onchange}/>
                 </td>
               </tr>
               </tbody>
@@ -722,4 +637,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {Init, createDoor})(Dashboard)
+export default connect(mapStateToProps, {Init, createDoor, getHomePage})(Dashboard)

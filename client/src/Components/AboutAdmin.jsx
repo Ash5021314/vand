@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Table from 'react-bootstrap/Table'
 import data from '../data'
 
 import Button from '@material-ui/core/Button'
-import {makeStyles} from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
+
+import { connect } from 'react-redux'
+import { updateAboutImage } from '../store/actions/layoutAction';
+
 
 const useStyle = makeStyles(() => ({
   appBar: {
@@ -42,39 +46,59 @@ const useStyle = makeStyles(() => ({
     fontWeight: 'bold',
   },
 }))
-const AboutAdmin = () => {
+const AboutAdmin = (props) => {
+
+  let [img, setImg] = useState('');
+  useEffect(() => {
+    setImg(props.layout.about_image)
+  }, [])
+  useEffect(() => {
+    setImg(props.layout.about_image)
+  }, [props.layout.about_image])
   const classe = useStyle()
+
+  const onChange = async (e) => {
+    setImg(
+      e.target.files[0]
+    );
+  }
+
+  const sendImage = async () => {
+    let new_img = new FormData();
+    new_img.append("img", img);
+    await props.updateAboutImage(new_img)
+  }
   return (
     <>
       <Table striped bordered hover>
         <thead>
-        <tr className="text-light bg-dark">
-          <th>Имя</th>
-          <th>Обнавить</th>
-          <th>Удалить</th>
-        </tr>
+          <tr className="text-light bg-dark">
+            <th>Имя</th>
+            <th>Обнавить</th>
+            <th>Удалить</th>
+          </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>
-            <img
-              alt="Remy Sharp"
-              src={data.images.about}
-              className={classe.adminDoor}
-            />
-            <input type="file"/>
-          </td>
-          <td>
-            <Button variant="contained" color="primary">
-              Обнавить
+          <tr>
+            <td>
+              <img
+                alt="Remy Sharp"
+                src={img}
+                className={classe.adminDoor}
+              />
+              <input type="file" name="img" onChange={onChange} />
+            </td>
+            <td>
+              <Button variant="contained" color="primary" onClick={sendImage}>
+                Обнавить
             </Button>
-          </td>
-          <td>
-            <Button variant="contained" color="secondary">
-              Удалить
+            </td>
+            <td>
+              <Button variant="contained" color="secondary">
+                Удалить
             </Button>
-          </td>
-        </tr>
+            </td>
+          </tr>
 
 
         </tbody>
@@ -83,4 +107,11 @@ const AboutAdmin = () => {
   )
 }
 
-export default AboutAdmin
+const mapStateToProps = state => {
+  return {
+    layout: state.layout
+  }
+}
+
+
+export default connect(mapStateToProps, { updateAboutImage })(AboutAdmin)

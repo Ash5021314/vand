@@ -9,7 +9,7 @@ import doorsReducer from "./reducers/doorsReducer";
 let rootReducer = combineReducers({
   auth: authReducer,
   layout: layoutReducer,
-  message: messageReducer,
+  messages: messageReducer,
   doors: doorsReducer
 });
 

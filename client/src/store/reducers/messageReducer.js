@@ -1,7 +1,14 @@
-import { MESSAGE_SEND } from "../actions/types";
+import {
+  MESSAGE_SEND,
+  GET_MESSAGES,
+  GET_SEEN_MESSAGES,
+  DELETE_MESSAGE,
+  MARK_AS_SEEN
+} from "../actions/types";
 
 const initialState = {
-  messages: []
+  messages: [],
+  seenMessages: []
 };
 
 export default function(state = initialState, action) {
@@ -9,9 +16,28 @@ export default function(state = initialState, action) {
     case MESSAGE_SEND:
       return {
         ...state
-        // slider: action.payload.slider,
-        // about_image:action.payload.about_image
       };
+    case GET_MESSAGES:
+      return {
+        ...state,
+        messages: action.payload.data
+      };
+    case GET_SEEN_MESSAGES:
+      return {
+        ...state,
+        seenMessages: action.payload.data
+      };
+    case MARK_AS_SEEN:
+      return {
+        ...state,
+        seenMessages: state.seenMessages.filter(
+          msg => msg._id !== action.payload.data._id
+        )
+      };
+    // case DELETE_MESSAGE:
+    //   return{
+
+    //   }
     default:
       return state;
   }

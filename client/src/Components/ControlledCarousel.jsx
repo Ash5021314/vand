@@ -1,24 +1,23 @@
-import React, {useState, useEffect} from "react";
-import OwlCarousel from "react-owl-carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
-import data from "../data.json";
-import "./ControlledCarousel.css";
+import React, {useState, useEffect} from 'react'
+import OwlCarousel from 'react-owl-carousel'
+import 'owl.carousel/dist/assets/owl.carousel.css'
+import 'owl.carousel/dist/assets/owl.theme.default.css'
+import data from '../data.json'
+import './ControlledCarousel.css'
 
-import {connect} from "react-redux";
-import {getHomePage} from "../store/actions/layoutAction";
+import {connect} from 'react-redux'
+import {getHomePage} from '../store/actions/layoutAction'
 
 const ControlledCarousel = props => {
-  const [slide, setSlide] = useState([]);
+  const [slide, setSlide] = useState([])
   useEffect(() => {
-    props.getHomePage();
+    props.getHomePage()
     // setSlide(data.images.slideImages);
-  }, []);
+  }, [])
 
   useEffect(() => {
-    console.log('props', props);
-    setSlide(props.layout.slider);
-  }, [props.layout]);
+    setSlide(props.layout.slider)
+  }, [props.layout])
 
   const options = {
     items: 1,
@@ -29,9 +28,9 @@ const ControlledCarousel = props => {
     dots: true,
     dotsEach: true,
     dotData: true,
-    smartSpeed: 1500
-  };
-
+    smartSpeed: 1500,
+  }
+  console.log('slide', slide)
   return (
     <div className="slide">
       <h1 className="carouselHeader">Входные и межкомнатные двери</h1>
@@ -41,21 +40,21 @@ const ControlledCarousel = props => {
         <OwlCarousel className="owl-theme" {...options}>
           {slide.map(res => {
             return (
-              <div className="item" key={res}>
-                <img alt="" src={res}/>
+              <div className="item" key={res._id}>
+                <img alt="" src={res.url}/>
               </div>
-            );
+            )
           })}
         </OwlCarousel>
       )}
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = state => {
   return {
-    layout: state.layout
-  };
-};
+    layout: state.layout,
+  }
+}
 
-export default connect(mapStateToProps, {getHomePage})(ControlledCarousel);
+export default connect(mapStateToProps, {getHomePage})(ControlledCarousel)

@@ -14,7 +14,7 @@
     transform-style: preserve-3d;
 }
 
-.flip-box:hover .flip-box-inner {
+.flip-box:not(.fixed-item):hover .flip-box-inner {
     transform: rotateY(180deg);
 }
 
@@ -36,29 +36,37 @@
     color: white;
     transform: rotateY(180deg);
 }
-.prodHeader{
+
+.prodHeader {
     margin: 50px 0;
     text-align: center;
 }
-.alignCenter{
+
+.alignCenter {
     text-align: center;
 }
-.card-body{
+
+.card-body {
     padding: 10px 0;
 }
-.card,.card-footer{
+
+.card, .card-footer {
     border: none;
 }
-.h5{
+
+.h5 {
     font-size: 15px;
 }
-.card-text{
+
+.card-text {
     font-size: 13px;
 }
-.buttonCenter{
+
+.buttonCenter {
     margin: 40px auto;
     text-align: center;
 }
-.flip-box{
+
+.flip-box {
     border: none;
 }

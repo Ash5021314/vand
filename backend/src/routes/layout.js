@@ -1,22 +1,71 @@
-const express = require("express");
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
+const {layout} = require('../providers')
+const {SERVER_ERROR} = require('../utils/response_constants')
+const multer = require('multer')
+const path = require('path')
+const {v4} = require('uuid')
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, '/../public', '/images/layout/'))
+  },
+  filename: function (req, file, cb) {
+    cb(null, 'IMAGE-' + v4().replace(/-/g, '') + '.jpg')
+  },
+})
 
-const domain = process.env.DOMAIN || "http://localhost:4000";
+const upload = multer({
+  storage: storage,
+  limits: {fileSize: 1000000},
+}).single('img')
 
-router.get("/homepage", async (req, res) => {
+let domain = process.env.DOMAIN || 'http://localhost:4000'
+
+router.get('/homepage', async (req, res) => {
   try {
-    let data = {
-      slider: [
-        `${domain}/images/slideImages/images.jpg`,
-        `${domain}/images/slideImages/blue_house.jpg`,
-        `${domain}/images/slideImages/door-image.jpg`
-      ],
-      about_image: `${domain}/images/about/about.jpg`
-    };
-    res.status(200).json(data);
+    let data = await layout.getHomePage()
+    return res.status(200).send(data)
   } catch (e) {
-    res.status(500).json({ success: true, msg: "Cannot get data!" });
+    return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
   }
-});
+})
 
-module.exports = router;
+router.post('/about_img', upload, async (req, res) => {
+  try {
+    req.body.about_img = `${domain}/images/layout/${req.file.filename}`
+    const doc = await layout.updateAboutImg(req.body.about_img)
+    return res.status(doc.statusCode).send(doc)
+  } catch (e) {
+    return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
+  }
+})
+
+router.post('/slider', upload, async (req, res) => {
+  try {
+    req.body.slide = `${domain}/images/layout/${req.file.filename}`
+    const doc = await layout.addSliderImg(req.body.slide, req.file.filename)
+    console.log(doc)
+    return res.status(doc.statusCode).send(doc)
+  } catch (e) {
+
+    return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
+  }
+})
+
+router.patch('/slider/:id', async (req, res) => {
+  try {
+
+  } catch (e) {
+
+  }
+})
+
+router.delete('/slider/:id', async (req, res) => {
+  try {
+
+  } catch (e) {
+
+  }
+})
+
+module.exports = router

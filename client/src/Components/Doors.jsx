@@ -112,7 +112,6 @@ export default function Doors({selectedDoors}) {
 
   return (
     <>
-
       {!selectedDoors.length ? (
         <h2>Loading...</h2>
       ) : (
