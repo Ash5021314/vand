@@ -1,0 +1,23 @@
+{
+  "images": {
+    "about": "/images/about/about.jpg",
+    "slideImages": [
+      {
+        "name": "/images/slideImages/images.jpg"
+      },
+      {
+        "name": "/images/slideImages/blue_house.jpg"
+      },
+      {
+        "name": "/images/slideImages/door-image.jpg"
+      }
+    ],
+    "moreImage": [
+      "/images/moreImage/1.jpg",
+      "/images/moreImage/2.jpg",
+      "/images/moreImage/3.jpg",
+      "/images/moreImage/4.jpg",
+      "/images/moreImage/5.jpg"
+    ]
+  }
+}

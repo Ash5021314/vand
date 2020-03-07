@@ -1,0 +1,17 @@
+.about{
+    background: #b07a44;
+    padding: 40px;
+    color: #ffffff;
+}
+.line{
+     max-width: 50px;
+    height: 2px;
+    background-color: #ffffff;
+    margin: 20px 0;
+}
+.flex{
+    padding:  0 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

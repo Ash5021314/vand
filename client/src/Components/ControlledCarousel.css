@@ -1,0 +1,19 @@
+.slide {
+    background: #128C7E;
+}
+
+.slide img, .slide div {
+    height: 100%;
+    margin: 0 auto;
+}
+
+.slide img {
+    width: 60% !important;
+    height: 400px;
+}
+
+.carouselHeader {
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
