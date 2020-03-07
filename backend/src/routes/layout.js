@@ -23,17 +23,10 @@ let domain = process.env.DOMAIN || "http://localhost:4000";
 
 router.get("/homepage", async (req, res) => {
   try {
-    let data = {
-      slider: [
-        `${domain}/images/slideImages/images.jpg`,
-        `${domain}/images/slideImages/blue_house.jpg`,
-        `${domain}/images/slideImages/door-image.jpg`
-      ],
-      about_image: `${domain}/images/about/about.jpg`
-    };
-    res.status(200).json(data);
+    let data = await layout.getHomePage();
+    return res.status(200).send(data);
   } catch (e) {
-    res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR);
+    return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR);
   }
 });
 
@@ -43,8 +36,35 @@ router.post("/about_img", upload, async (req, res) => {
     const doc = await layout.updateAboutImg(req.body.about_img);
     return res.status(doc.statusCode).send(doc);
   } catch (e) {
-    console.log(e);
     return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR);
+  }
+});
+
+router.post("/slider", upload, async (req, res) => {
+  try {
+    req.body.slide = `${domain}/images/layout/${req.file.filename}`;
+    const doc = await layout.addSliderImg(req.body.slide, req.file.filename);
+    console.log(doc);
+    return res.status(doc.statusCode).send(doc);
+  } catch (e) {
+
+    return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR);
+  }
+});
+
+router.patch("/slider/:id", async (req, res) => {
+  try {
+
+  } catch (e) {
+
+  }
+});
+
+router.delete("/slider/:id", async (req, res) => {
+  try {
+
+  } catch (e) {
+
   }
 });
 

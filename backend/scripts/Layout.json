@@ -1,0 +1,22 @@
+{
+    "_id": "5e6374fbb7bb885b36ee65b6",
+    "label": "Layout_template",
+    "slider": [
+        {
+            "_id": "5dbe2f1e470b4a78d4d13325",
+            "name": "door1",
+            "url": "http://localhost:4000/images/slideImages/images.jpg"
+        },
+        {
+            "_id": "5dbe2f17470b4a78d4d1331c",
+            "name": "door2",
+            "url": "http://localhost:4000/images/slideImages/blue_house.jpg"
+        },
+        {
+            "_id": "5dbe2ee1470b4a78d4d13300",
+            "name": "door3",
+            "url": "http://localhost:4000/images/slideImages/door-image.jpg"
+        }
+    ],
+    "about_img": "http://localhost:4000/images/layout/IMAGE-71d9f2f76c4e43a88fc38937ae19988a.jpg"
+}

@@ -7,4 +7,7 @@ export const GET_SEEN_MESSAGES = "GET_SEEN_MESSAGES";
 export const DELETE_MESSAGE = "DELETE_MESSAGE";
 export const MARK_AS_SEEN = "MARK_AS_SEEN";
 export const UPDATE_ABOUT_IMG = "UPDATE_ABOUT_IMG";
+export const UPDATE_SLIDER = "UPDATE_SLIDER";
+export const ADD_SLIDE = "ADD_SLIDE";
+export const DELETE_SLIDE = "DELETE_SLIDE";
 export const CREATE_DOOR = "CREATE_DOOR";

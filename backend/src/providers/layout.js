@@ -12,6 +12,15 @@ const {
   INVALID_CRED
 } = require("../utils/response_constants");
 
+Layout.getHomePage = async () => {
+  try {
+    let data = await Layout.findOne({ label: "Layout_template" });
+    return data;
+  } catch (e) {
+    return DOOR_CANNOT_GET_DATA
+  }
+}
+
 Layout.updateAboutImg = async img => {
   try {
     let data = await Layout.findOneAndUpdate(
@@ -25,5 +34,22 @@ Layout.updateAboutImg = async img => {
     return DOOR_CANNOT_UPDATE;
   }
 };
+
+Layout.addSliderImg = async (img, name) => {
+  try {
+    let obj = { name, url: img };
+    let data = await Layout.updateOne(
+      { label: "Layout_template" },
+      { $addToSet: { sider: obj } }
+    );
+    console.log(data);
+    let newData = await Layout.findOne({ label: 'Layout_template' });
+    DOOR_UPDATED.data = newData;
+
+    return data ? DOOR_UPDATED : DOOR_NOT_FOUND;
+  } catch (e) {
+    return DOOR_CANNOT_UPDATE;
+  }
+}
 
 module.exports = Layout;
