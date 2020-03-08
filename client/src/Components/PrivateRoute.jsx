@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import { Init } from "../store/actions/auhtAction";
+import React, {useEffect, useState} from 'react'
+import {HashRouter, Route, Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {Init} from '../store/actions/auhtAction'
 
-function PrivateRoute({ component, auth, Init, ...rest }) {
-  let [isAuthenticated, setIsAuthenticated] = useState(false);
+function PrivateRoute({component, auth, Init, ...rest}) {
+  let [isAuthenticated, setIsAuthenticated] = useState(false)
   // useEffect(() => {
   //   Init();
   // }, []);
@@ -20,7 +20,7 @@ function PrivateRoute({ component, auth, Init, ...rest }) {
         ) : (
           <Redirect
             to={{
-              pathname: "/SignIn"
+              pathname: '/SignIn',
               // state: {
               //   from: props.location
               // }
@@ -29,11 +29,11 @@ function PrivateRoute({ component, auth, Init, ...rest }) {
         )
       }
     />
-  );
+  )
 }
 
 const mapStateToProps = state => {
-  return { auth: state.auth };
-};
+  return {auth: state.auth}
+}
 
-export default connect(mapStateToProps, { Init })(PrivateRoute);
+export default connect(mapStateToProps, {Init})(PrivateRoute)

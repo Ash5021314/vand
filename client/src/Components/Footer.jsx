@@ -16,7 +16,7 @@ const Footer = () => {
             <Col xs={6} md={3}>
               <p className="footer_header"><span>О нас</span></p>
               <h3>VANDOORS</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+              <p className={'query'}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
             </Col>
             <Col xs={6} md={2}>
               <p className="footer_header"><span>Ссылки</span></p>

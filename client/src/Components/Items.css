@@ -8,10 +8,14 @@
 .flip-box-inner {
     position: relative;
     width: 100%;
-    height: 450px;
+    height: 100%;
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
+}
+
+.card {
+    height: 500px;
 }
 
 .flip-box:not(.fixed-item):hover .flip-box-inner {
@@ -69,4 +73,60 @@
 
 .flip-box {
     border: none;
+}
+
+@media screen and (max-width: 991px) {
+    .card {
+        height: 330px;
+    }
+
+    .alignCenter, .h5 {
+        font-size: 11px !important;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .card {
+        height: 360px;
+        margin-bottom: 50px !important;
+    }
+
+
+}
+
+@media screen and (max-width: 767px) {
+    .card {
+        height: 520px;
+        margin-bottom: 50px !important;
+    }
+
+    .alignCenter, .h5 {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .card {
+        height: 500px;
+    }
+
+    .card-deck {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+}
+
+@media screen and (max-width: 425px) {
+    .card {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .card {
+        height: 300px;
+    }
 }

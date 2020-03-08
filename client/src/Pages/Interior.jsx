@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 
 const Interior = ({res}) => {
-  console.log(res)
+  // console.log(res)
   return (
     <Col
       xs={6}
@@ -14,18 +14,8 @@ const Interior = ({res}) => {
         <Card className="mb-5">
           <div className="flip-box fixed-item">
             <div className="flip-box-inner">
+
               <div className="flip-box-front">
-                <Card.Img
-                  variant="top"
-                  src={res.frontImage}
-                  style={
-                    {
-                      height: '100%',
-                    }
-                  }
-                />
-              </div>
-              <div className="flip-box-back">
                 <Card.Img
                   variant="top"
                   src={res.otherColor[0].image}

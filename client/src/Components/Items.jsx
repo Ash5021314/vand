@@ -31,10 +31,10 @@ const Items = () => {
   return (
     <>
       <Container>
-        <h2 className="prodHeader">Межкомнатные двери</h2>
+        <h2 className="prodHeader"> Входные двери</h2>
         <CardDeck>
           {!ironDoor.length ? <h2>Loading...</h2> : (
-            <Row style={{width: '100%'}}>
+            <Row style={{width: '110%'}}>
               {
                 ironDoor.reverse().slice(0, 4).map((res, index) => {
                   return (<Col xs={6} md={3} key={index}>
@@ -68,7 +68,7 @@ const Items = () => {
                                                                 style={{color: 'white', textDecoration: 'none'}}>увидеть
             больше</Link></Button>
         </CardDeck>
-        <h2 className="prodHeader">Входные двери</h2>
+        <h2 className="prodHeader">Межкомнатные двери</h2>
         <CardDeck>
           {!interiorDoor.length ? <h2>Loading...</h2> : (
             <Row>
@@ -78,12 +78,9 @@ const Items = () => {
                       <Card>
                         <div className="flip-box">
                           <div className="flip-box-inner">
+
                             <div className="flip-box-front">
-                              <Card.Img variant="top" src={res.frontImage}
-                                        style={{height: '100%'}}/>
-                            </div>
-                            <div className="flip-box-back">
-                              <Card.Img variant="top" src={res.backImage}
+                              <Card.Img variant="top" src={res.otherColor[0].image}
                                         style={{height: '100%'}}/>
                             </div>
                           </div>
@@ -92,7 +89,7 @@ const Items = () => {
                           <Card.Title>{res.title}</Card.Title>
                         </Card.Body>
                         <Card.Footer>
-                          <div className="text-muted alignCenter ">{res.price} <span>р.</span></div>
+                          <div className="text-muted alignCenter ">{res.priceFront} <span>р.</span></div>
                         </Card.Footer>
                       </Card>
                     </Col>

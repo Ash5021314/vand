@@ -14,6 +14,21 @@ const Brends = () => {
     slideBy: 1,
     dots: false,
     smartSpeed: 1000,
+    responsive: {
+      0: {
+        items: 2,
+      },
+      300: {
+        items: 3,
+      },
+
+      600: {
+        items: 4,
+      },
+      1000: {
+        items: 6,
+      },
+    },
   }
 
   return (

@@ -3,42 +3,46 @@ import {
   GET_MESSAGES,
   GET_SEEN_MESSAGES,
   DELETE_MESSAGE,
-  MARK_AS_SEEN
-} from "../actions/types";
+  MARK_AS_SEEN,
+} from '../actions/types'
 
 const initialState = {
   messages: [],
-  seenMessages: []
-};
+  seenMessages: [],
+}
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case MESSAGE_SEND:
       return {
-        ...state
-      };
+        ...state,
+      }
     case GET_MESSAGES:
       return {
         ...state,
-        messages: action.payload.data
-      };
+        messages: action.payload.data,
+      }
     case GET_SEEN_MESSAGES:
       return {
         ...state,
-        seenMessages: action.payload.data
-      };
+        seenMessages: action.payload.data,
+      }
     case MARK_AS_SEEN:
       return {
         ...state,
         seenMessages: state.seenMessages.filter(
-          msg => msg._id !== action.payload.data._id
-        )
-      };
+          msg => msg._id !== action.payload.data._id,
+        ),
+        messages: [
+          ...state.messages,
+          action.payload.data,
+        ],
+      }
     // case DELETE_MESSAGE:
     //   return{
 
     //   }
     default:
-      return state;
+      return state
   }
 }

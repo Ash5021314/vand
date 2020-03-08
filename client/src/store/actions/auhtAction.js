@@ -1,75 +1,76 @@
-import { ADMIN_LOGIN, ADMIN_LOGOUT } from "./types";
-import axios from "axios";
+import {ADMIN_LOGIN, ADMIN_LOGOUT} from './types'
+import axios from 'axios'
 
-const domain = "http://localhost:4000";
+const domain = 'http://localhost:4000'
 
 export const login = doc => {
   return dispatch => {
     axios({
-      method: "POST",
+      method: 'POST',
       url: `${domain}/admin/login`,
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json',
       },
-      data: doc
+      data: doc,
     })
       .then(data => {
-        dispatch(setAuthToken(data.data.token));
+        dispatch(setAuthToken(data.data.token))
+        window.location.href = '/administrator'
       })
-      .catch(e => console.log("Not Allowed"));
-  };
-};
+      .catch(e => console.log('Not Allowed'))
+  }
+}
 
 const setAuthToken = token => {
   return dispatch => {
-    if (token && token !== "") {
-      localStorage.setItem("a_a_key", token);
-      dispatch({ type: ADMIN_LOGIN, payload: token });
+    if (token && token !== '') {
+      localStorage.setItem('a_a_key', token)
+      dispatch({type: ADMIN_LOGIN, payload: token})
     } else {
-      console.log("Unauthorized");
+      console.log('Unauthorized')
     }
-  };
-};
+  }
+}
 
 export const Init = () => {
   return async dispatch => {
     try {
-      const token = localStorage.getItem("a_a_key");
-      let verifyToken = await checkToken(token);
+      const token = localStorage.getItem('a_a_key')
+      let verifyToken = await checkToken(token)
       if (!verifyToken) {
-        dispatch(logout());
+        dispatch(logout())
       }
     } catch (e) {
-      console.log(e);
-      dispatch(logout());
+      console.log(e)
+      dispatch(logout())
     }
-  };
-};
+  }
+}
 
 const checkToken = async token => {
   try {
     let response = await axios({
-      method: "GET",
+      method: 'GET',
       url: `${domain}/admin/jwt_check`,
       headers: {
-        "Content-Type": "application/json",
-        authorization: `${token}`
-      }
-    });
-    const { data } = response;
+        'Content-Type': 'application/json',
+        authorization: `${token}`,
+      },
+    })
+    const {data} = response
     if (data.success) {
-      return true;
+      return true
     } else {
-      return false;
+      return false
     }
   } catch (e) {
-    return false;
+    return false
   }
-};
+}
 
 export const logout = () => {
   return dispatch => {
-    localStorage.removeItem("a_a_key");
-    dispatch({ type: ADMIN_LOGOUT });
-  };
-};
+    localStorage.removeItem('a_a_key')
+    dispatch({type: ADMIN_LOGOUT})
+  }
+}

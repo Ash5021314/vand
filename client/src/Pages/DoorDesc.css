@@ -36,6 +36,10 @@
 
 .rightSection {
     font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    float: right;
+    width: 46%;
 }
 
 .rightSection P {
@@ -44,7 +48,11 @@
 
 .lastP {
     font-weight: bold;
-    font-size: 23PX;
+    font-size: 23px;
+}
+
+.lastP1 {
+    font-size: 15px;
 }
 
 .littleDoors {

@@ -145,6 +145,11 @@ const useStyless = makeStyles(theme => ({
 }))
 
 function Dashboard(props) {
+  if (!localStorage.getItem('a_a_key')) {
+    window.location.href = '/Signin'
+  }
+
+  console.log('messages', props.messages)
   const [doorType, setDoorType] = React.useState('iron')
   // one of doors, orders, slider
   const [activeMenu, setActiveMenu] = React.useState('doors')
@@ -268,7 +273,7 @@ function Dashboard(props) {
               <FormControlLabel
                 control={
                   <IconButton color="inherit" onClick={handleChange}>
-                    <Badge badgeContent={4} color="secondary">
+                    <Badge badgeContent={props.messages.seenMessages.length} color="secondary">
                       <NotificationsIcon/>
                     </Badge>
                   </IconButton>
@@ -323,6 +328,9 @@ function Dashboard(props) {
               }}>
                 <ListItemText primary="Бренды"/>
               </ListItem>
+              <ListItem button>
+                <Link to={'/logout'}>Logout</Link>
+              </ListItem>
             </div>
           </List>
           <Divider/>
@@ -362,6 +370,7 @@ function Dashboard(props) {
 const mapStateToProps = state => {
   return {
     auth: state.auth,
+    messages: state.messages,
   }
 }
 

@@ -15,10 +15,10 @@ const About = () => {
     <div className="about">
       <Container>
         <Row>
-          <Col>
-            <img key={about} src={about} alt=""/>
+          <Col md={6} sm={6}>
+            <img key={about} src={about} alt="" className="aboutImg"/>
           </Col>
-          <Col className="flex">
+          <Col className="flex" md={6} sm={6}>
             <h2>О нас</h2>
             <p>VANDOORS - дистрибьютор по продаже входных и межкомнатных дверей.</p>
             <div className="line"/>

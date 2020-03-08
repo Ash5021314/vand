@@ -6,7 +6,6 @@ import Table from 'react-bootstrap/Table'
 import Container from 'react-bootstrap/Container'
 
 const InteriorDesc = ({door, onClick, backContent, info, slide, style, itemImg, item, options}) => {
-  console.log({door})
   return (
     <Container style={backContent}>
       <h2 className={'header'}>{door.title}</h2>
@@ -26,13 +25,13 @@ const InteriorDesc = ({door, onClick, backContent, info, slide, style, itemImg, 
         <Col xs={6} md={6}>
           <div className="price">
             <div className="rightSection">
-              <p>Цена</p>
+              <p>Цена за полотно</p>
               <p className="lastP">{Number(door.priceFront)} РУБ. </p>
             </div>
             <div className="rightSection">
-              <p>Обшая Цена</p>
-              <p
-                className="lastP">{Number(door.priceFront) + Number(door.fullPrice)} РУБ. </p>
+              <p>Цена за комплект</p>
+              <p className="lastP">{Number(door.priceFront) + Number(door.fullPrice)} РУБ. </p>
+              <p className="lastP1">В комплект входит полотно, коробка, с двух сторон наличники</p>
             </div>
           </div>
           <div className="littleDoors">

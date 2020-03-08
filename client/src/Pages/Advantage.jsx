@@ -119,14 +119,14 @@ const Advantage = () => {
               <p>Возможность изготовления индивидуальных заказов по чертежам и эскизам покупателя.</p>
             </div>
           </Col>
-          <Col xs={12} md={6} className="flex-column flexAdventage">
+          <Col xs={12} sm={6} md={6} className="flex-column flexAdventage">
             <h4>Бесплатный вызов мастера-замерщика, который снимет точные размеры дверного проема для создания
               подробного дизайн-проекта.</h4>
             <Button className="custom-bg marginAuto" onClick={handleShow}>Вызвать замерщика</Button>
             <p>*Вызов замерщика является полностью бесплатным</p>
           </Col>
-          <Col xs={12} md={6}>
-            <img src={adv} alt="двери " className="w-100"/>
+          <Col xs={12} sm={6} md={6}>
+            <img src={adv} alt="двери " className="w-100 mb-40"/>
           </Col>
         </Row>
       </Container>

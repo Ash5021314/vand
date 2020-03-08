@@ -22,6 +22,7 @@ import AdminSlider from './Components/AdminSlider'
 import AboutAdmin from './Components/AboutAdmin'
 import AdminBrends from './Components/AdminBrends'
 import CreateDoor from './Components/CreateDoor'
+import Logout from './Components/Logout'
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path="/aboutAdmin" component={AboutAdmin}/>
         <Route path="/adminBrends" component={AdminBrends}/>
         <Route path="/createDoor" component={CreateDoor}/>
+        <Route path="/logout" component={Logout}/>
       </Router>
     </Provider>
   )
