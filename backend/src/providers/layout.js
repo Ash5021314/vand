@@ -11,6 +11,10 @@ const {
   DOOR_DELETED,
   INVALID_CRED
 } = require("../utils/response_constants");
+const fs = require("fs");
+const path = require('path');
+
+let domain = process.env.DOMAIN || "http://localhost:4000";
 
 Layout.getHomePage = async () => {
   try {
@@ -38,15 +42,64 @@ Layout.updateAboutImg = async img => {
 Layout.addSliderImg = async (img, name) => {
   try {
     let obj = { name, url: img };
-    let data = await Layout.updateOne(
+    let data = await Layout.findOneAndUpdate(
       { label: "Layout_template" },
-      { $addToSet: { sider: obj } }
+      {
+        $push: {
+          "slider": {
+            name: name, url: img
+          }
+        }
+      },
+      { new: true }
     );
-    console.log(data);
-    let newData = await Layout.findOne({ label: 'Layout_template' });
-    DOOR_UPDATED.data = newData;
-
+    DOOR_UPDATED.data = data;
     return data ? DOOR_UPDATED : DOOR_NOT_FOUND;
+  } catch (e) {
+    return DOOR_CANNOT_UPDATE;
+  }
+}
+
+Layout.updateSlider = async (id, img, name) => {
+  try {
+    let url = await Layout.findOne({ label: 'Layout_template' });
+    url = url.slider.filter(item => item._id == id);
+    url = url[0].url;
+
+    let imgPath = url.replace(`${domain}`, path.join(__dirname, "/../public"));
+
+    let data = await Layout.findOneAndUpdate({ label: "Layout_template" }, {
+      $set: { 'slider.$[elem].name': name, 'slider.$[elem].url': img },
+    }, {
+      new: true,
+      arrayFilters: [{ "elem._id": id }]
+    });
+    if (data) {
+      fs.unlink(imgPath, (err) => err ? err : 'ok');
+    }
+    DOOR_UPDATED.data = data
+    return DOOR_UPDATED;
+  } catch (e) {
+    return DOOR_CANNOT_UPDATE;
+  }
+}
+
+Layout.deleteSlide = async (id) => {
+  try {
+    let url = await Layout.findOne({ label: 'Layout_template' });
+    url = url.slider.filter(item => item._id == id);
+    url = url[0].url;
+
+    let imgPath = url.replace(`${domain}`, path.join(__dirname, "/../public"));
+
+    let data = await Layout.findOneAndUpdate({ label: "Layout_template" }, {
+      $pull: { 'slider': { _id: id } }
+    }, { new: true });
+    if (data) {
+      fs.unlink(imgPath, (err) => err ? err : 'ok');
+    }
+    DOOR_DELETED.data = data
+    return DOOR_DELETED;
   } catch (e) {
     return DOOR_CANNOT_UPDATE;
   }

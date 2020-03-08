@@ -1,4 +1,4 @@
-import { HOMEPAGE_DATA, UPDATE_ABOUT_IMG, ADD_SLIDE } from "../actions/types";
+import { HOMEPAGE_DATA, UPDATE_ABOUT_IMG,UPDATE_SLIDER, ADD_SLIDE, DELETE_SLIDE } from "../actions/types";
 
 const initialState = {
   slider: [],
@@ -19,6 +19,16 @@ export default function (state = initialState, action) {
         about_image: action.payload.data.about_img
       }
     case ADD_SLIDE:
+      return {
+        ...state,
+        slider: action.payload.data.slider
+      }
+      case UPDATE_SLIDER:
+        return {
+          ...state,
+          slider: action.payload.data.slider
+        }
+    case DELETE_SLIDE:
       return {
         ...state,
         slider: action.payload.data.slider
