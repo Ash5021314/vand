@@ -330,8 +330,6 @@ function Dashboard(props) {
         <main className={classes.content}>
           <div className={classes.appBarSpacer}/>
           <Container maxWidth="lg" className={classes.container}>
-
-            {console.log('aaaa', modalShow)}
             <ButtonToolbar>
               <Button
                 onClick={() => setModalShow(true)}

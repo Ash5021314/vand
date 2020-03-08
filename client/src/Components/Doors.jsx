@@ -201,6 +201,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Дверь с наружи</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -214,7 +215,11 @@ export default function Doors({selectedDoors}) {
                   />
                   <input type="file" name="frontImage"/>
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -231,7 +236,7 @@ export default function Doors({selectedDoors}) {
                 <th>Цвет</th>
                 <th>Сторона</th>
                 <th>Зарисовка</th>
-
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -313,7 +318,11 @@ export default function Doors({selectedDoors}) {
                         defaultValue={res.picture}
                       />
                     </td>
-
+                    <td>
+                      <Button variant="contained" color="primary">
+                        Обнавить
+                      </Button>
+                    </td>
                     <td>
                       <Button variant="contained" color="secondary">
                         Удалить
@@ -329,6 +338,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Производитель</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -341,7 +351,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -355,6 +369,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Имя</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -368,7 +383,11 @@ export default function Doors({selectedDoors}) {
                     onChange={onChange}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -382,6 +401,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Размер дверного блока</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -394,7 +414,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -408,6 +432,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Серия</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -420,7 +445,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -434,6 +463,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Толщина полотна (мм)</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -446,7 +476,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -460,6 +494,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Толщина листа металла (мм.)</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -472,7 +507,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -486,6 +525,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Класс прочности</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -498,7 +538,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -512,6 +556,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Значение по эксплутационным характеристикам</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -524,7 +569,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -538,6 +587,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Класс устойчивости к взлому</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -550,7 +600,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -564,6 +618,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Количество петель</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -576,7 +631,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -590,6 +649,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Противосъемы</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -602,7 +662,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -616,6 +680,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Регулировка прижима</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -628,7 +693,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -642,6 +711,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Коробка</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -654,7 +724,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -668,6 +742,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Вылет наличника от короба</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -680,7 +755,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -694,6 +773,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Крепление</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -706,7 +786,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -720,6 +804,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Утеплитель</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -732,7 +817,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -746,6 +835,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Усиление замковой зоны</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -758,7 +848,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -772,6 +866,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Ночная задвижка</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -784,7 +879,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -798,6 +897,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Терморазрыв</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -810,7 +910,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -824,6 +928,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Цинкогрунт</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -836,7 +941,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -850,6 +959,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Вес двери</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -862,7 +972,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -876,6 +990,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Цена</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -888,7 +1003,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -902,6 +1021,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Дополнительные фото</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -927,7 +1047,11 @@ export default function Doors({selectedDoors}) {
                              }}
                       />
                     </td>
-
+                    <td>
+                      <Button variant="contained" color="primary">
+                        Обнавить
+                      </Button>
+                    </td>
                     <td>
                       <Button variant="contained" color="secondary">
                         Удалить
@@ -969,7 +1093,8 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Панель для межкомнотных дверей</th>
                 <th>Цвет</th>
-
+                <th>Обнавить</th>
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -1014,7 +1139,11 @@ export default function Doors({selectedDoors}) {
                         defaultValue={res.color}
                       />
                     </td>
-
+                    <td>
+                      <Button variant="contained" color="primary">
+                        Обнавить
+                      </Button>
+                    </td>
                     <td>
                       <Button variant="contained" color="secondary">
                         Удалить
@@ -1029,7 +1158,7 @@ export default function Doors({selectedDoors}) {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Производитель</th>
-
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -1042,7 +1171,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -1056,6 +1189,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Имя</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -1069,7 +1203,11 @@ export default function Doors({selectedDoors}) {
                     onChange={onChange}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -1083,6 +1221,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Размер дверного блока</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -1095,7 +1234,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -1109,6 +1252,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Серия</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -1121,7 +1265,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -1135,6 +1283,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Внутреннее наполнение</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -1147,7 +1296,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -1161,6 +1314,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Покрытие</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -1173,7 +1327,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -1187,6 +1345,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Тип остекления</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -1199,7 +1358,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -1213,6 +1376,7 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Цена за полотно</th>
 
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -1225,7 +1389,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
@@ -1238,6 +1406,7 @@ export default function Doors({selectedDoors}) {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Цена за комплект</th>
+                <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
               </thead>
@@ -1250,7 +1419,11 @@ export default function Doors({selectedDoors}) {
                     style={{width: '90%'}}
                   />
                 </td>
-
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
                 <td>
                   <Button variant="contained" color="secondary">
                     Удалить
