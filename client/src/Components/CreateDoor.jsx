@@ -14,6 +14,7 @@ import {connect} from 'react-redux'
 import {Init} from '../store/actions/auhtAction'
 import {createDoor} from '../store/actions/doorsAction'
 import {getHomePage} from '../store/actions/layoutAction'
+import {Link, Redirect} from 'react-router-dom'
 
 
 const useStyle = makeStyles(() => ({
@@ -58,6 +59,7 @@ const useStyle = makeStyles(() => ({
 const CreateDoor = (props) => {
   const [doorType, setDoorType] = useState('iron')
   const [value, setValue] = useState({})
+  const [open, setOpen] = useState(false)
 
   const classe = useStyle()
   useEffect(() => {
@@ -92,6 +94,11 @@ const CreateDoor = (props) => {
       // setOpenInsertInterior(false)
     }
   }
+
+
+  const handleCloseInsert = () => {
+    Redirect('/administrator')
+  }
   return (
     <>
       {'iron' === doorType ?
@@ -99,14 +106,20 @@ const CreateDoor = (props) => {
           <>
             <AppBar className={classe.appBar}>
               <Toolbar className={classe.flexBetween}>
-                <IconButton
-                  edge="start"
-                  color="inherit"
-
-                  aria-label="close"
+                <Link
+                  to={{
+                    pathname: '/administrator',
+                  }}
                 >
-                  <CloseIcon/>
-                </IconButton>
+                  <IconButton
+                    edge="start"
+                    color="inherit"
+                    // onClick={handleCloseInsert}
+                    aria-label="close"
+                  >
+                    <CloseIcon/>
+                  </IconButton>
+                </Link>
                 <Button autoFocus color="inherit" onClick={handleClose}>
                   САХРАНИТЬ
                 </Button>
@@ -247,14 +260,20 @@ const CreateDoor = (props) => {
           <>
             <AppBar className={classe.appBar}>
               <Toolbar className={classe.flexBetween}>
-                <IconButton
-                  edge="start"
-                  color="inherit"
-
-                  aria-label="close"
+                <Link
+                  to={{
+                    pathname: '/administrator',
+                  }}
                 >
-                  <CloseIcon/>
-                </IconButton>
+                  <IconButton
+                    edge="start"
+                    color="inherit"
+                    onClick={handleCloseInsert}
+                    aria-label="close"
+                  >
+                    <CloseIcon/>
+                  </IconButton>
+                </Link>
                 <Button autoFocus color="inherit" onClick={handleClose}>
                   САХРАНИТЬ
                 </Button>
@@ -283,8 +302,6 @@ const CreateDoor = (props) => {
                   <p className={classe.titleP}>Размер дверного блока</p>
                   <input type="text" name="doorBlockSize" onChange={onchange}/>
                 </td>
-              </tr>
-              <tr>
                 <td>
                   <p className={classe.titleP}>Серия</p>
                   <input type="text" name="series" onChange={onchange}/>
@@ -293,6 +310,8 @@ const CreateDoor = (props) => {
                   <p className={classe.titleP}>Внутреннее наполнение</p>
                   <input type="text" name="inside" onChange={onchange}/>
                 </td>
+              </tr>
+              <tr>
                 <td>
                   <p className={classe.titleP}>Покрытие</p>
                   <input type="text" name="coating" onChange={onchange}/>
@@ -300,6 +319,14 @@ const CreateDoor = (props) => {
                 <td>
                   <p className={classe.titleP}>Тип остекления</p>
                   <input type="text" name="glazing" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Цена за полотно</p>
+                  <input type="text" name="priceFront" onChange={onchange}/>
+                </td>
+                <td>
+                  <p className={classe.titleP}>Цена за комплект</p>
+                  <input type="text" name="fullPrice" onChange={onchange}/>
                 </td>
               </tr>
               </tbody>
