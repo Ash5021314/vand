@@ -136,12 +136,12 @@ const AdminSlider = (props) => {
                   />
                 </td>
                 <td>
-                  <Button variant="contained" color="primary" onClick={()=>onUpdateSlider(item._id)}>
+                  <Button variant="contained" color="primary" onClick={() => onUpdateSlider(item._id)}>
                     Обнавить
                 </Button>
                 </td>
                 <td>
-                  <Button variant="contained" color="secondary" onClick={()=>onDeleteSlide(item._id)}>
+                  <Button variant="contained" color="secondary" onClick={() => onDeleteSlide(item._id)}>
                     Удалить
                 </Button>
                 </td>

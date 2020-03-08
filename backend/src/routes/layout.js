@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const {layout} = require('../providers')
-const {SERVER_ERROR} = require('../utils/response_constants')
+const { layout } = require('../providers')
+const { SERVER_ERROR } = require('../utils/response_constants')
 const multer = require('multer')
 const path = require('path')
-const {v4} = require('uuid')
+const { v4 } = require('uuid')
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, path.join(__dirname, '/../public', '/images/layout/'))
@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage: storage,
-  limits: {fileSize: 1000000},
+  limits: { fileSize: process.env.FILE_SIZE_LIMIT },
 }).single('img')
 
 let domain = process.env.DOMAIN || 'http://localhost:4000'
@@ -44,27 +44,30 @@ router.post('/slider', upload, async (req, res) => {
   try {
     req.body.slide = `${domain}/images/layout/${req.file.filename}`
     const doc = await layout.addSliderImg(req.body.slide, req.file.filename)
-    console.log(doc)
     return res.status(doc.statusCode).send(doc)
   } catch (e) {
-
     return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
   }
 })
 
-router.patch('/slider/:id', async (req, res) => {
+router.patch('/slider/:id',upload,async (req, res) => {
   try {
-
+    let { id } = req.params;
+    req.body.slide = `${domain}/images/layout/${req.file.filename}`
+    let doc = await layout.updateSlider(id,req.body.slide,req.file.filename);
+    return res.status(doc.statusCode).send(doc);
   } catch (e) {
-
+    return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
   }
 })
 
 router.delete('/slider/:id', async (req, res) => {
   try {
-
+    let { id } = req.params;
+    let doc = await layout.deleteSlide(id);
+    return res.status(doc.statusCode).send(doc);
   } catch (e) {
-
+    return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
   }
 })
 

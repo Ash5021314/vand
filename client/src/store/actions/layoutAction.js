@@ -61,14 +61,13 @@ export const addSlide = (img) => {
 
 export const deleteSlide = (id) => {
   return async dispatch => {
-    let data = await axios.delete(`${domain}/layout/slider/:id`, {
+    let data = await axios.delete(`${domain}/layout/slider/${id}`, {
       headers: {
         'Content-Type': 'application/json'
       }
     });
-    console.log(data.data);
     if (data.data.success) {
-      dispatch({ type: DELETE_SLIDE });
+      dispatch({ type: DELETE_SLIDE, payload: data.data });
     }
   };
 };

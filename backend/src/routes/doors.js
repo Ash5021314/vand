@@ -7,17 +7,17 @@ const multer = require("multer");
 const path = require("path");
 const { v4 } = require("uuid");
 const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
+  destination: function (req, file, cb) {
     cb(null, path.join(__dirname, "/../public", "/images/doors/"));
   },
-  filename: function(req, file, cb) {
+  filename: function (req, file, cb) {
     cb(null, "IMAGE-" + v4().replace(/-/g, "") + ".jpg");
   }
 });
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 1000000 }
+  limits: { fileSize: process.env.FILE_SIZE_LIMIT }
 }).single("img");
 
 let domain = process.env.DOMAIN || "http://localhost:4000";

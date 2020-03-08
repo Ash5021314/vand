@@ -26,16 +26,16 @@ let validator = async (req, res, next) => {
 
 let imageUploader = async (req, res, next) => {
   const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
       cb(null, path.join(__dirname, "/../public", "/images/doors/"));
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
       cb(null, "IMAGE-" + v4().replace(/-/g, "") + ".jpg");
     }
   });
   multer({
     storage: storage,
-    limits: { fileSize: 1000000 }
+    limits: { fileSize: process.env.FILE_SIZE_LIMIT }
   }).any();
   // next();
 };
