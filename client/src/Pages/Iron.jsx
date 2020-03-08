@@ -27,6 +27,7 @@ const Iron = ({res}) => {
               <div className="flip-box-back">
                 <Card.Img
                   variant="top"
+                  
                   src={res.otherColor[0].image}
                   style={{height: '100%'}}
                   alt={'a'}

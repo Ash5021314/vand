@@ -14,7 +14,7 @@ const Catalog = () => {
       <Container>
         <h2 className="headTop">Каталог</h2>
         <Row>
-          <Col xs={6} md={5}>
+          <Col xs={5} sm={5} md={5}>
             <Link to="/catalogs/iron">
               <div className="w-100 imageHover">
                 <img src={Iron} alt="" className="w-100 image"/>
@@ -24,8 +24,8 @@ const Catalog = () => {
               </div>
             </Link>
           </Col>
-          <Col xs={0} md={2}/>
-          <Col xs={6} md={5}>
+          <Col xs={2} sm={2} md={2}/>
+          <Col xs={5} sm={5} md={5}>
             <Link to="/catalogs/iron2">
               <div className="w-100 imageHover">
                 <img src={Interior} alt="" className="w-100 image"/>

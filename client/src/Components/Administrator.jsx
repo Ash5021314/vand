@@ -38,6 +38,7 @@ import AdminBrends from './AdminBrends'
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 import Modal from 'react-bootstrap/Modal'
 import {Link} from 'react-router-dom'
+import Pagination from '@material-ui/lab/Pagination'
 
 const drawerWidth = 240
 
@@ -79,6 +80,11 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1,
+  },
+  center: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '20px 0',
   },
   drawerPaper: {
     position: 'relative',
@@ -358,6 +364,9 @@ function Dashboard(props) {
               {menus[activeMenu]}
             </Grid>
             <Box pt={4}/>
+            <div className={classes.center}>
+              <Pagination count={10} size="large"/>
+            </div>
           </Container>
         </main>
       </div>

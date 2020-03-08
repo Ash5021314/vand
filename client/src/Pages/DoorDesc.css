@@ -100,3 +100,98 @@
     text-align: center;
     margin: 20px 0;
 }
+
+@media screen and (max-width: 991px) {
+    .lastP {
+        font-size: 16px;
+    }
+
+    .lastP1 {
+        font-size: 10px;
+    }
+
+    .little {
+        height: 120px;
+        margin-left: 10px;
+    }
+
+    .frontDoor {
+        height: 215px;
+        margin-bottom: 20px;
+    }
+
+    .doorParagraph p {
+        font-size: 8px;
+    }
+
+    .item {
+        height: 160px !important;
+        width: 80px !important;
+    }
+
+    .littleDoors {
+        height: 260px;
+    }
+
+    .descTable td {
+        font-weight: bold;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .frontDoor {
+        height: 280px;
+    }
+
+    .doorParagraph p {
+        font-size: 12px;
+    }
+
+    .little {
+        height: 160px;
+        margin-left: 24px;
+    }
+
+    .littleDoors {
+        height: 350px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    .lastP {
+        font-size: 20px;
+    }
+
+    td p {
+        font-size: 9px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .item {
+        height: 120px !important;
+        width: 60px !important;
+    }
+
+    .little {
+        height: 120px;
+        margin-left: 35px;
+    }
+
+    .littleDoors {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    p {
+        font-size: 15px;
+    }
+
+    .lastP {
+        font-size: 14px;
+    }
+}

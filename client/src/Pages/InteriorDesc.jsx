@@ -10,7 +10,7 @@ const InteriorDesc = ({door, onClick, backContent, info, slide, style, itemImg, 
     <Container style={backContent}>
       <h2 className={'header'}>{door.title}</h2>
       <Row>
-        <Col xs={6} md={6}>
+        <Col xs={12} md={6}>
           <div className="leftSide">
             <div className="image">
               <div className="frontDoor">
@@ -22,7 +22,7 @@ const InteriorDesc = ({door, onClick, backContent, info, slide, style, itemImg, 
             </div>
           </div>
         </Col>
-        <Col xs={6} md={6}>
+        <Col xs={12} md={6}>
           <div className="price">
             <div className="rightSection">
               <p>Цена за полотно</p>

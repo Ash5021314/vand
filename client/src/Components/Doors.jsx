@@ -30,6 +30,13 @@ const useStyles = makeStyles({
     width: '49%',
     float: 'right',
   },
+  mediaBackInterior: {
+    height: 240,
+    width: '49%',
+    float: 'none',
+    margin: '0 auto',
+  },
+
   center: {
     display: 'flex',
     justifyContent: 'center',
@@ -122,7 +129,6 @@ export default function Doors({selectedDoors}) {
         <h2>Loading...</h2>
       ) : (
         selectedDoors.map((res, index) => {
-          console.log('res', res)
           return (
             <>
               {
@@ -133,14 +139,16 @@ export default function Doors({selectedDoors}) {
                         <CardActionArea>
 
                           <CardMedia
-                            className={classes.mediaBack}
+                            className={classes.mediaBackInterior}
                             image={res.otherColor ? res.otherColor[0].image : ''}
                           />
-                          <CardContent>
-                            <Typography variant="h5" component="h3">
-                              {res.title}
-                            </Typography>
-                          </CardContent>
+                          <div>
+                            <CardContent>
+                              <Typography variant="h5" component="h3">
+                                {res.title}
+                              </Typography>
+                            </CardContent>
+                          </div>
                         </CardActionArea>
                         <CardActions>
                           <Typography component="p">{res.priceFront} руб</Typography>
@@ -176,7 +184,6 @@ export default function Doors({selectedDoors}) {
           )
         })
       )}
-
       <Dialog fullScreen open={open} onClose={handleClose}>
         <AppBar className={classe.appBar}>
           <Toolbar className={classe.flexBetween}>
@@ -1066,8 +1073,6 @@ export default function Doors({selectedDoors}) {
           </>
         )}
       </Dialog>
-
-
       <Dialog fullScreen open={openInterior} onClose={handleClose}>
         <AppBar className={classe.appBar}>
           <Toolbar className={classe.flexBetween}>
@@ -1093,7 +1098,6 @@ export default function Doors({selectedDoors}) {
               <tr className="text-light bg-dark">
                 <th>Панель для межкомнотных дверей</th>
                 <th>Цвет</th>
-                <th>Обнавить</th>
                 <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
@@ -1435,9 +1439,8 @@ export default function Doors({selectedDoors}) {
           </>
         )}
       </Dialog>
-      <div className={classes.center}>
-        <Pagination count={10} size="large"/>
-      </div>
+
+
     </>
   )
 }
