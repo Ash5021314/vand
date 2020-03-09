@@ -77,7 +77,7 @@ const Items = () => {
                   return (<Col xs={6} md={3} key={index}>
                       <Card>
                         <div className="flip-box">
-                          <div className="flip-box-inner">
+                          <div className="">
 
                             <div className="flip-box-front">
                               <Card.Img variant="top" src={res.otherColor[0].image}
