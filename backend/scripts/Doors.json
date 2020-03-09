@@ -1,0 +1,291 @@
+[
+    {
+        "_id": "5dd86b273fef812890fdc579",
+        "title": "Дверь межкомнатная Florence 620011",
+        "priceFront": "3900",
+        "fullPrice": "2000",
+        "otherColor": [
+            {
+                "_id": "5dd86b273fef812890fdc57a",
+                "color": "Светлое Гавно",
+                "image": "http://localhost:4000/images/product/backLittle/door.jpg"
+            },
+            {
+                "_id": "5dd86b273fef812890fdc57b",
+                "color": "Темное Гавно",
+                "image": "http://localhost:4000/images/product/backLittle/door1.jpg"
+            },
+            {
+                "_id": "5dd86b273fef812890fdc57c",
+                "color": "Сгушеное молоко",
+                "image": "http://localhost:4000/images/product/backLittle/door2.jpg"
+            },
+            {
+                "_id": "5dd86b273fef812890fdc57d",
+                "color": "Сгушеное молоко",
+                "image": "http://localhost:4000/images/product/backLittle/door2.jpg"
+            },
+            {
+                "_id": "5dd86b273fef812890fdc57e",
+                "color": "Сгушеное молоко",
+                "image": "http://localhost:4000/images/product/backLittle/door2.jpg"
+            },
+            {
+                "_id": "5dd86b273fef812890fdc57f",
+                "color": "Сгушеное молоко",
+                "image": "http://localhost:4000/images/product/backLittle/door2.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3018",
+                "color": "Сгушеное молоко",
+                "image": "http://localhost:4000/images/product/backLittle/door2.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3019",
+                "color": "Сгушеное молоко",
+                "image": "http://localhost:4000/images/product/backLittle/door2.jpg"
+            }
+        ],
+        "manufacturer": "Двери Регионов",
+        "doorBlockSize": "850х2050 / 980х2050",
+        "series": "ДС 3",
+        "inside": "Алюминеувая кромка, шпон",
+        "coating": "Грунт, эмаль по МДФ",
+        "glazing": "Глухая",
+        "moreImage": [
+            {
+                "_id": "5e66899182d66f1ff60d301a",
+                "image": "http://localhost:4000/images/moreImage/1.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d301b",
+                "image": "http://localhost:4000/images/moreImage/2.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d301c",
+                "image": "http://localhost:4000/images/moreImage/3.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d301d",
+                "image": "http://localhost:4000/images/moreImage/4.jpg"
+            }
+        ],
+        "category": "interior"
+    },
+    {
+        "title": "Дверь межкомнатная Florence 62001",
+        "priceFront": "3900",
+        "fullPrice": "2000",
+        "otherColor": [
+            {
+                "_id": "5e66899182d66f1ff60d301e",
+                "color": "Светлое Гавно",
+                "image": "http://localhost:4000/images/product/backLittle/door.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d301f",
+                "color": "Темное Гавно",
+                "image": "http://localhost:4000/images/product/backLittle/door1.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3020",
+                "color": "Сгушеное молоко",
+                "image": "http://localhost:4000/images/product/backLittle/door2.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3021",
+                "color": "Сгушеное молоко",
+                "image": "http://localhost:4000/images/product/backLittle/door2.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3022",
+                "color": "Сгушеное молоко",
+                "image": "http://localhost:4000/images/product/backLittle/door2.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3023",
+                "color": "Сгушеное молоко",
+                "image": "http://localhost:4000/images/product/backLittle/door2.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3024",
+                "color": "Сгушеное молоко",
+                "image": "http://localhost:4000/images/product/backLittle/door2.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3025",
+                "color": "Сгушеное молоко",
+                "image": "http://localhost:4000/images/product/backLittle/door2.jpg"
+            }
+        ],
+        "manufacturer": "Двери Регионов",
+        "doorBlockSize": "850х2050 / 980х2050",
+        "series": "ДС 3",
+        "inside": "Алюминеувая кромка, шпон",
+        "coating": "Грунт, эмаль по МДФ",
+        "glazing": "Глухая",
+        "moreImage": [
+            {
+                "_id": "5e66899182d66f1ff60d3026",
+                "image": "http://localhost:4000/images/moreImage/1.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3027",
+                "image": "http://localhost:4000/images/moreImage/2.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3028",
+                "image": "http://localhost:4000/images/moreImage/3.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3029",
+                "image": "http://localhost:4000/images/moreImage/4.jpg"
+            }
+        ],
+        "category": "interior"
+    },
+    {
+        "_id": "5e66899182d66f1ff60d302a",
+        "title": "Входная дверь Бастион",
+        "price": "7900",
+        "frontImage": "http://localhost:4000/images/product/back/door.jpg",
+        "backImage": "http://localhost:4000/images/product/front/door.jpg",
+        "otherColor": [
+            {
+                "_id": "5e66899182d66f1ff60d302b",
+                "price": "1000",
+                "color": "Светлое Гавно",
+                "image": "http://localhost:4000/images/product/backLittle/door.jpg",
+                "side": "Внутренная Сторона",
+                "picture": "LIGHT MD 003"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d302c",
+                "price": "1050",
+                "color": "Темное Гавно",
+                "image": "http://localhost:4000/images/product/backLittle/door1.jpg",
+                "side": "Внутренная Сторона",
+                "picture": "LIGHT MD 003"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d302d",
+                "price": "1100",
+                "color": "Сгушеное молоко",
+                "image": "http://localhost:4000/images/product/backLittle/door2.jpg",
+                "side": "Внутренная Сторона",
+                "picture": "LIGHT MD 003"
+            }
+        ],
+        "manufacturer": "Двери Регионов",
+        "doorBlockSize": "850х2050 / 980х2050",
+        "series": "ДС 3",
+        "thickness": "95",
+        "metalSheetThickness": "1.5",
+        "strengthClass": "М4",
+        "performanceValue": "Класс 1",
+        "burglarResistanceClass": "2",
+        "numberOfLoops": "3",
+        "antiSeize": "3",
+        "clipAdjustment": "да",
+        "box": "открытый, 107х51",
+        "platbandDepartureFromTheBox": "70",
+        "mount": "на уши",
+        "insulation": "Базальтовая плита",
+        "castleStrengthening": "1.5",
+        "nightValve": "да",
+        "thermalBreak": "нет",
+        "zinkogrunt": "нет",
+        "doorWeight": " 850х2050/86; 980х2050/91",
+        "moreImage": [
+            {
+                "_id": "5e66899182d66f1ff60d302e",
+                "image": "http://localhost:4000/images/moreImage/1.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d302f",
+                "image": "http://localhost:4000/images/moreImage/2.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3030",
+                "image": "http://localhost:4000/images/moreImage/3.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3031",
+                "image": "http://localhost:4000/images/moreImage/4.jpg"
+            }
+        ],
+        "category": "iron"
+    },
+    {
+        "_id": "5e66899182d66f1ff60d3032",
+        "title": "Входная дверь Президент Х7",
+        "price": "2190",
+        "frontImage": "http://localhost:4000/images/product/back/door2.jpg",
+        "backImage": "http://localhost:4000/images/product/front/door1.jpg",
+        "otherColor": [
+            {
+                "_id": "5e66899182d66f1ff60d3033",
+                "price": "1000",
+                "color": "Светлое Гавно",
+                "image": "http://localhost:4000/images/product/backLittle/door.jpg",
+                "side": "Внутренная Сторона",
+                "picture": "LIGHT MD 003"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3034",
+                "price": "1050",
+                "color": "Темное Гавно",
+                "image": "http://localhost:4000/images/product/backLittle/door1.jpg",
+                "side": "Внутренная Сторона",
+                "picture": "LIGHT MD 003"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3035",
+                "price": "1100",
+                "color": "Сгушеное молоко",
+                "image": "http://localhost:4000/images/product/backLittle/door2.jpg",
+                "side": "Внутренная Сторона",
+                "picture": "LIGHT MD 003"
+            }
+        ],
+        "manufacturer": "Двери Регионов",
+        "doorBlockSize": "850х2050 / 980х2050",
+        "series": "ДС 3",
+        "thickness": "95",
+        "metalSheetThickness": "1.5",
+        "strengthClass": "М4",
+        "performanceValue": "Класс 1",
+        "burglarResistanceClass": "2",
+        "numberOfLoops": "3",
+        "antiSeize": "3",
+        "clipAdjustment": "да",
+        "box": "открытый, 107х51",
+        "platbandDepartureFromTheBox": "70",
+        "mount": "на уши",
+        "insulation": "Базальтовая плита",
+        "castleStrengthening": "1.5",
+        "nightValve": "да",
+        "thermalBreak": "нет",
+        "zinkogrunt": "нет",
+        "doorWeight": " 850х2050/86; 980х2050/91",
+        "moreImage": [
+            {
+                "_id": "5e66899182d66f1ff60d3036",
+                "image": "http://localhost:4000/images/moreImage/1.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3037",
+                "image": "http://localhost:4000/images/moreImage/2.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3038",
+                "image": "http://localhost:4000/images/moreImage/3.jpg"
+            },
+            {
+                "_id": "5e66899182d66f1ff60d3039",
+                "image": "http://localhost:4000/images/moreImage/4.jpg"
+            }
+        ],
+        "category": "iron"
+    }
+]

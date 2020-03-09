@@ -16,6 +16,9 @@ import CloseIcon from '@material-ui/icons/Close'
 import Table from 'react-bootstrap/Table'
 import Pagination from '@material-ui/lab/Pagination'
 
+import { connect } from 'react-redux'
+import { getInteriorDoors,getIronDoors } from '../store/actions/doorsAction'
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
