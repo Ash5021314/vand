@@ -21,9 +21,15 @@ const upload = multer({
 }).single("img");
 
 let domain = process.env.DOMAIN || "http://localhost:4000";
-router.get("/", validator, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const doc = await doors.get();
+    let doc;
+    if (req.query.type) {
+      const { type, limit, skip } = req.query;
+      doc = await doors.get(type, limit, skip);
+    } else {
+      doc = await doors.getAll();
+    }
     return res.status(doc.statusCode).send(doc);
   } catch (e) {
     return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR);
@@ -32,7 +38,7 @@ router.get("/", validator, async (req, res) => {
 
 router.post("/", upload, async (req, res) => {
   try {
-    req.body.hero_image = `${domain}/images/doors/${req.file.filename}`;
+    req.body.frontImage = `${domain}/images/doors/${req.file.filename}`;
     const doc = await doors.create(req.body);
     return res.status(doc.statusCode).send(doc);
   } catch (e) {

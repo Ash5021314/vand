@@ -38,7 +38,7 @@ app.use('/admin', adminRoutes)
 app.use('/layout', layoutRoutes)
 
 app.use((req, res, next) => {
-  res.status(404).send({success: false, msg: 'Wrong Url Path'})
+  res.status(404).send({ success: false, msg: 'Wrong Url Path' })
 })
 
 module.exports = app

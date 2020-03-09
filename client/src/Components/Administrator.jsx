@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
-import {makeStyles} from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Drawer from '@material-ui/core/Drawer'
 import Box from '@material-ui/core/Box'
@@ -22,14 +22,14 @@ import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import CloseIcon from '@material-ui/icons/Close'
 import Table from 'react-bootstrap/Table'
-import {Form} from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 import Col from 'react-bootstrap/Col'
-import {connect} from 'react-redux'
-import {Init} from '../store/actions/auhtAction'
+import { connect } from 'react-redux'
+import { Init } from '../store/actions/auhtAction'
 import Notification from './Notification'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
-import {createDoor} from '../store/actions/doorsAction'
-import {getHomePage} from '../store/actions/layoutAction'
+import { createDoor, getDoors } from '../store/actions/doorsAction'
+import { getHomePage } from '../store/actions/layoutAction'
 import doors from '../doors'
 import Orders from './Orders'
 import AdminSlider from './AdminSlider'
@@ -37,7 +37,7 @@ import AboutAdmin from './AboutAdmin'
 import AdminBrends from './AdminBrends'
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 import Modal from 'react-bootstrap/Modal'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Pagination from '@material-ui/lab/Pagination'
 
 const drawerWidth = 240
@@ -158,6 +158,7 @@ function Dashboard(props) {
   console.log('messages', props.messages)
   const [doorType, setDoorType] = React.useState('iron')
   // one of doors, orders, slider
+  const [collection, setCollection] = React.useState([]);
   const [activeMenu, setActiveMenu] = React.useState('doors')
 
   const [open, setOpen] = React.useState(true)
@@ -185,7 +186,7 @@ function Dashboard(props) {
                 variant="contained"
                 color="primary"
                 className={classes.addButton}
-                style={{float: 'none'}}
+                style={{ float: 'none' }}
               >
                 Входные
               </Button>
@@ -195,7 +196,7 @@ function Dashboard(props) {
               margin: '2%',
             }}>
               <Button
-                style={{float: 'none'}}
+                style={{ float: 'none' }}
                 variant="contained"
                 color="primary"
                 className={classes.addButton}
@@ -211,20 +212,22 @@ function Dashboard(props) {
 
 
   const menus = {
-    doors: <Doors selectedDoors={doors.filter(({category}) => category === doorType)}/>,
-    orders: <Orders/>,
-    slider: <AdminSlider/>,
-    about: <AboutAdmin/>,
-    brends: <AdminBrends/>,
+    doors: <Doors selectedDoors={collection} />,
+    orders: <Orders />,
+    slider: <AdminSlider />,
+    about: <AboutAdmin />,
+    brends: <AdminBrends />,
   }
   useEffect(() => {
     //   props.Init();
     props.getHomePage()
+    props.getDoors();
     //   // console.log(props.auth);
   }, [])
-  // useEffect(() => {
-  //   setIsAuthenticated(props.auth.isAuthenticated);
-  // }, [props.auth.isAuthenticated]);
+  console.log(collection);
+  useEffect(() => {
+    setCollection(props.doors.all);
+  }, [props.doors.all]);
   const handleDrawerOpen = () => {
     setOpen(true)
   }
@@ -247,7 +250,7 @@ function Dashboard(props) {
   return (
     <>
       <div className={classes.root}>
-        <CssBaseline/>
+        <CssBaseline />
         <AppBar
           position="absolute"
           className={clsx(classes.appBar, open && classes.appBarShift)}
@@ -264,7 +267,7 @@ function Dashboard(props) {
                   open && classes.menuButtonHidden,
                 )}
               >
-                <MenuIcon/>
+                <MenuIcon />
               </IconButton>
               <Typography
                 component="h1"
@@ -280,13 +283,13 @@ function Dashboard(props) {
                 control={
                   <IconButton color="inherit" onClick={handleChange}>
                     <Badge badgeContent={props.messages.seenMessages.length} color="secondary">
-                      <NotificationsIcon/>
+                      <NotificationsIcon />
                     </Badge>
                   </IconButton>
                 }
               />
               <div style={notificationStyle}>
-                <Notification/>
+                <Notification />
               </div>
             </>
           </Toolbar>
@@ -299,50 +302,50 @@ function Dashboard(props) {
           }}
           open={open}
         >
-          <Divider/>
+          <Divider />
           <List>
             <div>
               <ListItem button onClick={() => {
                 setDoorType('iron')
                 setActiveMenu('doors')
               }}>
-                <ListItemText primary="Входная дверь"/>
+                <ListItemText primary="Входная дверь" />
               </ListItem>
               <ListItem button onClick={() => {
                 setDoorType('interior')
                 setActiveMenu('doors')
               }}>
-                <ListItemText primary="Межкомнатная дверь"/>
+                <ListItemText primary="Межкомнатная дверь" />
               </ListItem>
               <ListItem button onClick={() => {
                 setActiveMenu('orders')
               }}>
-                <ListItemText primary="Заказы"/>
+                <ListItemText primary="Заказы" />
               </ListItem>
               <ListItem button onClick={() => {
                 setActiveMenu('slider')
               }}>
-                <ListItemText primary="Слайдер"/>
+                <ListItemText primary="Слайдер" />
               </ListItem>
               <ListItem button onClick={() => {
                 setActiveMenu('about')
               }}>
-                <ListItemText primary="О Нас"/>
+                <ListItemText primary="О Нас" />
               </ListItem>
               <ListItem button onClick={() => {
                 setActiveMenu('brends')
               }}>
-                <ListItemText primary="Бренды"/>
+                <ListItemText primary="Бренды" />
               </ListItem>
               <ListItem button>
                 <Link to={'/logout'}>Logout</Link>
               </ListItem>
             </div>
           </List>
-          <Divider/>
+          <Divider />
         </Drawer>
         <main className={classes.content}>
-          <div className={classes.appBarSpacer}/>
+          <div className={classes.appBarSpacer} />
           <Container maxWidth="lg" className={classes.container}>
             <ButtonToolbar>
               <Button
@@ -361,7 +364,7 @@ function Dashboard(props) {
             </ButtonToolbar>
 
             {menus[activeMenu]}
-            <Box pt={4}/>
+            <Box pt={4} />
             {/*<div className={classes.center}>*/}
             {/*  <Pagination count={10} size="large"/>*/}
             {/*</div>*/}
@@ -378,7 +381,8 @@ const mapStateToProps = state => {
   return {
     auth: state.auth,
     messages: state.messages,
+    doors: state.doors
   }
 }
 
-export default connect(mapStateToProps, {Init, createDoor, getHomePage})(Dashboard)
+export default connect(mapStateToProps, { Init, createDoor, getHomePage, getDoors })(Dashboard)

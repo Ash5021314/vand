@@ -1,24 +1,28 @@
-import {} from "../actions/types";
+import { GET_INTERIOR, GET_IRON, GET_ALL } from "../actions/types";
 
 const initialState = {
   interior: [],
-  iron: []
+  iron: [],
+  all: []
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
-    // case ADMIN_LOGIN:
-    //   return {
-    //     ...state,
-    //     token: action.payload,
-    //     isAuthenticated: true
-    //   };
-    // case ADMIN_LOGOUT:
-    //   return {
-    //     ...state,
-    //     token: null,
-    //     isAuthenticated: false
-    //   };
+    case GET_INTERIOR:
+      return {
+        ...state,
+        interior: action.payload.data
+      };
+    case GET_IRON:
+      return {
+        ...state,
+        iron: action.payload.data
+      };
+    case GET_ALL:
+      return {
+        ...state,
+        all: action.payload.data
+      };
     default:
       return state;
   }

@@ -12,7 +12,20 @@ const {
   INVALID_CRED
 } = require("../utils/response_constants");
 
-Door.get = async () => {
+Door.get = async (type, limit = 12, skip = 0) => {
+  try {
+    limit = parseInt(limit);
+    skip = parseInt(skip);
+    const data = await Door.find({ category: type }).sort({ "createdAt": -1 }).limit(limit).skip(limit * skip);
+    DOOR_GET_DATA.data = data;
+    console.log(data);
+    return DOOR_GET_DATA;
+  } catch (e) {
+    return DOOR_CANNOT_GET_DATA;
+  }
+};
+
+Door.getAll = async () => {
   try {
     const data = await Door.find();
     DOOR_GET_DATA.data = data;
@@ -29,6 +42,7 @@ Door.create = async doc => {
     DOOR_CREATED.data = data;
     return DOOR_CREATED;
   } catch (e) {
+    console.log(e);
     if (e.name === "ValidationError") return INVALID_CRED;
     else if (e.name === "MongoError" && e.code === 11000) return DOOR_EXIST;
     return DOOR_CANNOT_CREATE;
