@@ -7,6 +7,12 @@ const layoutSchema = new mongoose.Schema({
       url: { type: String, required: true }
     }
   ],
+  brend: [
+    {
+      name: { type: String, required: true },
+      url: { type: String, required: true }
+    }
+  ],
   about_img: { type: String, required: true },
   label: { type: String, default: "Layout_template" }
 });
