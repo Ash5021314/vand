@@ -36,3 +36,9 @@
     font-size: 18px;
     padding: 16px 18px;
 }
+
+@media screen and (max-width: 576px) {
+    .image {
+        margin-left: 0 !important;
+    }
+}

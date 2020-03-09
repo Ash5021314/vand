@@ -49,4 +49,12 @@
     h4 {
         font-size: 15px;
     }
+
+    p {
+        font-size: 10px;
+    }
+
+    .adv {
+        padding: 20px 0 !important;
+    }
 }

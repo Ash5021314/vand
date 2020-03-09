@@ -82,39 +82,39 @@ const Advantage = () => {
       <Container>
         <Row>
           <Col xs={6} md={4}>
-            <div style={{...firstBackground, ...background}}>
+            <div style={{...firstBackground, ...background}} className="adv">
               <h4>Гарантия качества</h4>
               <p>Гарантия на входные и межкомнатные двери - 1 год. Дополнительно гарантируем качество монтажа, также на
                 1 год.</p>
             </div>
           </Col>
           <Col xs={6} md={4}>
-            <div style={{...secondBackground, ...background}}>
+            <div style={{...secondBackground, ...background}} className="adv">
               <h4>Доставка на следующий день</h4>
               <p>Благодаря собственному складу, выбранную дверь мы доставляем на следующий день после оформления
                 заказа.</p>
             </div>
           </Col>
           <Col xs={6} md={4}>
-            <div style={{...thirdBackground, ...background}}>
+            <div style={{...thirdBackground, ...background}} className="adv">
               <h4>Собственное производство</h4>
               <p>Мы специализируемся на создании качественного и доступного во всех отношениях продукта.</p>
             </div>
           </Col>
           <Col xs={6} md={4}>
-            <div style={{...fourthBackground, ...background}}>
+            <div style={{...fourthBackground, ...background}} className="adv">
               <h4>Огромный ассортимент</h4>
               <p>Более 300 готовых решений, которые удовлетворят вкусы даже самых требовательных покупателей.</p>
             </div>
           </Col>
           <Col xs={6} md={4}>
-            <div style={{...fifthBackground, ...background}}>
+            <div style={{...fifthBackground, ...background}} className="adv">
               <h4>Вызов замерщика - бесплатно</h4>
               <p>Мастер-замерщик снимет точные размеры дверного проема для создания подробного дизайн-проекта.</p>
             </div>
           </Col>
           <Col xs={6} md={4}>
-            <div style={{...sixthBackground, ...background}}>
+            <div style={{...sixthBackground, ...background}} className="adv">
               <h4>Эксклюзивная продукция</h4>
               <p>Возможность изготовления индивидуальных заказов по чертежам и эскизам покупателя.</p>
             </div>

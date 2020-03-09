@@ -12,7 +12,7 @@ const IronDesc = ({door, onClick, backContent, info, slide, style, itemImg, item
     <Container style={backContent}>
       <h2 className={'header'}>{door.title}</h2>
       <Row>
-        <Col xs={6} md={6}>
+        <Col xs={12} md={6}>
           <div className="leftSide">
             <div className="image">
               <div className="frontDoor">
@@ -36,7 +36,7 @@ const IronDesc = ({door, onClick, backContent, info, slide, style, itemImg, item
             </div>
           </div>
         </Col>
-        <Col xs={6} md={6}>
+        <Col xs={12} md={6}>
           <div className="price">
             <div className="rightSection">
               <p>Цена</p>
@@ -63,7 +63,7 @@ const IronDesc = ({door, onClick, backContent, info, slide, style, itemImg, item
                 {
                   slide.map((res, index) => {
                     return (
-                      <div className="item" style={item} key={index}>
+                      <div style={item} className="item" key={index}>
                         <img alt="" src={res.image} style={{itemImg}}/>
                       </div>
 

@@ -1,16 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
 import allDoors from '../doors'
 import Container from 'react-bootstrap/Container'
-import {Link} from 'react-router-dom'
 import Footer from '../Components/Footer'
 import {makeStyles} from '@material-ui/core/styles'
 import Pagination from '@material-ui/lab/Pagination'
 import Interior from './Interior'
 import Iron from './Iron'
+import './Catalogs.css'
 
 
 const useStyles = makeStyles(theme => ({
@@ -52,7 +50,6 @@ const Catalogs = props => {
                 if ('interior' === res.category) {
                   return <Interior key={index} res={res}/>
                 }
-
                 return <Iron key={index} res={res}/>
               })}
             </Row>
