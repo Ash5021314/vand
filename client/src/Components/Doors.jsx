@@ -15,6 +15,7 @@ import Button from '@material-ui/core/Button'
 import CloseIcon from '@material-ui/icons/Close'
 import Table from 'react-bootstrap/Table'
 import Pagination from '@material-ui/lab/Pagination'
+import Container from '@material-ui/core/Container'
 
 const useStyles = makeStyles({
   root: {
@@ -128,10 +129,10 @@ export default function Doors({selectedDoors}) {
       {!selectedDoors.length ? (
         <h2>Loading...</h2>
       ) : (
-        selectedDoors.map((res, index) => {
-          return (
-            <>
-              {
+        <>
+          <Grid container spacing={5}>
+            {selectedDoors.map((res, index) => {
+              return (
                 'interior' === res.category ?
                   (
                     <Grid item xs={6} md={3} lg={3} key={index}>
@@ -179,10 +180,15 @@ export default function Doors({selectedDoors}) {
                       </Card>
                     </Grid>
                   )
-              }
-            </>
-          )
-        })
+
+              )
+            })
+            }
+          </Grid>
+          <div className={classes.center}>
+            <Pagination count={10} size="large"/>
+          </div>
+        </>
       )}
       <Dialog fullScreen open={open} onClose={handleClose}>
         <AppBar className={classe.appBar}>
@@ -1440,7 +1446,7 @@ export default function Doors({selectedDoors}) {
         )}
       </Dialog>
 
-      
+
     </>
   )
 }

@@ -360,13 +360,11 @@ function Dashboard(props) {
               />
             </ButtonToolbar>
 
-            <Grid container spacing={3}>
-              {menus[activeMenu]}
-            </Grid>
+            {menus[activeMenu]}
             <Box pt={4}/>
-            <div className={classes.center}>
-              <Pagination count={10} size="large"/>
-            </div>
+            {/*<div className={classes.center}>*/}
+            {/*  <Pagination count={10} size="large"/>*/}
+            {/*</div>*/}
           </Container>
         </main>
       </div>
