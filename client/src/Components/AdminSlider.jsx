@@ -86,9 +86,6 @@ const AdminSlider = (props) => {
   }
   const onDeleteSlide = async (id) => {
     let resp = await props.deleteSlide(id);
-    // if(resp.success){
-
-    // }
   }
 
   const onUpdatePicker = async (img) => {

@@ -50,11 +50,11 @@ router.post('/slider', upload, async (req, res) => {
   }
 })
 
-router.patch('/slider/:id',upload,async (req, res) => {
+router.patch('/slider/:id', upload, async (req, res) => {
   try {
     let { id } = req.params;
     req.body.slide = `${domain}/images/layout/${req.file.filename}`
-    let doc = await layout.updateSlider(id,req.body.slide,req.file.filename);
+    let doc = await layout.updateSlider(id, req.body.slide, req.file.filename);
     return res.status(doc.statusCode).send(doc);
   } catch (e) {
     return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
@@ -65,6 +65,38 @@ router.delete('/slider/:id', async (req, res) => {
   try {
     let { id } = req.params;
     let doc = await layout.deleteSlide(id);
+    return res.status(doc.statusCode).send(doc);
+  } catch (e) {
+    return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
+  }
+})
+
+router.post('/brend', upload, async (req, res) => {
+  try {
+    req.body.slide = `${domain}/images/layout/${req.file.filename}`
+    const doc = await layout.addBrendImg(req.body.slide, req.file.filename)
+    return res.status(doc.statusCode).send(doc)
+  } catch (e) {
+    console.log(e);
+    return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
+  }
+})
+
+router.patch('/brend/:id', upload, async (req, res) => {
+  try {
+    let { id } = req.params;
+    req.body.slide = `${domain}/images/layout/${req.file.filename}`
+    let doc = await layout.updateBrend(id, req.body.slide, req.file.filename);
+    return res.status(doc.statusCode).send(doc);
+  } catch (e) {
+    return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
+  }
+})
+
+router.delete('/brend/:id', async (req, res) => {
+  try {
+    let { id } = req.params;
+    let doc = await layout.deleteBrend(id);
     return res.status(doc.statusCode).send(doc);
   } catch (e) {
     return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)

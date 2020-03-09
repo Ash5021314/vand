@@ -10,4 +10,7 @@ export const UPDATE_ABOUT_IMG = "UPDATE_ABOUT_IMG";
 export const UPDATE_SLIDER = "UPDATE_SLIDER";
 export const ADD_SLIDE = "ADD_SLIDE";
 export const DELETE_SLIDE = "DELETE_SLIDE";
+export const ADD_BREND = "ADD_BREND";
+export const DELETE_BREND = "DELETE_BREND";
+export const UPDATE_BREND = "UPDATE_BREND";
 export const CREATE_DOOR = "CREATE_DOOR";
