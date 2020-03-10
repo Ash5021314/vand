@@ -24,15 +24,16 @@ const Iron = ({res}) => {
                   }
                 />
               </div>
-              <div className="flip-box-back">
-                <Card.Img
-                  variant="top"
-                  
-                  src={res.otherColor[0].image}
-                  style={{height: '100%'}}
-                  alt={'a'}
-                />
-              </div>
+              {res.otherColor.length && (
+                <div className="flip-box-back">
+                  <Card.Img
+                    variant="top"
+                    src={res.otherColor[0].image}
+                    style={{height: '100%'}}
+                    alt={'a'}
+                  />
+                </div>
+              )}
             </div>
           </div>
           <Card.Body className="alignCenter">

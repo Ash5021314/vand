@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {makeStyles} from '@material-ui/core/styles'
+import React, { useState } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
@@ -15,11 +15,16 @@ import Button from '@material-ui/core/Button'
 import CloseIcon from '@material-ui/icons/Close'
 import Table from 'react-bootstrap/Table'
 import Pagination from '@material-ui/lab/Pagination'
+import axios from 'axios'
 
-import {connect} from 'react-redux'
-import {createDoor, getInteriorDoors, getIronDoors} from '../store/actions/doorsAction'
-import {Init} from '../store/actions/auhtAction'
-import {getHomePage} from '../store/actions/layoutAction'
+import { connect } from 'react-redux'
+import {
+  createDoor,
+  updateDoor,
+  createDoorOtherColor, domain,
+} from '../store/actions/doorsAction'
+import { Init } from '../store/actions/auhtAction'
+import { getHomePage } from '../store/actions/layoutAction'
 
 const useStyles = makeStyles({
   root: {
@@ -84,12 +89,13 @@ const useStyle = makeStyles(() => ({
 }))
 // selectedDoors
 const Doors = (props) => {
-  const {selectedDoors} = props
-  // const [doors, setDoors] = useState([]);
-  const [open, setOpen] = useState(false)
-  const [openInterior, setOpenInterior] = useState(false)
-  const [value, setValue] = useState({})
-  const [selectedDoor, setSelectedDoor] = useState(null)
+  const { selectedDoors } = props
+  const [ open, setOpen ] = useState(false)
+  const [ openInterior, setOpenInterior ] = useState(false)
+  const [ smallImage, setSmallImage ] = useState({})
+  const [ selectedDoor, setSelectedDoor ] = useState(null)
+
+  console.log('selected door', selectedDoor)
 
   const classes = useStyles()
   const classe = useStyle()
@@ -102,22 +108,45 @@ const Doors = (props) => {
     setSelectedDoor(door)
     setOpenInterior(true)
   }
-  //
-  // const handleClose = () => {
-  //   setOpen(false)
-  //   setOpenInterior(false)
-  // }
+
+  const onChangeFrontImage = async event => {
+    const data = new FormData()
+    data.append('img', event.target.files[0])
+    try {
+      const response = await axios.patch(`${domain}/doors/${selectedDoor._id}/image`, data, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+      )
+      setSelectedDoor((selectedDoor) => ({
+        ...selectedDoor,
+        frontImage: response.data,
+      }))
+    } catch {
+    }
+  }
 
   const onChange = event => {
+    event.persist()
+    const name = event.target.name
+    let addingValue
+    if ([ 'image', 'frontImage' ].includes(name)) {
+      addingValue = event.target.files[0]
+    } else {
+      addingValue = event.target.value
+    }
+
     // wait for state last updated version, because state next version depends on prev version
-    setSelectedDoor((selectedDoor) => ({
+    setSelectedDoor(selectedDoor => ({
       ...selectedDoor,
-      [event.target.name]: event.target.value,
+      [name]: addingValue,
     }))
   }
+
   const onLittleChange = (value, arrayName, name, index) => {
     setSelectedDoor((selectedDoor) => {
-      const newArray = [...selectedDoor[arrayName]]
+      const newArray = [ ...selectedDoor[arrayName] ]
       const field = newArray[index]
       field[name] = value
 
@@ -128,31 +157,49 @@ const Doors = (props) => {
     })
   }
 
-  const onImagePick = e => {
-    setValue({
-      ...value,
-      img: e.target.files[0],
-    })
-  }
-  const onchange = event => {
-    setValue({
-      ...value,
-      [event.target.name]: event.target.value,
+  // const onImagePick = e => {
+  //   setValue({
+  //     ...value,
+  //     img: e.target.files[0],
+  //   })
+  // }
+  // const onchange = event => {
+  //   setValue({
+  //     ...value,
+  //     [event.target.name]: event.target.value,
+  //   })
+  // }
+
+  const handleAddSmallImage = event => {
+    const name = event.target.name
+    let addingValue
+    if ('image' === name) {
+      addingValue = event.target.files[0]
+    } else {
+      addingValue = event.target.value
+    }
+
+    setSmallImage({
+      ...smallImage,
+      [name]: addingValue,
     })
   }
 
+  const handleSmallImageSave = () => {
+    props.createDoorOtherColor(selectedDoor._id, smallImage)
+    window.location.reload()
+  }
 
-  const handleClose = async () => {
-    let img = new FormData()
-    img.append('img', value.img)
-    // img.append('category', doorType)
-    delete value.img
-    Object.keys(value).map(key => {
-      img.append(key, value[key])
-    })
-    let resp = await props.createDoor(img, value)
+  const handleSaveAndClose = async () => {
+    // let data = new FormData()
+    // Object.keys(selectedDoor).map(key => {
+    //   data.append(key, selectedDoor[key])
+    // })
+    let resp = await props.updateDoor(selectedDoor._id, selectedDoor)
     if (resp.success) {
-      // setOpenInsertInterior(false)
+      setOpen(false)
+      setOpenInterior(false)
+      window.location.reload()
     }
   }
   return (
@@ -200,7 +247,7 @@ const Doors = (props) => {
                           />
                           <CardMedia
                             className={classes.mediaBack}
-                            image={res.otherColor === 'undefined' ? res.otherColor[0].image : null}
+                            image={res.otherColor === 'undefined' ? res.otherColor[0].image : 'not found'}
                           />
                           <CardContent>
                             <Typography variant="h5" component="h3">
@@ -224,18 +271,24 @@ const Doors = (props) => {
           </div>
         </>
       )}
-      <Dialog fullScreen open={open} onClose={handleClose}>
+      <Dialog fullScreen open={open} onClose={() => {
+        setSmallImage({})
+        setOpen(false)
+      }}>
         <AppBar className={classe.appBar}>
           <Toolbar className={classe.flexBetween}>
             <IconButton
               edge="start"
               color="inherit"
-              onClick={handleClose}
+              onClick={() => {
+                setSmallImage({})
+                setOpen(false)
+              }}
               aria-label="close"
             >
               <CloseIcon/>
             </IconButton>
-            <Button autoFocus color="inherit" onClick={handleClose}>
+            <Button autoFocus color="inherit" onClick={handleSaveAndClose}>
               САХРАНИТЬ
             </Button>
           </Toolbar>
@@ -247,8 +300,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Дверь с наружи</th>
-                <th>Обнавить</th>
-                <th>Удалить</th>
               </tr>
               </thead>
               <tbody>
@@ -259,17 +310,7 @@ const Doors = (props) => {
                     src={selectedDoor.frontImage}
                     className={classe.adminDoor}
                   />
-                  <input type="file" name="frontImage"/>
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
+                  <input type="file" name="frontImage" onChange={onChangeFrontImage}/>
                 </td>
               </tr>
               </tbody>
@@ -282,29 +323,28 @@ const Doors = (props) => {
                 <th>Цвет</th>
                 <th>Сторона</th>
                 <th>Зарисовка</th>
-                <th>Обнавить</th>
-                <th>Удалить</th>
+                <th>Опции</th>
               </tr>
               </thead>
               <tbody>
               <tr>
                 <td>
-                  <input type="file" name="frontImageInsert"/>
+                  <input type="file" name="image" onChange={handleAddSmallImage}/>
                 </td>
                 <td>
-                  <input type="text" name="priceInsert"/>
+                  <input type="text" value={smallImage.price} name="price" onChange={handleAddSmallImage}/>
                 </td>
                 <td>
-                  <input type="text" name="colorInsert"/>
+                  <input type="text" value={smallImage.color} name="color" onChange={handleAddSmallImage}/>
                 </td>
                 <td>
-                  <input type="text" name="sideInsert"/>
+                  <input type="text" value={smallImage.side} name="side" onChange={handleAddSmallImage}/>
                 </td>
                 <td>
-                  <input type="text" name="pictureInsert"/>
+                  <input type="text" value={smallImage.picture} name="picture" onChange={handleAddSmallImage}/>
                 </td>
                 <td>
-                  <Button variant="contained" color="secondary">
+                  <Button variant="contained" color="secondary" onClick={handleSmallImageSave}>
                     Добавить
                   </Button>
                 </td>
@@ -318,11 +358,11 @@ const Doors = (props) => {
                         src={res.image}
                         className={classe.adminBackDoor}
                       />
-                      <input type="file" name="littleImage"
-                             onChange={(event) => {
-                               onLittleChange(event.target.value, 'otherColor', 'image', index)
-                             }}
-                      />
+                      {/*<input type="file" name="littleImage"*/}
+                      {/*       onChange={(event) => {*/}
+                      {/*         onLittleChange(event.target.value, 'otherColor', 'image', index)*/}
+                      {/*       }}*/}
+                      {/*/>*/}
                     </td>
                     <td>
                       <input
@@ -365,11 +405,6 @@ const Doors = (props) => {
                       />
                     </td>
                     <td>
-                      <Button variant="contained" color="primary">
-                        Обнавить
-                      </Button>
-                    </td>
-                    <td>
                       <Button variant="contained" color="secondary">
                         Удалить
                       </Button>
@@ -383,9 +418,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Производитель</th>
-
-                <th>Обнавить</th>
-                <th>Удалить</th>
               </tr>
               </thead>
               <tbody>
@@ -394,18 +426,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.manufacturer}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'manufacturer'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -415,29 +439,19 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Имя</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
               <tr>
-                <td>
+                <td> Панель для входных дверей
                   <input
                     type="text"
                     defaultValue={selectedDoor.title}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
                     onChange={onChange}
+                    name={'title'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -447,8 +461,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Размер дверного блока</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -457,18 +470,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.doorBlockSize}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'doorBlockSize'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -477,9 +482,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Серия</th>
-
-                <th>Обнавить</th>
-                <th>Удалить</th>
               </tr>
               </thead>
               <tbody>
@@ -488,18 +490,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.series}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'series'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -509,8 +503,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Толщина полотна (мм)</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -519,18 +512,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.metalSheetThickness}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'metalSheetThickness'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -540,8 +525,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Толщина листа металла (мм.)</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -550,18 +534,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.thickness}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'thickness'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -571,8 +547,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Класс прочности</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -581,18 +556,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.strengthClass}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'strengthClass'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -602,8 +569,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Значение по эксплутационным характеристикам</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -612,18 +578,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.performanceValue}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'performanceValue'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -633,8 +591,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Класс устойчивости к взлому</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -643,18 +600,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.burglarResistanceClass}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'burglarResistanceClass'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -664,8 +613,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Количество петель</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -674,18 +622,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.numberOfLoops}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'numberOfLoops'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -695,8 +635,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Противосъемы</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -705,18 +644,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.antiSeize}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'antiSeize'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -726,8 +657,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Регулировка прижима</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -736,18 +666,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.clipAdjustment}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'clipAdjustment'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -757,8 +679,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Коробка</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -767,18 +688,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.box}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'box'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -788,8 +701,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Вылет наличника от короба</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -798,18 +710,9 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.platbandDepartureFromTheBox}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -819,8 +722,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Крепление</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -829,18 +731,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.mount}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'mount'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -850,8 +744,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Утеплитель</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -860,18 +753,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.insulation}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'insulation'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -881,8 +766,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Усиление замковой зоны</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -891,18 +775,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.castleStrengthening}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'castleStrengthening'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -912,8 +788,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Ночная задвижка</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -922,18 +797,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.nightValve}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'nightValve'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -943,8 +810,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Терморазрыв</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -953,18 +819,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.thermalBreak}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'thermalBreak'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -974,8 +832,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Цинкогрунт</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -984,18 +841,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.zinkogrunt}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'zinkogrunt'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -1005,8 +854,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Вес двери</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -1015,18 +863,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.doorWeight}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'doorWeight'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -1036,8 +876,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Цена</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -1046,18 +885,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.price}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'price'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -1066,9 +897,8 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Дополнительные фото</th>
+                <th>Опции</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
               </tr>
               </thead>
               <tbody>
@@ -1093,16 +923,6 @@ const Doors = (props) => {
                              }}
                       />
                     </td>
-                    <td>
-                      <Button variant="contained" color="primary">
-                        Обнавить
-                      </Button>
-                    </td>
-                    <td>
-                      <Button variant="contained" color="secondary">
-                        Удалить
-                      </Button>
-                    </td>
                   </tr>
                 )
               })
@@ -1112,18 +932,24 @@ const Doors = (props) => {
           </>
         )}
       </Dialog>
-      <Dialog fullScreen open={openInterior} onclose={handleClose}>
+      <Dialog fullScreen open={openInterior} onclose={() => {
+        setSmallImage({})
+        setOpenInterior(false)
+      }}>
         <AppBar className={classe.appBar}>
           <Toolbar className={classe.flexBetween}>
             <IconButton
               edge="start"
               color="inherit"
-              onClick={handleClose}
+              onClick={() => {
+                setSmallImage({})
+                setOpenInterior(false)
+              }}
               aria-label="close"
             >
               <CloseIcon/>
             </IconButton>
-            <Button autoFocus color="inherit" onClick={handleClose}>
+            <Button autoFocus color="inherit" onClick={handleSaveAndClose}>
               САХРАНИТЬ
             </Button>
           </Toolbar>
@@ -1135,8 +961,8 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Дверь с наружи</th>
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
+
               </tr>
               </thead>
               <tbody>
@@ -1149,16 +975,6 @@ const Doors = (props) => {
                   />
                   <input type="file" name="frontImage"/>
                 </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
-                </td>
               </tr>
               </tbody>
             </Table>
@@ -1167,21 +983,21 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Панель для межкомнотных дверей</th>
                 <th>Цвет</th>
-                <th>Обнавить</th>
-                <th>Удалить</th>
+                <th>Опции</th>
+
               </tr>
               </thead>
               <tbody>
               <tr>
                 <td>
-                  <input type="file" name="frontImageInsert" onChange={onImagePick}/>
+                  <input type="file" name="image" onChange={handleAddSmallImage}/>
                 </td>
                 <td>
-                  <input type="text" name="colorInsert" onChange={onchange}/>
+                  <input type="text" name="color" onChange={handleAddSmallImage}/>
                 </td>
 
                 <td>
-                  <Button variant="contained" color="secondary">
+                  <Button variant="contained" color="secondary" onClick={handleSmallImageSave}>
                     Добавить
                   </Button>
                 </td>
@@ -1196,11 +1012,11 @@ const Doors = (props) => {
                         src={res.image}
                         className={classe.adminBackDoor}
                       />
-                      <input type="file" name="littleImage"
-                             onChange={(event) => {
-                               onLittleChange(event.target.value, 'otherColor', 'image', index)
-                             }}
-                      />
+                      {/*<input type="file" name="littleImage"*/}
+                      {/*       onChange={(event) => {*/}
+                      {/*         onLittleChange(event.target.value, 'otherColor', 'image', index)*/}
+                      {/*       }}*/}
+                      {/*/>*/}
                     </td>
 
                     <td>
@@ -1212,11 +1028,6 @@ const Doors = (props) => {
                         }}
                         defaultValue={res.color}
                       />
-                    </td>
-                    <td>
-                      <Button variant="contained" color="primary">
-                        Обнавить
-                      </Button>
                     </td>
                     <td>
                       <Button variant="contained" color="secondary">
@@ -1232,8 +1043,8 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Производитель</th>
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
+
               </tr>
               </thead>
               <tbody>
@@ -1242,18 +1053,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.manufacturer}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'manufacturer'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -1262,9 +1065,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Имя</th>
-
-                <th>Обнавить</th>
-                <th>Удалить</th>
               </tr>
               </thead>
               <tbody>
@@ -1273,19 +1073,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.title}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
                     onChange={onChange}
+                    name={'title'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -1295,8 +1086,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Размер дверного блока</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -1305,18 +1095,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.doorBlockSize}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'doorBlockSize'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -1326,8 +1108,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Серия</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -1336,18 +1117,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.series}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'series'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -1357,8 +1130,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Внутреннее наполнение</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -1367,18 +1139,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.inside}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'inside'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -1388,8 +1152,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Покрытие</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -1398,18 +1161,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.coating}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'coating'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -1419,8 +1174,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Тип остекления</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -1429,18 +1183,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.glazing}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'glazing'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -1450,8 +1196,7 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Цена за полотно</th>
 
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
               </tr>
               </thead>
               <tbody>
@@ -1460,18 +1205,10 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.priceFront}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'priceFront'}
                   />
-                </td>
-                <td>
-                  <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
-                  </Button>
                 </td>
               </tr>
               </tbody>
@@ -1480,8 +1217,8 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Цена за комплект</th>
-                <th>Обнавить</th>
-                <th>Удалить</th>
+
+
               </tr>
               </thead>
               <tbody>
@@ -1490,20 +1227,48 @@ const Doors = (props) => {
                   <input
                     type="text"
                     defaultValue={selectedDoor.fullPrice}
-                    style={{width: '90%'}}
+                    style={{ width: '90%' }}
+                    onChange={onChange}
+                    name={'fullPrice'}
                   />
+                </td>
+              </tr>
+              </tbody>
+            </Table>
+            <Table striped bordered hover>
+              <thead>
+              <tr className="text-light bg-dark">
+                <th>Дополнительные фото</th>
+                <th>Опции</th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  <input type="file"/>
                 </td>
                 <td>
                   <Button variant="contained" color="primary">
-                    Обнавить
-                  </Button>
-                </td>
-                <td>
-                  <Button variant="contained" color="secondary">
-                    Удалить
+                    Добавить
                   </Button>
                 </td>
               </tr>
+              {selectedDoor.moreImage && selectedDoor.moreImage.map((item, index) => {
+                return (
+                  <tr key={index}>
+                    <td>
+                      <img alt="Remy Sharp" src={item.image} className={classe.adminDoor}/>
+                      <input type="file" name="littleSlide"
+                             onChange={(event) => {
+                               onLittleChange(event.target.value, 'moreImage', 'image', index)
+                             }}
+                      />
+                    </td>
+                  </tr>
+                )
+              })
+              }
               </tbody>
             </Table>
           </>
@@ -1515,10 +1280,9 @@ const Doors = (props) => {
   )
 }
 
-
 const mapStateToProps = state => {
   return {
     auth: state.auth,
   }
 }
-export default connect(mapStateToProps, {Init, createDoor, getHomePage})(Doors)
+export default connect(mapStateToProps, { Init, createDoor, updateDoor, createDoorOtherColor, getHomePage })(Doors)

@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
-import {makeStyles} from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Drawer from '@material-ui/core/Drawer'
 import Box from '@material-ui/core/Box'
@@ -19,17 +19,12 @@ import Doors from './Doors'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Button from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
-import CloseIcon from '@material-ui/icons/Close'
-import Table from 'react-bootstrap/Table'
-import {Form} from 'react-bootstrap'
-import Col from 'react-bootstrap/Col'
-import {connect} from 'react-redux'
-import {Init} from '../store/actions/auhtAction'
+import { connect } from 'react-redux'
+import { Init } from '../store/actions/auhtAction'
 import Notification from './Notification'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
-import {createDoor, getDoors} from '../store/actions/doorsAction'
-import {getHomePage} from '../store/actions/layoutAction'
+import { createDoor, getDoors } from '../store/actions/doorsAction'
+import { getHomePage } from '../store/actions/layoutAction'
 import doors from '../doors'
 import Orders from './Orders'
 import AdminSlider from './AdminSlider'
@@ -37,7 +32,7 @@ import AboutAdmin from './AboutAdmin'
 import AdminBrends from './AdminBrends'
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 import Modal from 'react-bootstrap/Modal'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const drawerWidth = 240
 
@@ -58,7 +53,7 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create([ 'width', 'margin' ], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
@@ -66,7 +61,7 @@ const useStyles = makeStyles(theme => ({
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create([ 'width', 'margin' ], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
@@ -154,15 +149,15 @@ function Dashboard(props) {
     window.location.href = '/Signin'
   }
 
-  const [doorType, setDoorType] = React.useState('iron')
+  const [ doorType, setDoorType ] = useState('iron')
   // one of doors, orders, slider
-  const [collection, setCollection] = React.useState([])
-  const [activeMenu, setActiveMenu] = React.useState('doors')
+  const [ collection, setCollection ] = useState([])
+  const [ activeMenu, setActiveMenu ] = useState('doors')
 
-  const [open, setOpen] = React.useState(true)
+  const [ open, setOpen ] = useState(true)
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [checked, setChecked] = useState(false)
-  const [modalShow, setModalShow] = useState(false)
+  const [ checked, setChecked ] = useState(false)
+  const [ modalShow, setModalShow ] = useState(false)
   const classes = useStyles()
 
   function MyVerticallyCenteredModal(props) {
@@ -184,7 +179,7 @@ function Dashboard(props) {
                 variant="contained"
                 color="primary"
                 className={classes.addButton}
-                style={{float: 'none'}}
+                style={{ float: 'none' }}
               >
                 Входные
               </Button>
@@ -194,7 +189,7 @@ function Dashboard(props) {
               margin: '2%',
             }}>
               <Button
-                style={{float: 'none'}}
+                style={{ float: 'none' }}
                 variant="contained"
                 color="primary"
                 className={classes.addButton}
@@ -212,20 +207,18 @@ function Dashboard(props) {
     props.getHomePage()
     props.getDoors()
   }, [])
+
   useEffect(() => {
-    setCollection(
-      props.doors.all,
-    )
-  }, [props.doors])
+    setCollection(props.doors)
+  }, [ props.doors ])
 
   const menus = {
-    doors: <Doors selectedDoors={collection.filter(({category}) => category === doorType)}/>,
+    doors: <Doors selectedDoors={collection.filter(({ category }) => category === doorType)}/>,
     orders: <Orders/>,
     slider: <AdminSlider/>,
     about: <AboutAdmin/>,
     brends: <AdminBrends/>,
   }
-
 
   const handleDrawerOpen = () => {
     setOpen(true)
@@ -382,4 +375,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {Init, createDoor, getHomePage, getDoors})(Dashboard)
+export default connect(mapStateToProps, { Init, createDoor, getHomePage, getDoors })(Dashboard)
