@@ -15,10 +15,11 @@ import Button from '@material-ui/core/Button'
 import CloseIcon from '@material-ui/icons/Close'
 import Table from 'react-bootstrap/Table'
 import Pagination from '@material-ui/lab/Pagination'
-import Container from '@material-ui/core/Container'
 
-import { connect } from 'react-redux'
-import { getInteriorDoors,getIronDoors } from '../store/actions/doorsAction'
+import {connect} from 'react-redux'
+import {createDoor, getInteriorDoors, getIronDoors} from '../store/actions/doorsAction'
+import {Init} from '../store/actions/auhtAction'
+import {getHomePage} from '../store/actions/layoutAction'
 
 const useStyles = makeStyles({
   root: {
@@ -81,12 +82,13 @@ const useStyle = makeStyles(() => ({
     justifyContent: 'flex-End',
   },
 }))
-
-export default function Doors({selectedDoors}) {
+// selectedDoors
+const Doors = (props) => {
+  const {selectedDoors} = props
   // const [doors, setDoors] = useState([]);
   const [open, setOpen] = useState(false)
   const [openInterior, setOpenInterior] = useState(false)
-  // const [value, setValue] = useState({})
+  const [value, setValue] = useState({})
   const [selectedDoor, setSelectedDoor] = useState(null)
 
   const classes = useStyles()
@@ -100,11 +102,11 @@ export default function Doors({selectedDoors}) {
     setSelectedDoor(door)
     setOpenInterior(true)
   }
-
-  const handleClose = () => {
-    setOpen(false)
-    setOpenInterior(false)
-  }
+  //
+  // const handleClose = () => {
+  //   setOpen(false)
+  //   setOpenInterior(false)
+  // }
 
   const onChange = event => {
     // wait for state last updated version, because state next version depends on prev version
@@ -115,7 +117,6 @@ export default function Doors({selectedDoors}) {
   }
   const onLittleChange = (value, arrayName, name, index) => {
     setSelectedDoor((selectedDoor) => {
-      console.log(selectedDoor)
       const newArray = [...selectedDoor[arrayName]]
       const field = newArray[index]
       field[name] = value
@@ -127,6 +128,33 @@ export default function Doors({selectedDoors}) {
     })
   }
 
+  const onImagePick = e => {
+    setValue({
+      ...value,
+      img: e.target.files[0],
+    })
+  }
+  const onchange = event => {
+    setValue({
+      ...value,
+      [event.target.name]: event.target.value,
+    })
+  }
+
+
+  const handleClose = async () => {
+    let img = new FormData()
+    img.append('img', value.img)
+    // img.append('category', doorType)
+    delete value.img
+    Object.keys(value).map(key => {
+      img.append(key, value[key])
+    })
+    let resp = await props.createDoor(img, value)
+    if (resp.success) {
+      // setOpenInsertInterior(false)
+    }
+  }
   return (
     <>
       {!selectedDoors.length ? (
@@ -141,10 +169,13 @@ export default function Doors({selectedDoors}) {
                     <Grid item xs={6} md={3} lg={3} key={index}>
                       <Card className={classes.root} onClick={() => handleClickOpenInterior(res)}>
                         <CardActionArea>
-
+                          <CardMedia
+                            className={classes.mediaFront}
+                            image={res.frontImage}
+                          />
                           <CardMedia
                             className={classes.mediaBackInterior}
-                            image={res.otherColor ? res.otherColor[0].image : ''}
+                            image={res.otherColor === 'undefined' ? res.otherColor[0].image : null}
                           />
                           <div>
                             <CardContent>
@@ -169,7 +200,7 @@ export default function Doors({selectedDoors}) {
                           />
                           <CardMedia
                             className={classes.mediaBack}
-                            image={res.otherColor ? res.otherColor[0].image : ''}
+                            image={res.otherColor === 'undefined' ? res.otherColor[0].image : null}
                           />
                           <CardContent>
                             <Typography variant="h5" component="h3">
@@ -216,7 +247,6 @@ export default function Doors({selectedDoors}) {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Дверь с наружи</th>
-
                 <th>Обнавить</th>
                 <th>Удалить</th>
               </tr>
@@ -1082,7 +1112,7 @@ export default function Doors({selectedDoors}) {
           </>
         )}
       </Dialog>
-      <Dialog fullScreen open={openInterior} onClose={handleClose}>
+      <Dialog fullScreen open={openInterior} onclose={handleClose}>
         <AppBar className={classe.appBar}>
           <Toolbar className={classe.flexBetween}>
             <IconButton
@@ -1101,7 +1131,37 @@ export default function Doors({selectedDoors}) {
 
         {selectedDoor && (
           <>
-
+            <Table striped bordered hover>
+              <thead>
+              <tr className="text-light bg-dark">
+                <th>Дверь с наружи</th>
+                <th>Обнавить</th>
+                <th>Удалить</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  <img
+                    alt="Remy Sharp"
+                    src={selectedDoor.frontImage}
+                    className={classe.adminDoor}
+                  />
+                  <input type="file" name="frontImage"/>
+                </td>
+                <td>
+                  <Button variant="contained" color="primary">
+                    Обнавить
+                  </Button>
+                </td>
+                <td>
+                  <Button variant="contained" color="secondary">
+                    Удалить
+                  </Button>
+                </td>
+              </tr>
+              </tbody>
+            </Table>
             <Table striped bordered hover>
               <thead>
               <tr className="text-light bg-dark">
@@ -1114,10 +1174,10 @@ export default function Doors({selectedDoors}) {
               <tbody>
               <tr>
                 <td>
-                  <input type="file" name="frontImageInsert"/>
+                  <input type="file" name="frontImageInsert" onChange={onImagePick}/>
                 </td>
                 <td>
-                  <input type="text" name="colorInsert"/>
+                  <input type="text" name="colorInsert" onChange={onchange}/>
                 </td>
 
                 <td>
@@ -1127,6 +1187,7 @@ export default function Doors({selectedDoors}) {
                 </td>
               </tr>
               {selectedDoor.otherColor && selectedDoor.otherColor.map((res, index) => {
+
                 return (
                   <tr key={index}>
                     <td>
@@ -1453,3 +1514,11 @@ export default function Doors({selectedDoors}) {
     </>
   )
 }
+
+
+const mapStateToProps = state => {
+  return {
+    auth: state.auth,
+  }
+}
+export default connect(mapStateToProps, {Init, createDoor, getHomePage})(Doors)

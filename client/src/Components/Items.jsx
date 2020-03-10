@@ -37,6 +37,7 @@ const Items = (props) => {
     setIronDoors(props.doors.iron)
     setInteriorDoors(props.doors.interior)
   }, [props.doors])
+  console.log(props)
   return (
     <>
       <Container>
@@ -83,13 +84,14 @@ const Items = (props) => {
             <Row>
               {
                 interiorDoor.map((res, index) => {
+                  console.log(res)
                   return (<Col xs={6} md={3} key={index}>
                       <Card>
                         <div className="flip-box">
-                          <div className="">
+                          <div className="flip-box-">
 
-                            <div className="flip-box-back">
-                              <Card.Img variant="top" src={res.otherColor[0].image}
+                            <div className="flip-box-">
+                              <Card.Img variant="top" src={res.frontImage}
                                         style={{height: '100%'}}/>
                             </div>
                           </div>
