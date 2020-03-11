@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Dialog from '@material-ui/core/Dialog'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -6,16 +6,15 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import Button from '@material-ui/core/Button'
 import Table from 'react-bootstrap/Table'
-import {Form} from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 import Col from 'react-bootstrap/Col'
 import allDoors from '../doors'
-import {makeStyles} from '@material-ui/core/styles'
-import {connect} from 'react-redux'
-import {Init} from '../store/actions/auhtAction'
-import {createDoor} from '../store/actions/doorsAction'
-import {getHomePage} from '../store/actions/layoutAction'
-import {Link, Redirect} from 'react-router-dom'
-
+import { makeStyles } from '@material-ui/core/styles'
+import { connect } from 'react-redux'
+import { Init } from '../store/actions/auhtAction'
+import { createDoor } from '../store/actions/doorsAction'
+import { getHomePage } from '../store/actions/layoutAction'
+import { Link, Redirect } from 'react-router-dom'
 
 const useStyle = makeStyles(() => ({
   appBar: {
@@ -55,11 +54,9 @@ const useStyle = makeStyles(() => ({
   },
 }))
 
-
 const CreateDoor = (props) => {
-  const [doorType, setDoorType] = useState('iron')
-  const [value, setValue] = useState({})
-  const [open, setOpen] = useState(false)
+  const [ doorType, setDoorType ] = useState('iron')
+  const [ value, setValue ] = useState({})
 
   const classe = useStyle()
   useEffect(() => {
@@ -75,6 +72,7 @@ const CreateDoor = (props) => {
       [event.target.name]: event.target.value,
     })
   }
+
   const onImagePick = e => {
     setValue({
       ...value,
@@ -92,10 +90,9 @@ const CreateDoor = (props) => {
     })
     let resp = await props.createDoor(img, value)
     if (resp.success) {
-      // setOpenInsertInterior(false)
+      window.location.href = '/administrator'
     }
   }
-
 
   const handleCloseInsert = () => {
     Redirect('/administrator')
@@ -349,4 +346,4 @@ const mapStateToProps = state => {
     auth: state.auth,
   }
 }
-export default connect(mapStateToProps, {Init, createDoor, getHomePage})(CreateDoor)
+export default connect(mapStateToProps, { Init, createDoor, getHomePage })(CreateDoor)

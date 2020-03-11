@@ -21,7 +21,7 @@ import { connect } from 'react-redux'
 import {
   createDoor,
   updateDoor,
-  createDoorOtherColor, domain,
+  createDoorOtherColor, domain, deleteItem,
 } from '../store/actions/doorsAction'
 import { Init } from '../store/actions/auhtAction'
 import { getHomePage } from '../store/actions/layoutAction'
@@ -189,7 +189,11 @@ const Doors = (props) => {
     props.createDoorOtherColor(selectedDoor._id, smallImage)
     window.location.reload()
   }
-
+  const onDeleteItem = async (id) => {
+    await props.deleteItem(id)
+    setOpen(false)
+    setOpenInterior(false)
+  }
   const handleSaveAndClose = async () => {
     // let data = new FormData()
     // Object.keys(selectedDoor).map(key => {
@@ -202,6 +206,17 @@ const Doors = (props) => {
       window.location.reload()
     }
   }
+
+  const deleteOtherColor = async (id) => {
+    const response = await axios.delete(`${domain}/doors/${selectedDoor._id}/other-color/${id}`)
+    if (response.data.success) {
+      setSelectedDoor((selectedDoor) => ({
+        ...selectedDoor,
+        otherColor: selectedDoor.otherColor.filter(({ _id }) => _id !== id),
+      }))
+    }
+  }
+
   return (
     <>
       {!selectedDoors.length ? (
@@ -290,6 +305,9 @@ const Doors = (props) => {
             </IconButton>
             <Button autoFocus color="inherit" onClick={handleSaveAndClose}>
               САХРАНИТЬ
+            </Button>
+            <Button autoFocus color="secondary" onClick={() => onDeleteItem(selectedDoor._id)}>
+              Удалить
             </Button>
           </Toolbar>
         </AppBar>
@@ -405,7 +423,7 @@ const Doors = (props) => {
                       />
                     </td>
                     <td>
-                      <Button variant="contained" color="secondary">
+                      <Button variant="contained" color="secondary" onClick={() => deleteOtherColor(res._id)}>
                         Удалить
                       </Button>
                     </td>
@@ -1285,4 +1303,11 @@ const mapStateToProps = state => {
     auth: state.auth,
   }
 }
-export default connect(mapStateToProps, { Init, createDoor, updateDoor, createDoorOtherColor, getHomePage })(Doors)
+export default connect(mapStateToProps, {
+  Init,
+  createDoor,
+  deleteItem,
+  updateDoor,
+  createDoorOtherColor,
+  getHomePage,
+})(Doors)

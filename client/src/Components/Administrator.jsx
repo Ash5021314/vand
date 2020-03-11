@@ -272,7 +272,7 @@ function Dashboard(props) {
               <FormControlLabel
                 control={
                   <IconButton color="inherit" onClick={handleChange}>
-                    <Badge badgeContent={props.messages.seenMessages.length} color="secondary">
+                    <Badge badgeContent={props.messages.filter(({ seen }) => !seen).length} color="secondary">
                       <NotificationsIcon/>
                     </Badge>
                   </IconButton>

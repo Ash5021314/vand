@@ -2,20 +2,17 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import Header from './Components/Header'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Advantage from './Pages/Advantage'
 import Catalog from './Pages/Catalog'
 import Contact from './Pages/Contact'
 import Landing from './Components/Landing'
-import Footer from './Components/Footer'
 import Catalogs from './Pages/Catalogs'
 import Administrator from './Components/Administrator'
 import SignIn from './Components/SignIn'
 import DoorDesc from './Pages/DoorDesc'
 
-import PrivateRoute from './Components/PrivateRoute'
-
-import {Provider} from 'react-redux'
+import { Provider } from 'react-redux'
 import store from './store/configureStore'
 import Orders from './Components/Orders'
 import AdminSlider from './Components/AdminSlider'
@@ -29,7 +26,6 @@ function App() {
     <Provider store={store}>
       <Router>
         <Route exact path="/Administrator" component={Administrator}/>
-        {/* <PrivateRoute path="/Administrator" component={Administrator} /> */}
         <Header/>
         <Route exact path="/SignIn" component={SignIn}/>
         <Route exact path="/" component={Landing}/>

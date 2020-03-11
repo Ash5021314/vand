@@ -1,9 +1,9 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 
-const Iron = ({res}) => {
+const Iron = ({ res }) => {
   return (
     <Col
       xs={6}
@@ -24,12 +24,12 @@ const Iron = ({res}) => {
                   }
                 />
               </div>
-              {res.otherColor.length && (
+              {!!res.otherColor.length && (
                 <div className="flip-box-back">
                   <Card.Img
                     variant="top"
                     src={res.otherColor[0].image}
-                    style={{height: '100%'}}
+                    style={{ height: '100%' }}
                     alt={'a'}
                   />
                 </div>
@@ -37,7 +37,7 @@ const Iron = ({res}) => {
             </div>
           </div>
           <Card.Body className="alignCenter">
-            <Card.Title style={{color: 'grey', textDecoration: 'none'}}>{res.title}</Card.Title>
+            <Card.Title style={{ color: 'grey', textDecoration: 'none' }}>{res.title}</Card.Title>
           </Card.Body>
           <Card.Footer>
             <div className="text-muted alignCenter ">

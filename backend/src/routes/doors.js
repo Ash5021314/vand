@@ -79,4 +79,13 @@ router.delete('/:id', async (req, res) => {
   }
 })
 
+router.delete('/:doorId/other-color/:id', async (req, res) => {
+  try {
+    const doc = await doors.deleteOtherColor(req.params.doorId, req.params.id)
+    return res.status(doc.statusCode).send(doc)
+  } catch (e) {
+    return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
+  }
+})
+
 module.exports = router

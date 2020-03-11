@@ -6,10 +6,7 @@ import {
   MARK_AS_SEEN,
 } from '../actions/types'
 
-const initialState = {
-  messages: [],
-  seenMessages: [],
-}
+const initialState = []
 
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -18,26 +15,20 @@ export default function (state = initialState, action) {
         ...state,
       }
     case GET_MESSAGES:
-      return {
-        ...state,
-        messages: action.payload.data,
-      }
+      return action.payload.data
     case GET_SEEN_MESSAGES:
       return {
         ...state,
         seenMessages: action.payload.data,
       }
     case MARK_AS_SEEN:
-      return {
-        ...state,
-        seenMessages: state.seenMessages.filter(
-          msg => msg._id !== action.payload.data._id,
-        ),
-        messages: [
-          ...state.messages,
-          action.payload.data,
-        ],
+      const message = state.find(({ _id }) => _id === action.payload.data._id)
+      if (!message) {
+        return state
       }
+      message.seen = true
+
+      return state
     // case DELETE_MESSAGE:
     //   return{
 

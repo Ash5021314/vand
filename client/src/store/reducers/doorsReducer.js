@@ -1,4 +1,4 @@
-import {GET_INTERIOR, GET_IRON, GET_ALL, UPDATE_DOOR} from '../actions/types'
+import { GET_INTERIOR, GET_IRON, GET_ALL, UPDATE_DOOR, DELETE_DOOR } from '../actions/types'
 
 const initialState = []
 
@@ -16,6 +16,8 @@ export default function (state = initialState, action) {
     //   }
     case GET_ALL:
       return action.payload.data
+    case  DELETE_DOOR:
+      return state.filter((door) => door._id !== action.payload.id)
     default:
       return state
   }

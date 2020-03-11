@@ -19,7 +19,7 @@ export const sendMessage = doc => {
       },
       data: doc,
     })
-    dispatch({type: MESSAGE_SEND})
+    dispatch({ type: MESSAGE_SEND })
   }
 }
 
@@ -32,7 +32,7 @@ export const getMessages = () => {
         'Content-Type': 'application/json',
       },
     })
-    dispatch({type: GET_MESSAGES, payload: data.data})
+    dispatch({ type: GET_MESSAGES, payload: data.data })
   }
 }
 
@@ -45,7 +45,7 @@ export const getSeenMessages = () => {
         'Content-Type': 'application/json',
       },
     })
-    dispatch({type: GET_SEEN_MESSAGES, payload: data.data})
+    dispatch({ type: GET_SEEN_MESSAGES, payload: data.data })
   }
 }
 
@@ -58,9 +58,9 @@ export const deleteMessage = id => {
         'Content-Type': 'application/json',
       },
     })
-    dispatch({type: DELETE_MESSAGE})
+    dispatch({ type: DELETE_MESSAGE })
     if (data.data.success) {
-      return {success: true}
+      return { success: true }
     }
   }
 }
@@ -74,6 +74,6 @@ export const markAsSeen = id => {
         'Content-Type': 'application/json',
       },
     })
-    dispatch({type: MARK_AS_SEEN, payload: data.data})
+    dispatch({ type: MARK_AS_SEEN, payload: data.data })
   }
 }

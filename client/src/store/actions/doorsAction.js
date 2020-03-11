@@ -1,4 +1,4 @@
-import { CREATE_DOOR, GET_INTERIOR, GET_IRON, GET_ALL, UPDATE_DOOR } from './types'
+import { CREATE_DOOR, GET_INTERIOR, GET_IRON, GET_ALL, UPDATE_DOOR, DELETE_BREND, DELETE_DOOR } from './types'
 import axios from 'axios'
 
 export const domain = 'http://localhost:4000'
@@ -59,6 +59,19 @@ export const createDoorOtherColor = (doorId, data) => {
 //     return {success: true}
 //   }
 // }
+}
+export const deleteItem = (id) => {
+  return async dispatch => {
+    let data = await axios.delete(`${domain}/doors/${id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    if (data.data.success) {
+      dispatch({ type: DELETE_DOOR, payload: { id } })
+    }
+  }
 }
 
 const sendDoorData = async data => {
