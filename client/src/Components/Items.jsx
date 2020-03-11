@@ -16,7 +16,7 @@ const Items = (props) => {
 
   useEffect(() => {
     props.getDoors()
-  }, [])
+  }, [ props ])
 
   useEffect(() => {
     props.doors.reverse()
@@ -42,7 +42,7 @@ const Items = (props) => {
                                         style={{ height: '100%' }}/>
                             </div>
                             <div className="flip-box-back">
-                              <Card.Img variant="top" src={res.backImage}
+                              <Card.Img variant="top" src={res.otherColor[0] ? res.otherColor[0].image : 'not found'}
                                         style={{ height: '100%' }}/>
                             </div>
                           </div>
@@ -70,7 +70,6 @@ const Items = (props) => {
             <Row>
               {
                 interiorDoors.map((res, index) => {
-                  console.log(res)
                   return (<Col xs={6} md={3} key={index}>
                       <Card>
                         <div className="flip-box">

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Dialog from '@material-ui/core/Dialog'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
@@ -8,7 +7,6 @@ import Button from '@material-ui/core/Button'
 import Table from 'react-bootstrap/Table'
 import { Form } from 'react-bootstrap'
 import Col from 'react-bootstrap/Col'
-import allDoors from '../doors'
 import { makeStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
 import { Init } from '../store/actions/auhtAction'
@@ -87,6 +85,7 @@ const CreateDoor = (props) => {
     delete value.img
     Object.keys(value).map(key => {
       img.append(key, value[key])
+      return key
     })
     let resp = await props.createDoor(img, value)
     if (resp.success) {

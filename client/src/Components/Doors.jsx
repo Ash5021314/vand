@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
@@ -21,7 +21,7 @@ import { connect } from 'react-redux'
 import {
   createDoor,
   updateDoor,
-  createDoorOtherColor, domain, deleteItem,
+  createDoorOtherColor, domain, deleteItem, createDoorMore,
 } from '../store/actions/doorsAction'
 import { Init } from '../store/actions/auhtAction'
 import { getHomePage } from '../store/actions/layoutAction'
@@ -87,18 +87,40 @@ const useStyle = makeStyles(() => ({
     justifyContent: 'flex-End',
   },
 }))
-// selectedDoors
+
 const Doors = (props) => {
+  const doorsOnPage = 4
   const { selectedDoors } = props
   const [ open, setOpen ] = useState(false)
   const [ openInterior, setOpenInterior ] = useState(false)
   const [ smallImage, setSmallImage ] = useState({})
+  const [ moreImage, setMoreImage ] = useState({})
   const [ selectedDoor, setSelectedDoor ] = useState(null)
-
-  console.log('selected door', selectedDoor)
+  const [ currentPage, setPage ] = useState(1)
+  const [ pageTotalCount, setPageTotalCount ] = useState(1)
+  const [ doorsToShow, setDoorsToShow ] = useState([])
 
   const classes = useStyles()
   const classe = useStyle()
+
+  useEffect(() => {
+    if (!selectedDoors.length) {
+      return
+    }
+
+    setPageTotalCount(Math.ceil(selectedDoors.length / doorsOnPage))
+  }, [ selectedDoors ])
+
+  useEffect(() => {
+    const page = (currentPage - 1) * doorsOnPage
+    setDoorsToShow(selectedDoors.slice(page, page + doorsOnPage))
+  }, [ currentPage, selectedDoors ])
+
+  const onPageChange = (event, page) => {
+    if (page !== currentPage) {
+      setPage(page)
+    }
+  }
 
   const handleClickOpen = (door) => {
     setSelectedDoor(door)
@@ -110,6 +132,7 @@ const Doors = (props) => {
   }
 
   const onChangeFrontImage = async event => {
+    debugger
     const data = new FormData()
     data.append('img', event.target.files[0])
     try {
@@ -184,11 +207,30 @@ const Doors = (props) => {
       [name]: addingValue,
     })
   }
+  const handleAddMoreImage = event => {
+    const name = event.target.name
+    let addingValue
+    if ('image' === name) {
+      addingValue = event.target.files[0]
+    } else {
+      addingValue = event.target.value
+    }
+
+    setMoreImage({
+      ...moreImage,
+      [name]: addingValue,
+    })
+  }
 
   const handleSmallImageSave = () => {
     props.createDoorOtherColor(selectedDoor._id, smallImage)
     window.location.reload()
   }
+  const handleMoreImageSave = () => {
+    props.createDoorMore(selectedDoor._id, moreImage)
+    window.location.reload()
+  }
+
   const onDeleteItem = async (id) => {
     await props.deleteItem(id)
     setOpen(false)
@@ -216,15 +258,25 @@ const Doors = (props) => {
       }))
     }
   }
+  const deleteMoreImages = async (id) => {
+    console.log('id', id)
+    const response = await axios.delete(`${domain}/doors/${selectedDoor._id}/more-image/${id}`)
+    if (response.data.success) {
+      setSelectedDoor((selectedDoor) => ({
+        ...selectedDoor,
+        moreImage: selectedDoor.moreImage.filter(({ _id }) => _id !== id),
+      }))
+    }
+  }
 
   return (
     <>
-      {!selectedDoors.length ? (
+      {!doorsToShow.length ? (
         <h2>Loading...</h2>
       ) : (
         <>
           <Grid container spacing={5}>
-            {selectedDoors.map((res, index) => {
+            {doorsToShow.map((res, index) => {
               return (
                 'interior' === res.category ?
                   (
@@ -282,7 +334,7 @@ const Doors = (props) => {
             }
           </Grid>
           <div className={classes.center}>
-            <Pagination count={10} size="large"/>
+            <Pagination count={pageTotalCount} page={currentPage} onChange={onPageChange} size="large"/>
           </div>
         </>
       )}
@@ -456,8 +508,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Имя</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -478,8 +528,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Размер дверного блока</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -520,8 +568,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Толщина полотна (мм)</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -542,8 +588,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Толщина листа металла (мм.)</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -564,8 +608,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Класс прочности</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -586,8 +628,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Значение по эксплутационным характеристикам</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -608,8 +648,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Класс устойчивости к взлому</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -630,8 +668,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Количество петель</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -652,8 +688,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Противосъемы</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -674,8 +708,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Регулировка прижима</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -696,8 +728,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Коробка</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -718,8 +748,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Вылет наличника от короба</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -739,8 +767,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Крепление</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -761,8 +787,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Утеплитель</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -783,8 +807,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Усиление замковой зоны</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -805,8 +827,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Ночная задвижка</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -827,8 +847,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Терморазрыв</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -849,8 +867,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Цинкогрунт</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -871,8 +887,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Вес двери</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -893,8 +907,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Цена</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -916,16 +928,15 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Дополнительные фото</th>
                 <th>Опции</th>
-
               </tr>
               </thead>
               <tbody>
               <tr>
                 <td>
-                  <input type="file"/>
+                  <input type="file" name="image" onChange={handleAddMoreImage}/>
                 </td>
                 <td>
-                  <Button variant="contained" color="primary">
+                  <Button variant="contained" color="primary" onClick={handleMoreImageSave}>
                     Добавить
                   </Button>
                 </td>
@@ -935,11 +946,11 @@ const Doors = (props) => {
                   <tr key={index}>
                     <td>
                       <img alt="Remy Sharp" src={item.image} className={classe.adminDoor}/>
-                      <input type="file" name="littleSlide"
-                             onChange={(event) => {
-                               onLittleChange(event.target.value, 'moreImage', 'image', index)
-                             }}
-                      />
+                    </td>
+                    <td>
+                      <Button variant="contained" color="secondary" onClick={() => deleteMoreImages(item._id)}>
+                        Удалить
+                      </Button>
                     </td>
                   </tr>
                 )
@@ -950,7 +961,7 @@ const Doors = (props) => {
           </>
         )}
       </Dialog>
-      <Dialog fullScreen open={openInterior} onclose={() => {
+      <Dialog fullScreen open={openInterior} onClose={() => {
         setSmallImage({})
         setOpenInterior(false)
       }}>
@@ -970,6 +981,9 @@ const Doors = (props) => {
             <Button autoFocus color="inherit" onClick={handleSaveAndClose}>
               САХРАНИТЬ
             </Button>
+            <Button autoFocus color="secondary" onClick={() => onDeleteItem(selectedDoor._id)}>
+              Удалить
+            </Button>
           </Toolbar>
         </AppBar>
 
@@ -979,8 +993,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Дверь с наружи</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -991,7 +1003,7 @@ const Doors = (props) => {
                     src={selectedDoor.frontImage}
                     className={classe.adminDoor}
                   />
-                  <input type="file" name="frontImage"/>
+                  <input type="file" name="frontImage" onChange={onChangeFrontImage}/>
                 </td>
               </tr>
               </tbody>
@@ -1002,7 +1014,6 @@ const Doors = (props) => {
                 <th>Панель для межкомнотных дверей</th>
                 <th>Цвет</th>
                 <th>Опции</th>
-
               </tr>
               </thead>
               <tbody>
@@ -1030,13 +1041,7 @@ const Doors = (props) => {
                         src={res.image}
                         className={classe.adminBackDoor}
                       />
-                      {/*<input type="file" name="littleImage"*/}
-                      {/*       onChange={(event) => {*/}
-                      {/*         onLittleChange(event.target.value, 'otherColor', 'image', index)*/}
-                      {/*       }}*/}
-                      {/*/>*/}
                     </td>
-
                     <td>
                       <input
                         type="text"
@@ -1048,7 +1053,7 @@ const Doors = (props) => {
                       />
                     </td>
                     <td>
-                      <Button variant="contained" color="secondary">
+                      <Button variant="contained" color="secondary" onClick={() => deleteOtherColor(res._id)}>
                         Удалить
                       </Button>
                     </td>
@@ -1061,8 +1066,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Производитель</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -1103,8 +1106,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Размер дверного блока</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -1125,8 +1126,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Серия</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -1147,8 +1146,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Внутреннее наполнение</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -1169,8 +1166,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Покрытие</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -1191,8 +1186,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Тип остекления</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -1213,8 +1206,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Цена за полотно</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -1235,8 +1226,6 @@ const Doors = (props) => {
               <thead>
               <tr className="text-light bg-dark">
                 <th>Цена за комплект</th>
-
-
               </tr>
               </thead>
               <tbody>
@@ -1258,16 +1247,15 @@ const Doors = (props) => {
               <tr className="text-light bg-dark">
                 <th>Дополнительные фото</th>
                 <th>Опции</th>
-
               </tr>
               </thead>
               <tbody>
               <tr>
                 <td>
-                  <input type="file"/>
+                  <input type="file" name="image" onChange={handleAddMoreImage}/>
                 </td>
                 <td>
-                  <Button variant="contained" color="primary">
+                  <Button variant="contained" color="primary" onClick={handleMoreImageSave}>
                     Добавить
                   </Button>
                 </td>
@@ -1277,11 +1265,11 @@ const Doors = (props) => {
                   <tr key={index}>
                     <td>
                       <img alt="Remy Sharp" src={item.image} className={classe.adminDoor}/>
-                      <input type="file" name="littleSlide"
-                             onChange={(event) => {
-                               onLittleChange(event.target.value, 'moreImage', 'image', index)
-                             }}
-                      />
+                    </td>
+                    <td>
+                      <Button variant="contained" color="secondary" onClick={() => deleteMoreImages(item._id)}>
+                        Удалить
+                      </Button>
                     </td>
                   </tr>
                 )
@@ -1292,8 +1280,6 @@ const Doors = (props) => {
           </>
         )}
       </Dialog>
-
-
     </>
   )
 }
@@ -1309,5 +1295,6 @@ export default connect(mapStateToProps, {
   deleteItem,
   updateDoor,
   createDoorOtherColor,
+  createDoorMore,
   getHomePage,
 })(Doors)

@@ -12,7 +12,7 @@ const Orders = props => {
 
   useEffect(() => {
     props.getMessages()
-  }, [])
+  }, [ props ])
   useEffect(() => {
     setMessages(props.messages)
   }, [ props.messages ])

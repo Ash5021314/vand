@@ -25,6 +25,7 @@ const Notification = (props) => {
 
   useEffect(() => {
     props.getMessages()
+    // eslint-disable-next-line
   }, [])
 
   useEffect(() => {

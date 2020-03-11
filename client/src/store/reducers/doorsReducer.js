@@ -1,4 +1,4 @@
-import { GET_INTERIOR, GET_IRON, GET_ALL, UPDATE_DOOR, DELETE_DOOR } from '../actions/types'
+import { GET_ALL, DELETE_DOOR } from '../actions/types'
 
 const initialState = []
 

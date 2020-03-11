@@ -18,8 +18,9 @@ const Contact = () => {
               <p>г. Москва Открытое шоссе, дом 9, стр. 11</p>
             </div>
           </Col>
-          <Col xs={12} md={7} className="mb-50" className={'iframeclass'}>
+          <Col xs={12} md={7} className={'mb-50  iframeclass'}>
             <iframe
+              title={'unique'}
               src="https://yandex.ru/map-widget/v1/?um=constructor%3Aa51e9e339159f0e01dc8d0592705c49af35e75379805d72a543d046c8314b566&amp;source=constructor"
               width="100%" height="421" frameBorder="0"/>
           </Col>

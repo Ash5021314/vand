@@ -12,7 +12,6 @@ import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
 import Badge from '@material-ui/core/Badge'
 import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
 import MenuIcon from '@material-ui/icons/Menu'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import Doors from './Doors'
@@ -25,7 +24,7 @@ import Notification from './Notification'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import { createDoor, getDoors } from '../store/actions/doorsAction'
 import { getHomePage } from '../store/actions/layoutAction'
-import doors from '../doors'
+// import doors from '../doors'
 import Orders from './Orders'
 import AdminSlider from './AdminSlider'
 import AboutAdmin from './AboutAdmin'
@@ -125,24 +124,24 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const useStyless = makeStyles(theme => ({
-  root: {
-    height: 180,
-  },
-
-  paper: {
-    margin: theme.spacing(1),
-  },
-  svg: {
-    width: 100,
-    height: 100,
-  },
-  polygon: {
-    fill: theme.palette.common.white,
-    stroke: theme.palette.divider,
-    strokeWidth: 1,
-  },
-}))
+// const useStyless = makeStyles(theme => ({
+//   root: {
+//     height: 180,
+//   },
+//
+//   paper: {
+//     margin: theme.spacing(1),
+//   },
+//   svg: {
+//     width: 100,
+//     height: 100,
+//   },
+//   polygon: {
+//     fill: theme.palette.common.white,
+//     stroke: theme.palette.divider,
+//     strokeWidth: 1,
+//   },
+// }))
 
 function Dashboard(props) {
   if (!localStorage.getItem('a_a_key')) {
@@ -206,6 +205,7 @@ function Dashboard(props) {
   useEffect(() => {
     props.getHomePage()
     props.getDoors()
+    // eslint-disable-next-line
   }, [])
 
   useEffect(() => {
@@ -228,14 +228,13 @@ function Dashboard(props) {
     setChecked(prev => !prev)
   }
 
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
   const notificationStyle = {
     display: checked ? 'block' : 'none',
   }
-
-  function handleCloseInsert() {
-    setOpen(false)
-  }
+  //
+  // function handleCloseInsert() {
+  //   setOpen(false)
+  // }
 
   return (
     <>
@@ -277,7 +276,7 @@ function Dashboard(props) {
                     </Badge>
                   </IconButton>
                 }
-              />
+                label=""/>
               <div style={notificationStyle}>
                 <Notification/>
               </div>

@@ -1,35 +1,40 @@
-import React, {useEffect, useState} from 'react'
-import allDoors from '../doors'
+import React, { useEffect, useState } from 'react'
 import './DoorDesc.css'
 import Footer from '../Components/Footer'
 import 'owl.carousel/dist/assets/owl.carousel.css'
 import 'owl.carousel/dist/assets/owl.theme.default.css'
-import slideImage from '../doors'
-import InteriorDesc from './InteriorDesc'
 import IronDesc from './IronDesc'
+import { connect } from 'react-redux'
+import { getDoors } from '../store/actions/doorsAction'
+import InteriorDesc from './InteriorDesc'
 
-const DoorDesc = () => {
-  const [selectedDoor, setSelectedDoor] = useState(allDoors[0])
-  const [style, setStyle] = useState({
+const DoorDesc = (props) => {
+  const [ selectedDoor, setSelectedDoor ] = useState()
+  const [ style, setStyle ] = useState({
     active: 0,
   })
-  const [info, setInfo] = useState({
-    image: selectedDoor.otherColor[0].image,
-    price: selectedDoor.otherColor[0].price,
-    side: selectedDoor.otherColor[0].side,
-    color: selectedDoor.otherColor[0].color,
-    picture: selectedDoor.otherColor[0].picture,
-  })
-  const [slide, setSlide] = useState([])
-  let slider = slideImage[0].moreImage.map(item => {
-    return item
-  })
+  const [ info, setInfo ] = useState()
+
+  let url = props.location.pathname
+  let res = url.split('/')
+  let result = res[res.length - 1]
   useEffect(() => {
-    setSlide(slideImage[0].moreImage)
-  }, [])
+    if (!selectedDoor) {
+      props.getDoors()
+    }
+  }, [ props, selectedDoor ])
+
+  useEffect(() => {
+    const door = props.doors.find(item => item._id === result)
+    if (!door) {
+      return
+    }
+    setSelectedDoor(door)
+    setInfo({ ...door.otherColor[0] })
+  }, [ props.doors, result ])
 
   const options = {
-    items: 4,
+    items: 3,
     nav: false,
     loop: true,
     autoplay: true,
@@ -60,15 +65,11 @@ const DoorDesc = () => {
       active: index,
     })
   }
+
   const getInfo = (item) => {
-    setInfo({
-      image: item.image,
-      price: item.price,
-      side: item.side,
-      color: item.color,
-      picture: item.picture,
-    })
+    setInfo({ ...item })
   }
+
   const onClick = (index, item) => {
     handleClick(index)
     getInfo(item)
@@ -76,34 +77,45 @@ const DoorDesc = () => {
 
   return (
     <div style={back}>
-      {('interior' === selectedDoor.category) ?
-        <InteriorDesc
-          door={selectedDoor}
-          onClick={onClick}
-          backContent={backContent}
-          info={info}
-          slide={slide}
-          style={style}
-          itemImg={itemImg}
-          // slider={slider}
-          item={item}
-          options={options}
-        />
-        : <IronDesc
-          door={selectedDoor}
-          onClick={onClick}
-          backContent={backContent}
-          info={info}
-          slide={slide}
-          style={style}
-          itemImg={itemImg}
-          // slider={slider}
-          item={item}
-          options={options}
-        />}
+      {!!selectedDoor ? (
+        <>
+          {('interior' === selectedDoor.category) ? (
+            <InteriorDesc
+              door={selectedDoor}
+              onClick={onClick}
+              backContent={backContent}
+              info={info}
+              style={style}
+              itemImg={itemImg}
+              item={item}
+              options={options}
+            />
+          ) : (
+            <IronDesc
+              door={selectedDoor}
+              onClick={onClick}
+              backContent={backContent}
+              info={info}
+              style={style}
+              itemImg={itemImg}
+              item={item}
+              options={options}
+            />
+          )
+          }
+        </>
+      ) : (
+        <div>There is no selected door</div>
+      )}
       <Footer/>
     </div>
   )
 }
 
-export default DoorDesc
+const mapStateToProps = state => {
+  return {
+    doors: state.doors,
+  }
+}
+
+export default connect(mapStateToProps, { getDoors })(DoorDesc)

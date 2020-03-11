@@ -2,7 +2,6 @@ import {
   MESSAGE_SEND,
   GET_MESSAGES,
   GET_SEEN_MESSAGES,
-  DELETE_MESSAGE,
   MARK_AS_SEEN,
 } from '../actions/types'
 

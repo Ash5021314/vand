@@ -11,7 +11,7 @@ const domain = 'http://localhost:4000'
 
 export const sendMessage = doc => {
   return async dispatch => {
-    let data = await axios({
+    await axios({
       method: 'POST',
       url: `${domain}/messages`,
       headers: {

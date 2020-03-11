@@ -88,4 +88,23 @@ router.delete('/:doorId/other-color/:id', async (req, res) => {
   }
 })
 
+router.post('/:id/more-image', upload, async (req, res) => {
+  // console.log('data', req.body, req.file)
+  try {
+    req.body.image = `${domain}/images/doors/${req.file.filename}`
+    const doc = await doors.updateDocMoreImage(req.params.id, req.body)
+    return res.status(doc.statusCode).send(doc)
+  } catch (e) {
+    return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
+  }
+})
+router.delete('/:doorId/more-image/:id', async (req, res) => {
+  try {
+    const doc = await doors.deleteMoreImage(req.params.doorId, req.params.id)
+    return res.status(doc.statusCode).send(doc)
+  } catch (e) {
+    return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
+  }
+})
+
 module.exports = router

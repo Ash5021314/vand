@@ -4,26 +4,24 @@ import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 
 const Interior = ({ res }) => {
-  // console.log(res)
+
   return (
     <Col
       xs={6}
       md={3}
     >
-      <Link to="/DoorDesc">
+      <Link to={`/DoorDesc/${res._id}`}>
         <Card className="mb-5">
-          <div className="flip-box fixed-item">
-            <div className="flip-box-inner">
-              {!!res.otherColor.length && (
-                <div className="flip-box-">
-                  <Card.Img
-                    variant="top"
-                    src={res.otherColor[0].image}
-                    style={{ height: '100%' }}
-                    alt={'a'}
-                  />
-                </div>
-              )}
+          <div className="flipBox fixed-item">
+            <div className="someFlipInner">
+              <div className="someFlip">
+                <Card.Img
+                  variant="top"
+                  src={res.frontImage}
+                  style={{ height: '100%' }}
+                  alt={'a'}
+                />
+              </div>
             </div>
           </div>
           <Card.Body className="alignCenter">
@@ -31,7 +29,7 @@ const Interior = ({ res }) => {
           </Card.Body>
           <Card.Footer>
             <div className="text-muted alignCenter ">
-              {/*{res.priceFront} <span>р.</span>*/}
+              {res.priceFront} <span>р.</span>
             </div>
           </Card.Footer>
         </Card>

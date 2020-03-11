@@ -92,6 +92,17 @@ Door.updateDocOtherColor = async (id, doc) => {
     return e.path === '_id' ? DOOR_NOT_FOUND : DOOR_CANNOT_UPDATE
   }
 }
+Door.updateDocMoreImage = async (id, doc) => {
+  try {
+    const door = await Door.findById(id)
+    door.moreImage.push(doc)
+    const data = await door.save()
+    DOOR_UPDATED.data = data
+    return data ? DOOR_UPDATED : DOOR_NOT_FOUND
+  } catch (e) {
+    return e.path === '_id' ? DOOR_NOT_FOUND : DOOR_CANNOT_UPDATE
+  }
+}
 
 Door.delete = async id => {
   try {
@@ -108,6 +119,20 @@ Door.deleteOtherColor = async (doorId, id) => {
     let door = await Door.findById({ _id: doorId })
     if (!door) return DOOR_NOT_FOUND
     door.otherColor = door.otherColor.filter(({ _id }) => _id != id)
+    const data = await door.save()
+    if (!data) {
+      return DOOR_CANNOT_UPDATE
+    }
+    return DOOR_UPDATED
+  } catch (e) {
+    return DOOR_NOT_FOUND
+  }
+}
+Door.deleteMoreImage = async (doorId, id) => {
+  try {
+    let door = await Door.findById({ _id: doorId })
+    if (!door) return DOOR_NOT_FOUND
+    door.moreImage = door.moreImage.filter(({ _id }) => _id != id)
     const data = await door.save()
     if (!data) {
       return DOOR_CANNOT_UPDATE

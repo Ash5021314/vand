@@ -9,7 +9,7 @@ const Iron = ({ res }) => {
       xs={6}
       md={3}
     >
-      <Link to="/DoorDesc">
+      <Link to={`/DoorDesc/${res._id}`}>
         <Card className="mb-5">
           <div className="flip-box">
             <div className="flip-box-inner">

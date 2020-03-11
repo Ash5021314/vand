@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Row from 'react-bootstrap/Row'
 import CardDeck from 'react-bootstrap/CardDeck'
 import Container from 'react-bootstrap/Container'
@@ -22,32 +22,57 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 const Catalogs = props => {
+  const doorsOnPage = 4
   const [ doors, setDoors ] = useState([])
   const classes = useStyles()
-  let selectedCategory = 'interior'
+  let selectedCategory = useRef('interior')
+  const [ currentPage, setPage ] = useState(1)
+  const [ pageTotalCount, setPageTotalCount ] = useState(1)
+  const [ doorsToShow, setDoorsToShow ] = useState([])
 
   useEffect(() => {
-    props.getDoors()
-  }, [])
+    if (!doors.length) {
+      props.getDoors()
+    }
+  }, [ props, doors ])
 
   useEffect(() => {
     if (props.location.pathname === '/catalogs/iron') {
-      selectedCategory = 'iron'
+      selectedCategory.current = 'iron'
     }
 
-    setDoors(props.doors.filter(item => item.category === selectedCategory))
-  }, [ props.doors ])
+    setDoors(props.doors.filter(item => item.category === selectedCategory.current))
+  }, [ props.doors, props.location.pathname ])
+
+  useEffect(() => {
+    if (!doors.length) {
+      return
+    }
+
+    setPageTotalCount(Math.ceil(doors.length / doorsOnPage))
+  }, [ doors ])
+
+  useEffect(() => {
+    const page = (currentPage - 1) * doorsOnPage
+    setDoorsToShow(doors.slice(page, page + doorsOnPage))
+  }, [ currentPage, doors ])
+
+  const onPageChange = (event, page) => {
+    if (page !== currentPage) {
+      setPage(page)
+    }
+  }
 
   return (
     <>
       <Container>
         <h2 className="headTop">Каталог</h2>
         <CardDeck>
-          {!doors.length ? (
+          {!doorsToShow.length ? (
             <h2>Loading...</h2>
           ) : (
-            <Row>
-              {doors.reverse().map((res, index) => {
+            <Row style={{ width: '100%' }}>
+              {doorsToShow.reverse().map((res, index) => {
                 if ('interior' === res.category) {
                   return <Interior key={index} res={res}/>
                 }
@@ -57,7 +82,7 @@ const Catalogs = props => {
           )}
         </CardDeck>
         <div className={classes.root}>
-          <Pagination count={10} size="large"/>
+          <Pagination count={pageTotalCount} page={currentPage} onChange={onPageChange} size="large"/>
         </div>
       </Container>
       <Footer/>

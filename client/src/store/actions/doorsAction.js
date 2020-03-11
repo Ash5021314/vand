@@ -1,4 +1,4 @@
-import { CREATE_DOOR, GET_INTERIOR, GET_IRON, GET_ALL, UPDATE_DOOR, DELETE_BREND, DELETE_DOOR } from './types'
+import { GET_INTERIOR, GET_IRON, GET_ALL, UPDATE_DOOR, DELETE_DOOR } from './types'
 import axios from 'axios'
 
 export const domain = 'http://localhost:4000'
@@ -35,6 +35,20 @@ const smallImageSame = async (doorId, data) => {
     return
   }
 }
+const moreImageSame = async (doorId, data) => {
+  try {
+    const response = await axios.post(`${domain}/doors/${doorId}/more-image`, data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    )
+
+    return response.data.data
+  } catch (e) {
+    return
+  }
+}
 
 export const createDoorOtherColor = (doorId, data) => {
   return async dispatch => {
@@ -60,6 +74,31 @@ export const createDoorOtherColor = (doorId, data) => {
 //   }
 // }
 }
+export const createDoorMore = (doorId, data) => {
+  return async dispatch => {
+    const formData = new FormData()
+    for (const key in data) {
+      if ('image' === key) {
+        formData.append('img', data[key])
+      } else {
+        formData.append(key, data[key])
+      }
+    }
+
+    let response = await moreImageSame(doorId, formData)
+    if (response.success) {
+      dispatch({ type: UPDATE_DOOR, payload: response.data })
+    }
+  }
+
+// return async dispatch => {
+//   let response = await sendDoorData(img)
+//   if (response.success) {
+//     return {success: true}
+//   }
+// }
+}
+
 export const deleteItem = (id) => {
   return async dispatch => {
     let data = await axios.delete(`${domain}/doors/${id}`, {
