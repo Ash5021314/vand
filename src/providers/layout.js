@@ -61,12 +61,16 @@ Layout.updateAboutImg = async img => {
 // }
 
 Layout.create = async (name, url) => {
+    console.log('name', name)
+    console.log('url', url)
     try {
         const slide = new Layout()
         slide.url   = url
         slide.name  = name
 
+        console.log('start')
         DOOR_CREATED.data = await slide.save()
+        console.log('end')
         return DOOR_CREATED
     } catch (e) {
         console.log(e)
