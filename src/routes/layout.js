@@ -19,8 +19,7 @@ const upload = multer({
   limits: { fileSize: process.env.FILE_SIZE_LIMIT },
 }).single('img')
 
-// let domain = process.env.DOMAIN || 'http://localhost:5000'
-let domain = 'http://localhost:5000'
+let domain = process.env.DOMAIN || 'http://localhost:5000'
 
 router.get('/homepage', async (req, res) => {
   try {
