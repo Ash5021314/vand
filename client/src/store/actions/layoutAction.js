@@ -10,7 +10,7 @@ import {
 } from './types'
 import axios from 'axios'
 
-const domain = 'http://localhost:4000'
+const domain = 'http://localhost:5000'
 
 export const getHomePage = () => {
   return async dispatch => {
@@ -19,7 +19,7 @@ export const getHomePage = () => {
         'Content-Type': 'application/json',
       },
     })
-    dispatch({type: HOMEPAGE_DATA, payload: data.data})
+    dispatch({ type: HOMEPAGE_DATA, payload: data.data })
   }
 }
 
@@ -32,11 +32,10 @@ export const updateAboutImage = (img) => {
     })
     console.log(data.data)
     if (data.data.success) {
-      dispatch({type: UPDATE_ABOUT_IMG, payload: data.data})
+      dispatch({ type: UPDATE_ABOUT_IMG, payload: data.data })
     }
   }
 }
-
 
 export const updateSlider = (id, img) => {
   return async dispatch => {
@@ -47,11 +46,10 @@ export const updateSlider = (id, img) => {
     })
     console.log(data.data)
     if (data.data.success) {
-      dispatch({type: UPDATE_SLIDER, payload: data.data})
+      dispatch({ type: UPDATE_SLIDER, payload: data.data })
     }
   }
 }
-
 
 export const addSlide = (img) => {
   return async dispatch => {
@@ -62,7 +60,7 @@ export const addSlide = (img) => {
     })
     console.log(data.data)
     if (data.data.success) {
-      dispatch({type: ADD_SLIDE, payload: data.data})
+      dispatch({ type: ADD_SLIDE, payload: data.data })
     }
   }
 }
@@ -75,11 +73,10 @@ export const deleteSlide = (id) => {
       },
     })
     if (data.data.success) {
-      dispatch({type: DELETE_SLIDE, payload: data.data})
+      dispatch({ type: DELETE_SLIDE, payload: data.data })
     }
   }
 }
-
 
 export const updateBrend = (id, img) => {
   return async dispatch => {
@@ -89,11 +86,10 @@ export const updateBrend = (id, img) => {
       },
     })
     if (data.data.success) {
-      dispatch({type: UPDATE_BREND, payload: data.data})
+      dispatch({ type: UPDATE_BREND, payload: data.data })
     }
   }
 }
-
 
 export const addBrend = (img) => {
   return async dispatch => {
@@ -103,7 +99,7 @@ export const addBrend = (img) => {
       },
     })
     if (data.data.success) {
-      dispatch({type: ADD_BREND, payload: data.data})
+      dispatch({ type: ADD_BREND, payload: data.data })
     }
   }
 }
@@ -116,7 +112,7 @@ export const deleteBrend = (id) => {
       },
     })
     if (data.data.success) {
-      dispatch({type: DELETE_BREND, payload: data.data})
+      dispatch({ type: DELETE_BREND, payload: data.data })
     }
   }
 }

@@ -7,7 +7,7 @@ import {
 } from './types'
 import axios from 'axios'
 
-const domain = 'http://localhost:4000'
+const domain = 'http://localhost:5000'
 
 export const sendMessage = doc => {
   return async dispatch => {

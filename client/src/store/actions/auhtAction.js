@@ -1,7 +1,7 @@
-import {ADMIN_LOGIN, ADMIN_LOGOUT} from './types'
+import { ADMIN_LOGIN, ADMIN_LOGOUT } from './types'
 import axios from 'axios'
 
-const domain = 'http://localhost:4000'
+const domain = 'http://localhost:5000'
 
 export const login = doc => {
   return dispatch => {
@@ -25,7 +25,7 @@ const setAuthToken = token => {
   return dispatch => {
     if (token && token !== '') {
       localStorage.setItem('a_a_key', token)
-      dispatch({type: ADMIN_LOGIN, payload: token})
+      dispatch({ type: ADMIN_LOGIN, payload: token })
     } else {
       console.log('Unauthorized')
     }
@@ -57,7 +57,7 @@ const checkToken = async token => {
         authorization: `${token}`,
       },
     })
-    const {data} = response
+    const { data } = response
     if (data.success) {
       return true
     } else {
@@ -71,6 +71,6 @@ const checkToken = async token => {
 export const logout = () => {
   return dispatch => {
     localStorage.removeItem('a_a_key')
-    dispatch({type: ADMIN_LOGOUT})
+    dispatch({ type: ADMIN_LOGOUT })
   }
 }

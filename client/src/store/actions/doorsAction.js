@@ -1,7 +1,7 @@
 import { GET_INTERIOR, GET_IRON, GET_ALL, UPDATE_DOOR, DELETE_DOOR } from './types'
 import axios from 'axios'
 
-export const domain = 'http://localhost:4000'
+export const domain = 'http://localhost:5000'
 
 export const createDoor = data => {
   return async () => {

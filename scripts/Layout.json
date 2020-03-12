@@ -1,64 +1,64 @@
 {
-    "_id": "5e6374fbb7bb885b36ee65b6",
-    "label": "Layout_template",
-    "slider": [
-        {
-            "_id": "5dbe2f1e470b4a78d4d13325",
-            "name": "door1",
-            "url": "http://localhost:4000/images/slideImages/images.jpg"
-        },
-        {
-            "_id": "5dbe2f17470b4a78d4d1331c",
-            "name": "door2",
-            "url": "http://localhost:4000/images/slideImages/blue_house.jpg"
-        },
-        {
-            "_id": "5dbe2ee1470b4a78d4d13300",
-            "name": "door3",
-            "url": "http://localhost:4000/images/slideImages/door-image.jpg"
-        }
-    ],
-    "brend": [
-        {
-            "_id": "5d346b62808a661b3ee64c0f",
-            "name": "brend1",
-            "url": "http://localhost:4000/images/brend/adenBau.jpg"
-        },
-        {
-            "_id": "5d346bf6808a661b3ee64c10",
-            "name": "brend2",
-            "url": "http://localhost:4000/images/brend/agd.jpg"
-        },
-        {
-            "_id": "5d346c7b808a661b3ee64c11",
-            "name": "brend3",
-            "url": "http://localhost:4000/images/brend/dveriReg.jpg"
-        },
-        {
-            "_id": "5d346cc2808a661b3ee64c12",
-            "name": "brend4",
-            "url": "http://localhost:4000/images/brend/genesis.jpg"
-        },
-        {
-            "_id": "5d346d84808a661b3ee64c13",
-            "name": "brend5",
-            "url": "http://localhost:4000/images/brend/lecma.jpg"
-        },
-        {
-            "_id": "5d336ee939865d1a0775f492",
-            "name": "brend6",
-            "url": "http://localhost:4000/images/brend/morelli.jpg"
-        },
-        {
-            "_id": "5d33708b39865d1a0775f495",
-            "name": "brend7",
-            "url": "http://localhost:4000/images/brend/okadoor.jpg"
-        },
-        {
-            "_id": "5d33709739865d1a0775f498",
-            "name": "brend8",
-            "url": "http://localhost:4000/images/brend/valberg.jpg"
-        }
-    ],
-    "about_img": "http://localhost:4000/images/slideImages/door-image.jpg"
+  "_id": "5e6374fbb7bb885b36ee65b6",
+  "label": "Layout_template",
+  "slider": [
+    {
+      "_id": "5dbe2f1e470b4a78d4d13325",
+      "name": "door1",
+      "url": "http://localhost:5000/images/slideImages/images.jpg"
+    },
+    {
+      "_id": "5dbe2f17470b4a78d4d1331c",
+      "name": "door2",
+      "url": "http://localhost:5000/images/slideImages/blue_house.jpg"
+    },
+    {
+      "_id": "5dbe2ee1470b4a78d4d13300",
+      "name": "door3",
+      "url": "http://localhost:5000/images/slideImages/door-image.jpg"
+    }
+  ],
+  "brend": [
+    {
+      "_id": "5d346b62808a661b3ee64c0f",
+      "name": "brend1",
+      "url": "http://localhost:5000/images/brend/adenBau.jpg"
+    },
+    {
+      "_id": "5d346bf6808a661b3ee64c10",
+      "name": "brend2",
+      "url": "http://localhost:5000/images/brend/agd.jpg"
+    },
+    {
+      "_id": "5d346c7b808a661b3ee64c11",
+      "name": "brend3",
+      "url": "http://localhost:5000/images/brend/dveriReg.jpg"
+    },
+    {
+      "_id": "5d346cc2808a661b3ee64c12",
+      "name": "brend4",
+      "url": "http://localhost:5000/images/brend/genesis.jpg"
+    },
+    {
+      "_id": "5d346d84808a661b3ee64c13",
+      "name": "brend5",
+      "url": "http://localhost:5000/images/brend/lecma.jpg"
+    },
+    {
+      "_id": "5d336ee939865d1a0775f492",
+      "name": "brend6",
+      "url": "http://localhost:5000/images/brend/morelli.jpg"
+    },
+    {
+      "_id": "5d33708b39865d1a0775f495",
+      "name": "brend7",
+      "url": "http://localhost:5000/images/brend/okadoor.jpg"
+    },
+    {
+      "_id": "5d33709739865d1a0775f498",
+      "name": "brend8",
+      "url": "http://localhost:5000/images/brend/valberg.jpg"
+    }
+  ],
+  "about_img": "http://localhost:5000/images/slideImages/door-image.jpg"
 }

@@ -19,7 +19,8 @@ const upload = multer({
   limits: { fileSize: process.env.FILE_SIZE_LIMIT },
 }).single('img')
 
-let domain = process.env.DOMAIN || 'http://localhost:4000'
+// let domain = process.env.DOMAIN || 'http://localhost:5000'
+let domain = 'http://localhost:5000'
 
 router.get('/homepage', async (req, res) => {
   try {
@@ -52,10 +53,10 @@ router.post('/slider', upload, async (req, res) => {
 
 router.patch('/slider/:id', upload, async (req, res) => {
   try {
-    let { id } = req.params;
+    let { id } = req.params
     req.body.slide = `${domain}/images/layout/${req.file.filename}`
-    let doc = await layout.updateSlider(id, req.body.slide, req.file.filename);
-    return res.status(doc.statusCode).send(doc);
+    let doc = await layout.updateSlider(id, req.body.slide, req.file.filename)
+    return res.status(doc.statusCode).send(doc)
   } catch (e) {
     return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
   }
@@ -63,9 +64,9 @@ router.patch('/slider/:id', upload, async (req, res) => {
 
 router.delete('/slider/:id', async (req, res) => {
   try {
-    let { id } = req.params;
-    let doc = await layout.deleteSlide(id);
-    return res.status(doc.statusCode).send(doc);
+    let { id } = req.params
+    let doc = await layout.deleteSlide(id)
+    return res.status(doc.statusCode).send(doc)
   } catch (e) {
     return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
   }
@@ -77,17 +78,17 @@ router.post('/brend', upload, async (req, res) => {
     const doc = await layout.addBrendImg(req.body.slide, req.file.filename)
     return res.status(doc.statusCode).send(doc)
   } catch (e) {
-    console.log(e);
+    console.log(e)
     return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
   }
 })
 
 router.patch('/brend/:id', upload, async (req, res) => {
   try {
-    let { id } = req.params;
+    let { id } = req.params
     req.body.slide = `${domain}/images/layout/${req.file.filename}`
-    let doc = await layout.updateBrend(id, req.body.slide, req.file.filename);
-    return res.status(doc.statusCode).send(doc);
+    let doc = await layout.updateBrend(id, req.body.slide, req.file.filename)
+    return res.status(doc.statusCode).send(doc)
   } catch (e) {
     return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
   }
@@ -95,9 +96,9 @@ router.patch('/brend/:id', upload, async (req, res) => {
 
 router.delete('/brend/:id', async (req, res) => {
   try {
-    let { id } = req.params;
-    let doc = await layout.deleteBrend(id);
-    return res.status(doc.statusCode).send(doc);
+    let { id } = req.params
+    let doc = await layout.deleteBrend(id)
+    return res.status(doc.statusCode).send(doc)
   } catch (e) {
     return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)
   }
