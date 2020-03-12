@@ -14,7 +14,7 @@ cron.start()
 require('dotenv').config()
 require('./config/db')
 
-app.use(express.static(path.join(__dirname, 'client/build')))
+app.use(express.static(path.join(__dirname, 'src/public')))
 app.use(bodyParser.json())
 
 const whitelist = process.env.WHITE_LIST
