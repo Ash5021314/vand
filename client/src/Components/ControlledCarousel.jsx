@@ -12,7 +12,8 @@ const ControlledCarousel = props => {
   useEffect(() => {
     props.getHomePage()
     // setSlide(data.images.slideImages);
-  }, [ props ])
+    // eslint-disable-next-line
+  }, [])
 
   useEffect(() => {
     setSlide(props.layout.slider)

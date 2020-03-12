@@ -14,7 +14,7 @@ cron.start()
 require('dotenv').config()
 require('./config/db')
 
-app.use(express.static(path.join(__dirname, 'src/public')))
+app.use(express.static(path.join(__dirname, 'client/build')))
 app.use(bodyParser.json())
 
 const whitelist = process.env.WHITE_LIST
@@ -39,7 +39,7 @@ app.use('/admin', adminRoutes)
 app.use('/layout', layoutRoutes)
 
 app.use((req, res, next) => {
-  res.status(404).send({success: false, msg: 'Wrong Url Path'})
+  res.status(404).send({ success: false, msg: 'Wrong Url Path' })
 })
 
 module.exports = app

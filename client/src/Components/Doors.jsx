@@ -89,7 +89,7 @@ const useStyle = makeStyles(() => ({
 }))
 
 const Doors = (props) => {
-  const doorsOnPage = 4
+  const doorsOnPage = 12
   const { selectedDoors } = props
   const [ open, setOpen ] = useState(false)
   const [ openInterior, setOpenInterior ] = useState(false)

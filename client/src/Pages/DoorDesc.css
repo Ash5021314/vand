@@ -102,6 +102,17 @@
     margin: 20px 0;
 }
 
+.fancy-box-image {
+    width: 300px !important;
+    height: 250px !important;
+    object-fit: cover !important;
+}
+
+.fancy-box-image .image-box {
+    max-width: 600px !important;
+    height: 100%;
+}
+
 @media screen and (max-width: 991px) {
     .lastP {
         font-size: 16px;

@@ -16,7 +16,8 @@ const Items = (props) => {
 
   useEffect(() => {
     props.getDoors()
-  }, [ props ])
+    // eslint-disable-next-line
+  }, [])
 
   useEffect(() => {
     props.doors.reverse()

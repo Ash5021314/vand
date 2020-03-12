@@ -12,7 +12,8 @@ const Brends = (props) => {
   useEffect(() => {
     props.getHomePage()
     // setSlide(data.images.slideImages);
-  }, [ props ])
+    // eslint-disable-next-line
+  }, [])
 
   useEffect(() => {
     setBrend(props.layout.brend)

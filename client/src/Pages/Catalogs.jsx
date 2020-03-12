@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 const Catalogs = props => {
-  const doorsOnPage = 4
+  const doorsOnPage = 12
   const [ doors, setDoors ] = useState([])
   const classes = useStyles()
   let selectedCategory = useRef('interior')
