@@ -6,10 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "node scripts/populateDB.js",
     "start": "node index.js",
-    "heroku-postbuild": "cd client && yarn && yarn run build"
   },
   "engines": {
-    "node": "12.13.x",
+    "node": "12.x.x",
     "yarn": "1.x"
   },
   "keywords": [],
