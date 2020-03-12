@@ -1,15 +1,15 @@
 const Layout = require('../models/Layout')
 const {
-          DOOR_GET_DATA,
+          // DOOR_GET_DATA,
           DOOR_CANNOT_GET_DATA,
-          DOOR_CREATED,
-          DOOR_CANNOT_CREATE,
-          DOOR_EXIST,
+          // DOOR_CREATED,
+          // DOOR_CANNOT_CREATE,
+          // DOOR_EXIST,
           DOOR_CANNOT_UPDATE,
           DOOR_NOT_FOUND,
           DOOR_UPDATED,
           DOOR_DELETED,
-          INVALID_CRED,
+          // INVALID_CRED,
       }      = require('../utils/response_constants')
 const fs     = require('fs')
 const path   = require('path')
@@ -26,6 +26,12 @@ Layout.getHomePage = async () => {
 }
 
 Layout.updateAboutImg = async img => {
+    let layout = await Layout.findOne({ label: 'Layout_template' })
+    if (! layout) {
+        layout       = new Layout()
+        layout.label = 'Layout_template'
+        await layout.save()
+    }
     try {
         let data          = await Layout.findOneAndUpdate(
             { label: 'Layout_template' },
@@ -39,49 +45,41 @@ Layout.updateAboutImg = async img => {
     }
 }
 
-// Layout.addSliderImg = async (img, name) => {
-//   try {
-//     let obj = { name, url: img }
-//     let data = await Layout.findOneAndUpdate(
-//       { label: 'Layout_template' },
-//       {
-//         $push: {
-//           'slider': {
-//             name: name, url: img,
-//           },
-//         },
-//       },
-//       { new: true },
-//     )
-//     DOOR_UPDATED.data = data
-//     return data ? DOOR_UPDATED : DOOR_NOT_FOUND
-//   } catch (e) {
-//     return DOOR_CANNOT_UPDATE
-//   }
-// }
-
-Layout.create = async (name, url) => {
-    console.log('name', name)
-    console.log('url', url)
+Layout.addSliderImg = async (url, name) => {
     try {
-        const slide = new Layout()
-        slide.url   = url
-        slide.name  = name
+        let layout = await Layout.findOne({ label: 'Layout_template' })
+        if (! layout) {
+            layout       = new Layout()
+            layout.label = 'Layout_template'
+            await layout.save()
+        }
 
-        console.log('start')
-        DOOR_CREATED.data = await slide.save()
-        console.log('end')
-        return DOOR_CREATED
+        let data = await Layout.findOneAndUpdate(
+            { label: 'Layout_template' },
+            {
+                $push: {
+                    'slider': { name, url },
+                },
+            },
+            { new: true },
+        )
+
+        DOOR_UPDATED.data = data
+        return data ? DOOR_UPDATED : DOOR_NOT_FOUND
     } catch (e) {
-        console.log(e)
-        if (e.name === 'ValidationError') return INVALID_CRED
-        else if (e.name === 'MongoError' && e.code === 11000) return DOOR_EXIST
-        return DOOR_CANNOT_CREATE
+        return DOOR_CANNOT_UPDATE
     }
 }
 
 Layout.updateSlider = async (id, img, name) => {
     try {
+        let layout = await Layout.findOne({ label: 'Layout_template' })
+        if (! layout) {
+            layout       = new Layout()
+            layout.label = 'Layout_template'
+            await layout.save()
+        }
+
         let url = await Layout.findOne({ label: 'Layout_template' })
         url     = url.slider.filter(item => item._id == id)
         url     = url[0].url
@@ -127,6 +125,13 @@ Layout.deleteSlide = async (id) => {
 
 Layout.addBrendImg = async (img, name) => {
     try {
+        let layout = await Layout.findOne({ label: 'Layout_template' })
+        if (! layout) {
+            layout       = new Layout()
+            layout.label = 'Layout_template'
+            await layout.save()
+        }
+
         let data          = await Layout.findOneAndUpdate(
             { label: 'Layout_template' },
             {
@@ -148,6 +153,14 @@ Layout.addBrendImg = async (img, name) => {
 
 Layout.updateBrend = async (id, img, name) => {
     try {
+        let layout = await Layout.findOne({ label: 'Layout_template' })
+
+        if (! layout) {
+            layout       = new Layout()
+            layout.label = 'Layout_template'
+            await layout.save()
+        }
+
         let url = await Layout.findOne({ label: 'Layout_template' })
         url     = url.brend.filter(item => item._id == id)
         url     = url[0].url

@@ -43,7 +43,7 @@ router.post('/about_img', upload, async (req, res) => {
 router.post('/slider', upload, async (req, res) => {
     try {
         req.body.slide = `${ domain }/images/layout/${ req.file.filename }`
-        const doc      = await layout.create(req.body.slide, req.file.filename)
+        const doc      = await layout.addSliderImg(req.body.slide, req.file.filename)
         return res.status(doc.statusCode).send(doc)
     } catch (e) {
         return res.status(SERVER_ERROR.statusCode).send(SERVER_ERROR)

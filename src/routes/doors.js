@@ -38,7 +38,6 @@ router.get('/', async (req, res) => {
 
 router.post('/', upload, async (req, res) => {
     try {
-        console.log('${domain}/images/doors/${req.file.filename}', `${ domain }/images/doors/${ req.file.filename }`)
         req.body.frontImage = `${ domain }/images/doors/${ req.file.filename }`
         const doc           = await doors.create(req.body)
         return res.status(doc.statusCode).send(doc)
@@ -48,7 +47,6 @@ router.post('/', upload, async (req, res) => {
 })
 
 router.post('/:id/other-color', upload, async (req, res) => {
-    // console.log('data', req.body, req.file)
     try {
         req.body.image = `${ domain }/images/doors/${ req.file.filename }`
         const doc      = await doors.updateDocOtherColor(req.params.id, req.body)
@@ -90,7 +88,6 @@ router.delete('/:doorId/other-color/:id', async (req, res) => {
 })
 
 router.post('/:id/more-image', upload, async (req, res) => {
-    // console.log('data', req.body, req.file)
     try {
         req.body.image = `${ domain }/images/doors/${ req.file.filename }`
         const doc      = await doors.updateDocMoreImage(req.params.id, req.body)
