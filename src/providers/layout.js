@@ -39,24 +39,38 @@ Layout.updateAboutImg = async img => {
   }
 }
 
+// Layout.addSliderImg = async (img, name) => {
+//   try {
+//     let obj = { name, url: img }
+//     let data = await Layout.findOneAndUpdate(
+//       { label: 'Layout_template' },
+//       {
+//         $push: {
+//           'slider': {
+//             name: name, url: img,
+//           },
+//         },
+//       },
+//       { new: true },
+//     )
+//     DOOR_UPDATED.data = data
+//     return data ? DOOR_UPDATED : DOOR_NOT_FOUND
+//   } catch (e) {
+//     return DOOR_CANNOT_UPDATE
+//   }
+// }
+
 Layout.addSliderImg = async (img, name) => {
   try {
-    let obj = { name, url: img }
-    let data = await Layout.findOneAndUpdate(
-      { label: 'Layout_template' },
-      {
-        $push: {
-          'slider': {
-            name: name, url: img,
-          },
-        },
-      },
-      { new: true },
-    )
-    DOOR_UPDATED.data = data
-    return data ? DOOR_UPDATED : DOOR_NOT_FOUND
+    const slide = new Layout(img, name)
+    const data = await slide.save()
+    DOOR_CREATED.data = data
+    return DOOR_CREATED
   } catch (e) {
-    return DOOR_CANNOT_UPDATE
+    console.log(e)
+    if (e.name === 'ValidationError') return INVALID_CRED
+    else if (e.name === 'MongoError' && e.code === 11000) return DOOR_EXIST
+    return DOOR_CANNOT_CREATE
   }
 }
 
