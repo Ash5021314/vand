@@ -1,15 +1,15 @@
-const express = require('express')
-const app = express()
-const path = require('path')
+const express    = require('express')
+const app        = express()
+const path       = require('path')
 const bodyParser = require('body-parser')
-const cors = require('cors')
+const cors       = require('cors')
 const {
-  doorsRoutes,
-  messageRoutes,
-  adminRoutes,
-  layoutRoutes,
-} = require('./src/routes')
-let cron = require('./src/utils/token_issuer')
+          doorsRoutes,
+          messageRoutes,
+          adminRoutes,
+          layoutRoutes,
+      }          = require('./src/routes')
+let cron         = require('./src/utils/token_issuer')
 cron.start()
 require('dotenv').config()
 require('./config/db')
@@ -17,18 +17,15 @@ require('./config/db')
 app.use(express.static(path.join(__dirname, 'src/public')))
 app.use(bodyParser.json())
 
-const whitelist = process.env.WHITE_LIST
+// const whitelist = process.env.WHITE_LIST || []
 
 const corsOptions = {
-  origin: function (origin, callback) {
-    // console.log(origin, whitelist)
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(null, true)
-      // callback(new Error('Not allowed by CORS'))
-    }
-  },
+    origin: function (origin, callback) {
+        // console.log(origin, whitelist)
+        // TODO check cors options
+        callback(null, true)
+        // callback(new Error('Not allowed by CORS'))
+    },
 }
 
 app.use(cors(corsOptions))
@@ -39,7 +36,7 @@ app.use('/admin', adminRoutes)
 app.use('/layout', layoutRoutes)
 
 app.use((req, res, next) => {
-  res.status(404).send({ success: false, msg: 'Wrong Url Path' })
+    res.status(404).send({ success: false, msg: 'Wrong Url Path' })
 })
 
 module.exports = app
