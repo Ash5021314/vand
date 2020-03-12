@@ -60,7 +60,7 @@ Layout.updateAboutImg = async img => {
 //   }
 // }
 
-Layout.addSliderImg = async (img, name) => {
+Layout.create = async (img, name) => {
   try {
     const slide = new Layout(img, name)
     const data = await slide.save()
