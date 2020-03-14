@@ -40,8 +40,7 @@ router.post('/about_img', async (req, res) => {
             }
 
             (async () => {
-                req.body.frontImage = req.file.location
-                const doc           = await layout.updateAboutImg(req.body)
+                const doc           = await layout.updateAboutImg(req.file.location)
                 return res.status(doc.statusCode).send(doc)
             })()
         });
@@ -59,7 +58,7 @@ router.post('/slider',  async (req, res) => {
             }
 
             (async () => {
-                req.body.frontImage = req.file.location
+                req.body.slide = req.file.location
                 const doc      = await layout.addSliderImg(req.body.slide, req.file.filename)
                 return res.status(doc.statusCode).send(doc)
             })()
@@ -79,7 +78,7 @@ router.patch('/slider/:id', async (req, res) => {
             }
 
             (async () => {
-                req.body.frontImage = req.file.location
+                req.body.slide = req.file.location
                 let doc        = await layout.updateSlider(id, req.body.slide, req.file.filename)
                 return res.status(doc.statusCode).send(doc)
             })()
@@ -108,8 +107,7 @@ router.post('/brend', async (req, res) => {
             }
 
             (async () => {
-                req.body.frontImage = req.file.location
-                const doc      = await layout.addBrendImg(req.body.slide, req.file.filename)
+                const doc      = await layout.addBrendImg(req.file.location, req.file.filename)
                 return res.status(doc.statusCode).send(doc)
             })()
         });
@@ -129,8 +127,7 @@ router.patch('/brend/:id', async (req, res) => {
             }
 
             (async () => {
-                req.body.frontImage = req.file.location
-                let doc        = await layout.updateBrend(id, req.body.slide, req.file.filename)
+                let doc        = await layout.updateBrend(id, req.file.location, req.file.filename)
                 return res.status(doc.statusCode).send(doc)
             })()
         });

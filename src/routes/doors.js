@@ -52,7 +52,7 @@ router.post('/:id/other-color', async (req, res) => {
             }
 
             (async () => {
-                req.body.frontImage = req.file.location
+                req.body.image  = req.file.location
                 const doc      = await doors.updateDocOtherColor(req.params.id, req.body)
                 return res.status(doc.statusCode).send(doc)
             })()
@@ -113,7 +113,7 @@ router.post('/:id/more-image', async (req, res) => {
             }
 
             (async () => {
-                req.body.frontImage = req.file.location
+                req.body.image = req.file.location
                 const doc      = await doors.updateDocMoreImage(req.params.id, req.body)
                 return res.status(doc.statusCode).send(doc)
             })()
