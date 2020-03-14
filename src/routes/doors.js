@@ -79,9 +79,7 @@ router.patch('/:id/image', async (req, res) => {
         }
 
         (async () => {
-            req.body.frontImage = req.file.location
-            const doc      = await doors.updateDocMoreImage(req.params.id, req.body)
-            return res.status(200).send(doc)
+            return res.status(200).send(req.file.location)
         })()
     });
 
