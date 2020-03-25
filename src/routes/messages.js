@@ -24,8 +24,8 @@ router.post("/", async (req, res) => {
 			MailConfig.ViewOption(gmailTransport, hbs);
 			let HelperOptions = {
 				from: "Vandoors <vandoorsinfo@gmail.com>",
-				to: "ashkapoghosyan@gmail.com",
-				subject: "Nor patver!",
+				to: "vandoorsinfo@gmail.com",
+				subject: "ВЫЗОВ ЗАМЕРШИКА, ОТ " + req.body.name,
 				template: "test",
 				context: {
 					name: req.body.name,
